@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101c2a">
+  <title>每日情报 · 测试</title>
+  <style>
+    :root { color-scheme: light; font-family: -apple-system, BlinkMacSystemFont, "Noto Sans SC", sans-serif; background:#f2f5f8; color:#172534; }
+    * { box-sizing:border-box; }
+    body { margin:0; }
+    header { background:#101c2a; color:white; padding: max(24px, env(safe-area-inset-top)) 20px 24px; }
+    .wrap { max-width:760px; margin:auto; }
+    .brand { font-size:14px; font-weight:800; letter-spacing:.13em; color:#a7d8e8; }
+    h1 { font-size:clamp(30px,8vw,48px); line-height:1.12; margin:20px 0 12px; letter-spacing:-.035em; }
+    .date { color:#b9c9d4; font-size:15px; margin:0; }
+    main { padding:24px 16px 64px; }
+    .label { color:#526678; font-size:14px; font-weight:700; letter-spacing:.06em; margin:0 4px 14px; }
+    article { background:white; border-radius:20px; overflow:hidden; box-shadow:0 8px 30px #17334c12; }
+    figure { margin:0; }
+    img { display:block; width:100%; aspect-ratio:16/10; object-fit:cover; background:#dce8ef; }
+    figcaption { padding:9px 18px 0; font-size:12px; color:#667788; }
+    .content { padding:20px 20px 26px; }
+    .tag { color:#177796; font-size:14px; font-weight:750; }
+    h2 { font-size:clamp(25px,6vw,36px); line-height:1.28; letter-spacing:-.02em; margin:10px 0 14px; }
+    p { font-size:17px; line-height:1.8; margin:12px 0; }
+    .why { border-left:3px solid #27a4c5; padding-left:14px; margin-top:20px; }
+    a { color:#126b89; text-underline-offset:3px; }
+    .source { font-size:14px; color:#5e7180; margin-top:24px; }
+    .notice { font-size:14px; color:#526678; line-height:1.7; margin:20px 4px 0; }
+    .error { background:#fff; padding:20px; border-radius:16px; }
+    @media(min-width:700px) { header { padding:50px 24px 42px; } main { padding-top:34px; } }
+  </style>
+</head>
+<body>
+  <header><div class="wrap"><div class="brand">DAILY BRIEF · TEST</div><h1>每日情报</h1><p class="date" id="date">读取日报中…</p></div></header>
+  <main class="wrap"><p class="label">今日主视觉 · 发布链路测试</p><div id="story" aria-live="polite"></div><p class="notice">当前仅展示一条经过核实的示例内容。正式日报和每天自动发布仍需通过后续链路验证。</p></main>
+  <script>
+    const story = document.getElementById('story');
+    const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const valid = u => { try { const x = new URL(u); return x.protocol === 'https:' ? x.href : '#'; } catch { return '#'; } };
+    fetch('./data/2026-09-25.json', {cache:'no-store'}).then(r => { if (!r.ok) throw Error('日报文件不可用'); return r.json(); }).then(d => {
+      document.getElementById('date').textContent = `${d.date} · ${d.edition}`;
+      const h=d.headline, im=h.image;
+      story.innerHTML = `<article><figure><img src="${esc(valid(im.url))}" alt="${esc(im.alt)}"><figcaption>图片：${esc(im.credit)}</figcaption></figure><div class="content"><span class="tag">${esc(h.section)}</span><h2>${esc(h.title)}</h2><p>${esc(h.summary)}</p><p class="why"><strong>为什么重要：</strong>${esc(h.why)}</p><p class="source">来源：<a href="${esc(valid(h.sources[0].url))}" target="_blank" rel="noopener noreferrer">${esc(h.sources[0].label)} ↗</a></p></div></article>`;
+    }).catch(e => { document.getElementById('date').textContent='读取失败'; story.innerHTML=`<p class="error">日报暂时无法加载。${esc(e.message)}</p>`; });
+  </script>
+</body>
+</html>
