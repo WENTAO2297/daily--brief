@@ -1,0 +1,18 @@
+{
+  "date": "2026-09-25",
+  "edition": "链路测试",
+  "updatedAt": "2026-09-25T12:47:00+08:00",
+  "headline": {
+    "section": "科技与科学",
+    "title": "NASA 公布美国西北部海雾卫星图",
+    "summary": "NASA 9 月 24 日发布 Terra 卫星拍摄的美国西北部云层图像。影像摄于 9 月 19 日，低云覆盖华盛顿州和俄勒冈州西部，部分山脊露出云海。",
+    "why": "这条内容用于验证新闻文字、真实图片、署名与原始来源能否在手机网页同时显示。",
+    "image": {
+      "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/cloudy-cloak-over-the-northwest/westcoastfog_tmo_20260919_lrg.jpg?crop=faces%2Cfocalpoint&fit=clip&h=2160&w=2160",
+      "alt": "NASA Terra 卫星拍摄的美国西北部低云",
+      "credit": "NASA Earth Observatory / Michala Garrison",
+      "sourceUrl": "https://science.nasa.gov/earth/earth-observatory/cloudy-cloak-over-the-northwest/"
+    },
+    "sources": [{"label":"NASA 原文","url":"https://science.nasa.gov/earth/earth-observatory/cloudy-cloak-over-the-northwest/"}]
+  }
+}
