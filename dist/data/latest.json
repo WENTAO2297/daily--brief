@@ -1,18 +1,21 @@
 {
   "date": "2026-09-25",
-  "edition": "链路测试",
-  "updatedAt": "2026-09-25T12:47:00+08:00",
+  "edition": "今日科技与科学",
+  "updatedAt": "2026-09-25T13:38:30+08:00",
   "headline": {
     "section": "科技与科学",
-    "title": "NASA 公布美国西北部海雾卫星图",
-    "summary": "NASA 9 月 24 日发布 Terra 卫星拍摄的美国西北部云层图像。影像摄于 9 月 19 日，低云覆盖华盛顿州和俄勒冈州西部，部分山脊露出云海。",
-    "why": "这条内容用于验证新闻文字、真实图片、署名与原始来源能否在手机网页同时显示。",
+    "title": "美印 NISAR 卫星记录堪察加火山熔岩扩散",
+    "summary": "NASA 喷气推进实验室 9 月 24 日介绍，NASA 与印度空间研究组织联合运行的 NISAR 卫星利用 2025 年 12 月至 2026 年 8 月的雷达数据，制作出堪察加半岛克拉舍宁尼科夫火山喷发的时间序列。画面显示熔岩从北侧火山口溢出并不断铺展。",
+    "why": "这不仅是一段震撼的卫星影像，也展示了雷达卫星如何穿透云层、持续追踪偏远地区的火山活动，为灾害监测和应急响应提供依据。",
     "image": {
-      "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/cloudy-cloak-over-the-northwest/westcoastfog_tmo_20260919_lrg.jpg?crop=faces%2Cfocalpoint&fit=clip&h=2160&w=2160",
-      "alt": "NASA Terra 卫星拍摄的美国西北部低云",
-      "credit": "NASA Earth Observatory / Michala Garrison",
-      "sourceUrl": "https://science.nasa.gov/earth/earth-observatory/cloudy-cloak-over-the-northwest/"
+      "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/imagerecords/154000/154776/krasheninnikova_oli_20250825_lrg.jpg?crop=faces%2Cfocalpoint&fit=clip&h=956&w=1434",
+      "alt": "NASA 卫星拍摄的堪察加克拉舍宁尼科夫火山及熔岩流",
+      "credit": "NASA Earth Observatory image by Michala Garrison, using Landsat data from the U.S. Geological Survey",
+      "sourceUrl": "https://science.nasa.gov/earth/earth-observatory/mapping-kamchatka-earthquake-displacement-154776/"
     },
-    "sources": [{"label":"NASA 原文","url":"https://science.nasa.gov/earth/earth-observatory/cloudy-cloak-over-the-northwest/"}]
+    "sources": [
+      {"label":"NASA / JPL 原文","url":"https://www.jpl.nasa.gov/news/us-india-satellite-captures-time-lapse-video-of-volcanic-eruption/"},
+      {"label":"NASA 图片来源","url":"https://science.nasa.gov/earth/earth-observatory/mapping-kamchatka-earthquake-displacement-154776/"}
+    ]
   }
 }
