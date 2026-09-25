@@ -16,6 +16,7 @@
 - 示例内容来自 NASA 2026-09-24 的 Earth Observatory 页面，图片 URL 和来源均已写入 JSON。
 - 已部署一个私有测试站：<https://wentao-daily-brief-test.sweetiee-2297.chatgpt.site>
 - 已部署一个公开 GitHub Pages 站点：<https://wentao2297.github.io/daily--brief/>；`main` 分支更新会触发自动发布。
+- 已配置本地 Codex 自动化：每天 07:30（Asia/Shanghai）生成一条经核实的日报，写入当天 JSON 和 `latest.json`，提交并推送到 `main`；成功时静默，失败时通知。
 - 没有调用 OpenAI API。
 - 已将测试站的 Sites 项目绑定写入 `.openai/hosting.json`，部署目录为 `dist/`。
 
@@ -23,11 +24,11 @@
 
 - GitHub 仓库 `WENTAO2297/daily--brief` 现在可以由当前连接访问，默认分支为 `main`。
 - 私有测试站仍托管在 ChatGPT Sites 的内部源仓库；公开正式测试站由 GitHub Pages 从用户仓库发布。
-- 尚未测试 ChatGPT 定时任务能否自行把生成内容提交到 GitHub。
+- 自动化的首次实际运行结果尚待观察；它使用本地项目和 GitHub 凭据，不依赖云端 ChatGPT 任务的本地文件访问。
 
 ## 接下来
 
-1. 单独验证 ChatGPT 定时任务是否能调用 GitHub 写入；不要把本地 Codex 的 Git 凭据假定为云端定时任务可用。
+1. 观察首次自动化运行，确认日报内容、图片来源和 GitHub 推送均成功。
 2. 后续再增加正式日报、历史归档和多条新闻卡片。
 
 ## 约束

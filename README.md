@@ -26,4 +26,4 @@ python3 -m http.server 8000
 
 ## 当前阶段
 
-本仓库已经完成“日报 JSON 写入 GitHub → GitHub Pages 自动发布 → 手机网站读取日报”的最小闭环。测试项目不需要 OpenAI API key；每日自动生成、历史归档和多条新闻卡片将在后续继续规划。
+本仓库已经完成“日报 JSON 写入 GitHub → GitHub Pages 自动发布 → 手机网站读取日报”的最小闭环。当前已配置一个本地 Codex 自动化任务，按上海时间每天 07:30 更新日报并推送到 `main`；测试项目不需要 OpenAI API key。历史归档和多条新闻卡片将在后续继续规划。
