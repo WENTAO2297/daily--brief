@@ -10,6 +10,12 @@ python3 -m http.server 8000
 
 然后打开 `http://localhost:8000`。需要通过本地 HTTP 服务预览，因为页面会使用 `fetch()` 读取日报 JSON。
 
+## 在线访问
+
+公开站点：<https://wentao2297.github.io/daily--brief/>
+
+每次向 `main` 分支推送更新时，GitHub Actions 会自动从 `dist/` 发布新版网页。
+
 ## 文件
 
 - `index.html`：手机端新闻卡片页面
@@ -20,4 +26,4 @@ python3 -m http.server 8000
 
 ## 当前阶段
 
-本仓库用于验证“日报 JSON 写入 GitHub → 静态网站读取更新”的最小闭环。当前私有测试站会部署与 GitHub 提交相同的静态内容，但 Sites 的内部源仓库与本 GitHub 仓库尚未建立自动同步；后续需要单独验证自动部署方案。测试项目不需要 OpenAI API key。
+本仓库已经完成“日报 JSON 写入 GitHub → GitHub Pages 自动发布 → 手机网站读取日报”的最小闭环。测试项目不需要 OpenAI API key；每日自动生成、历史归档和多条新闻卡片将在后续继续规划。
