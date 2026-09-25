@@ -39,7 +39,7 @@
     const story = document.getElementById('story');
     const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     const valid = u => { try { const x = new URL(u); return x.protocol === 'https:' ? x.href : '#'; } catch { return '#'; } };
-    fetch('./data/2026-09-25.json', {cache:'no-store'}).then(r => { if (!r.ok) throw Error('日报文件不可用'); return r.json(); }).then(d => {
+    fetch('./data/latest.json', {cache:'no-store'}).then(r => { if (!r.ok) throw Error('日报文件不可用'); return r.json(); }).then(d => {
       document.getElementById('date').textContent = `${d.date} · ${d.edition}`;
       const h=d.headline, im=h.image;
       story.innerHTML = `<article><figure><img src="${esc(valid(im.url))}" alt="${esc(im.alt)}"><figcaption>图片：${esc(im.credit)}</figcaption></figure><div class="content"><span class="tag">${esc(h.section)}</span><h2>${esc(h.title)}</h2><p>${esc(h.summary)}</p><p class="why"><strong>为什么重要：</strong>${esc(h.why)}</p><p class="source">来源：<a href="${esc(valid(h.sources[0].url))}" target="_blank" rel="noopener noreferrer">${esc(h.sources[0].label)} ↗</a></p></div></article>`;
