@@ -3,47 +3,110 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#101c2a">
-  <title>每日情报 · 测试</title>
+  <meta name="theme-color" content="#101a2b">
+  <meta name="description" content="每日新闻情报日报：重点新闻、AI、开源、CS2、日本与科技产业。">
+  <title>每日新闻情报日报</title>
   <style>
-    :root { color-scheme: light; font-family: -apple-system, BlinkMacSystemFont, "Noto Sans SC", sans-serif; background:#f2f5f8; color:#172534; }
+    :root { color-scheme: light; font-family: -apple-system, BlinkMacSystemFont, "Noto Sans SC", "PingFang SC", sans-serif; background:#eef2f6; color:#172534; }
     * { box-sizing:border-box; }
-    body { margin:0; }
-    header { background:#101c2a; color:white; padding: max(24px, env(safe-area-inset-top)) 20px 24px; }
-    .wrap { max-width:760px; margin:auto; }
-    .brand { font-size:14px; font-weight:800; letter-spacing:.13em; color:#a7d8e8; }
-    h1 { font-size:clamp(30px,8vw,48px); line-height:1.12; margin:20px 0 12px; letter-spacing:-.035em; }
-    .date { color:#b9c9d4; font-size:15px; margin:0; }
-    main { padding:24px 16px 64px; }
-    .label { color:#526678; font-size:14px; font-weight:700; letter-spacing:.06em; margin:0 4px 14px; }
-    article { background:white; border-radius:20px; overflow:hidden; box-shadow:0 8px 30px #17334c12; }
-    figure { margin:0; }
-    img { display:block; width:100%; aspect-ratio:16/10; object-fit:cover; background:#dce8ef; }
-    figcaption { padding:9px 18px 0; font-size:12px; color:#667788; }
-    .content { padding:20px 20px 26px; }
-    .tag { color:#177796; font-size:14px; font-weight:750; }
-    h2 { font-size:clamp(25px,6vw,36px); line-height:1.28; letter-spacing:-.02em; margin:10px 0 14px; }
-    p { font-size:17px; line-height:1.8; margin:12px 0; }
-    .why { border-left:3px solid #27a4c5; padding-left:14px; margin-top:20px; }
-    a { color:#126b89; text-underline-offset:3px; }
-    .source { font-size:14px; color:#5e7180; margin-top:24px; }
-    .notice { font-size:14px; color:#526678; line-height:1.7; margin:20px 4px 0; }
-    .error { background:#fff; padding:20px; border-radius:16px; }
-    @media(min-width:700px) { header { padding:50px 24px 42px; } main { padding-top:34px; } }
+    body { margin:0; background:#eef2f6; }
+    header { color:#f8fbff; background:radial-gradient(circle at 80% 0%, #2b5b75 0, transparent 42%), #101a2b; padding:max(26px,env(safe-area-inset-top)) 18px 26px; }
+    .wrap { max-width:980px; margin:auto; }
+    .brand { color:#9cd6e6; font-size:12px; font-weight:800; letter-spacing:.16em; }
+    h1 { font-size:clamp(29px,8vw,48px); line-height:1.1; letter-spacing:-.045em; margin:18px 0 12px; }
+    .date { color:#b9c9d4; font-size:14px; margin:0; }
+    main { padding:22px 14px 60px; }
+    section { margin:0 0 34px; }
+    .section-heading { display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin:0 4px 12px; }
+    h2 { font-size:20px; line-height:1.3; margin:0; letter-spacing:-.02em; }
+    .section-kicker { color:#728393; font-size:12px; }
+    .overview { color:#4d6070; font-size:16px; line-height:1.7; margin:0 4px 24px; }
+    .hero { color:#f6fbff; overflow:hidden; border-radius:24px; background:#142a3a; box-shadow:0 12px 34px #18354c2b; }
+    .hero .media { min-height:245px; }
+    .hero .content { padding:22px 20px 24px; }
+    .hero h2 { color:#fff; font-size:clamp(26px,7vw,42px); line-height:1.2; margin:9px 0 14px; }
+    .hero .what, .hero .why { color:#d8e7ed; }
+    .section-label { color:#79cfdf; font-size:13px; font-weight:800; letter-spacing:.04em; }
+    .top-grid, .story-grid { display:grid; gap:14px; }
+    .top-grid { grid-template-columns:1fr; }
+    .story-grid { grid-template-columns:1fr; }
+    .story { background:#fff; border:1px solid #dfe7ed; border-radius:18px; overflow:hidden; box-shadow:0 5px 18px #17334c0b; }
+    .story .content { padding:17px 17px 18px; }
+    .story h3 { color:#172534; font-size:20px; line-height:1.38; margin:7px 0 10px; letter-spacing:-.02em; }
+    .large h3 { font-size:22px; }
+    .standard h3 { font-size:19px; }
+    .flash { border-radius:14px; }
+    .flash .content { padding:14px 15px; }
+    .flash h3 { font-size:17px; margin:4px 0 7px; }
+    .story .section-label { color:#177796; }
+    .what, .why { font-size:16px; line-height:1.72; margin:9px 0 0; }
+    .why { border-left:3px solid #39a9bd; padding-left:11px; color:#415967; }
+    .why strong { color:#1d7088; }
+    .meta { color:#71808d; font-size:12px; line-height:1.55; margin:12px 0 0; }
+    .meta a, .sources a { color:#126b89; text-underline-offset:3px; }
+    .sources { display:flex; flex-wrap:wrap; gap:7px 12px; font-size:13px; margin-top:14px; }
+    .media { margin:0; background:#dbe7ed; }
+    .media img { display:block; width:100%; max-height:340px; aspect-ratio:16/9; object-fit:cover; }
+    .media figcaption { color:#6a7b87; background:#f7fafb; padding:7px 14px 0; font-size:11px; line-height:1.45; }
+    .hero .media figcaption { color:#c6d6dc; background:#142a3a; }
+    .image-group { display:grid; grid-template-columns:repeat(2,1fr); gap:3px; }
+    .image-group img { min-height:150px; aspect-ratio:1.35; }
+    .empty { color:#677986; background:#fff; border:1px dashed #c6d4dc; padding:16px; border-radius:15px; }
+    .closing { color:#e5f0f3; background:#142a3a; border-radius:20px; padding:21px 19px; }
+    .closing h2 { color:#fff; }
+    .closing .section-kicker { color:#9dc1cb; }
+    .closing ul { padding-left:20px; margin:14px 0 20px; }
+    .closing li { line-height:1.65; margin:6px 0; }
+    .closing a { color:#9de0ea; }
+    .notice { color:#7a8993; font-size:12px; line-height:1.6; margin:22px 4px 0; }
+    .error { color:#7b2b2b; background:#fff; border-radius:16px; padding:20px; }
+    @media (min-width:640px) {
+      main { padding:32px 22px 76px; }
+      .top-grid { grid-template-columns:repeat(2,1fr); }
+      .story-grid { grid-template-columns:repeat(2,1fr); }
+      .large:first-child { grid-column:span 2; }
+    }
+    @media (min-width:900px) {
+      header { padding:54px 30px 42px; }
+      .top-grid { grid-template-columns:repeat(4,1fr); }
+      .top-grid .large:first-child { grid-column:span 2; }
+      .top-grid .large { grid-column:span 1; }
+      .story-grid { grid-template-columns:repeat(3,1fr); }
+    }
   </style>
 </head>
 <body>
-  <header><div class="wrap"><div class="brand">DAILY BRIEF · TEST</div><h1>每日情报</h1><p class="date" id="date">读取日报中…</p></div></header>
-  <main class="wrap"><p class="label">今日主视觉 · 发布链路测试</p><div id="story" aria-live="polite"></div><p class="notice">当前仅展示一条经过核实的示例内容。正式日报和每天自动发布仍需通过后续链路验证。</p></main>
+  <header><div class="wrap"><div class="brand">DAILY NEWS BRIEF</div><h1>每日新闻情报日报</h1><p class="date" id="date">正在读取今日简报…</p></div></header>
+  <main class="wrap" id="app" aria-live="polite"></main>
   <script>
-    const story = document.getElementById('story');
+    const app = document.getElementById('app');
     const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     const valid = u => { try { const x = new URL(u); return x.protocol === 'https:' ? x.href : '#'; } catch { return '#'; } };
+    const link = (s) => `<a href="${esc(valid(s.url))}" target="_blank" rel="noopener noreferrer">${esc(s.label || '原文')} ↗</a>`;
+    const sources = (items = []) => items.length ? `<div class="sources">${items.slice(0, 3).map(link).join('')}</div>` : '';
+    const media = (images = [], hero = false) => {
+      if (!images.length) return '';
+      const shown = images.slice(0, 2);
+      const body = shown.length > 1 ? `<div class="image-group">${shown.map(i => `<img src="${esc(valid(i.url))}" alt="${esc(i.alt)}" loading="lazy">`).join('')}</div>` : `<img src="${esc(valid(shown[0].url))}" alt="${esc(shown[0].alt)}"${hero ? '' : ' loading="lazy"'}>`;
+      return `<figure class="media">${body}${shown[0].credit ? `<figcaption>图片：${esc(shown[0].credit)}</figcaption>` : ''}</figure>`;
+    };
+    const card = (item, hero = false) => {
+      const kind = item.kind || (hero ? 'hero' : 'standard');
+      const cls = hero ? 'hero' : `story ${kind}`;
+      const why = item.why ? `<p class="why"><strong>为什么重要：</strong>${esc(item.why)}</p>` : '';
+      const sourceLine = item.updatedAt ? `<p class="meta">更新：${esc(item.updatedAt)}</p>` : '';
+      return `<article class="${cls}">${media(item.images || [], hero)}<div class="content"><div class="section-label">${esc(item.channel || item.section || '')}</div><h${hero ? '2' : '3'}>${esc(item.title)}</h${hero ? '2' : '3'}><p class="what"><strong>发生了什么：</strong>${esc(item.what || item.summary || '')}</p>${why}${sources(item.sources)}${sourceLine}</div></article>`;
+    };
+    const section = (channel) => {
+      const items = channel.stories || [];
+      return `<section><div class="section-heading"><h2>${esc(channel.title)}</h2>${channel.note ? `<span class="section-kicker">${esc(channel.note)}</span>` : ''}</div>${items.length ? `<div class="story-grid">${items.map(item => card(item)).join('')}</div>` : '<p class="empty">今日暂无符合筛选标准的高价值内容。</p>'}</section>`;
+    };
     fetch('./data/latest.json', {cache:'no-store'}).then(r => { if (!r.ok) throw Error('日报文件不可用'); return r.json(); }).then(d => {
-      document.getElementById('date').textContent = `${d.date} · ${d.edition}`;
-      const h=d.headline, im=h.image;
-      story.innerHTML = `<article><figure><img src="${esc(valid(im.url))}" alt="${esc(im.alt)}"><figcaption>图片：${esc(im.credit)}</figcaption></figure><div class="content"><span class="tag">${esc(h.section)}</span><h2>${esc(h.title)}</h2><p>${esc(h.summary)}</p><p class="why"><strong>为什么重要：</strong>${esc(h.why)}</p><p class="source">来源：<a href="${esc(valid(h.sources[0].url))}" target="_blank" rel="noopener noreferrer">${esc(h.sources[0].label)} ↗</a></p></div></article>`;
-    }).catch(e => { document.getElementById('date').textContent='读取失败'; story.innerHTML=`<p class="error">日报暂时无法加载。${esc(e.message)}</p>`; });
+      document.getElementById('date').textContent = `${d.date} · ${d.edition || '今日简报'}`;
+      const top = d.topStories || [];
+      const closing = d.closing || {};
+      app.innerHTML = `<p class="overview">${esc(d.overview || '')}</p><section><div class="section-heading"><h2>🔥 主视觉头条</h2><span class="section-kicker">今日最重要的一条</span></div>${d.hero ? card(d.hero, true) : '<p class="empty">暂无主视觉头条。</p>'}</section><section><div class="section-heading"><h2>⭐ 今日重点</h2><span class="section-kicker">与主视觉共同构成今日最重要的5条</span></div>${top.length ? `<div class="top-grid">${top.map(item => card(item)).join('')}</div>` : '<p class="empty">暂无今日重点。</p>'}</section>${(d.channels || []).map(section).join('')}<section class="closing"><div class="section-heading"><h2>🧭 今日收尾</h2><span class="section-kicker">三条主线 · 三个必读链接</span></div><ul>${(closing.themes || []).map(x => `<li>${esc(x)}</li>`).join('')}</ul><strong>如果今天只花10分钟，建议看这3个链接</strong><div class="sources">${(closing.links || []).slice(0,3).map(link).join('')}</div></section><p class="notice">测试模式：每次运行独立重建当天日报；同一份日报内部严格去重。信息来源与图片署名均保留在对应卡片中。</p>`;
+    }).catch(e => { document.getElementById('date').textContent='读取失败'; app.innerHTML=`<p class="error">日报暂时无法加载。${esc(e.message)}</p>`; });
   </script>
 </body>
 </html>
