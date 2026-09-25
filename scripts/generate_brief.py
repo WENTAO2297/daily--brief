@@ -14,16 +14,23 @@ import html
 import json
 import os
 import re
+import ssl
 import sys
-import time
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 from pathlib import Path
 from typing import Any
 from zoneinfo import ZoneInfo
+
+try:
+    import certifi
+    SSL_CONTEXT = ssl.create_default_context(cafile=certifi.where())
+except Exception:
+    SSL_CONTEXT = ssl.create_default_context()
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -62,7 +69,7 @@ CHANNELS = [
 
 def fetch(url: str, timeout: int = 20) -> bytes:
     req = urllib.request.Request(url, headers={"User-Agent": "daily-brief/1.0 (+https://github.com/WENTAO2297/daily--brief)"})
-    with urllib.request.urlopen(req, timeout=timeout) as response:
+    with urllib.request.urlopen(req, timeout=timeout, context=SSL_CONTEXT) as response:
         return response.read()
 
 
@@ -107,7 +114,7 @@ def parse_date(value: str) -> str:
 def article_metadata(url: str) -> tuple[str, str]:
     """Return og:image and a short page text. Failure is intentionally non-fatal."""
     try:
-        raw = fetch(url, timeout=12).decode("utf-8", errors="ignore")[:700_000]
+        raw = fetch(url, timeout=5).decode("utf-8", errors="ignore")[:500_000]
     except Exception:
         return "", ""
     image = ""
@@ -164,14 +171,24 @@ def collect_candidates() -> list[dict[str, Any]]:
                 "image_url": feed_image if feed_image.startswith("https://") else "",
             })
 
-    # Enrich a bounded number of candidates with page metadata. This also gives
-    # the final editor reliable image URLs without downloading media into Git.
-    for item in candidates[:80]:
+    # Enrich a bounded number of candidates concurrently. This gives the final
+    # editor reliable image URLs without downloading media into Git, while a
+    # slow publisher cannot hold the whole daily run for many minutes.
+    def enrich(item: dict[str, Any]) -> dict[str, Any]:
+        enriched = dict(item)
         image, page_text = article_metadata(item["url"])
-        item["image_url"] = item["image_url"] or image
+        enriched["image_url"] = item["image_url"] or image
         if page_text:
-            item["page_text"] = page_text
-        time.sleep(0.03)
+            enriched["page_text"] = page_text
+        return enriched
+
+    bounded = candidates[:48]
+    with ThreadPoolExecutor(max_workers=8) as executor:
+        enriched_items = list(executor.map(enrich, bounded))
+    by_id = {item["id"]: item for item in enriched_items}
+    for index, item in enumerate(candidates):
+        if item["id"] in by_id:
+            candidates[index] = by_id[item["id"]]
     return candidates
 
 
@@ -191,7 +208,7 @@ def call_deepseek(model: str, system: str, user: str) -> dict[str, Any]:
         headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"},
         method="POST",
     )
-    with urllib.request.urlopen(request, timeout=180) as response:
+    with urllib.request.urlopen(request, timeout=180, context=SSL_CONTEXT) as response:
         result = json.loads(response.read().decode("utf-8"))
     content = result["choices"][0]["message"]["content"]
     if isinstance(content, list):

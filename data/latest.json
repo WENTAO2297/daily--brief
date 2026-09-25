@@ -1,312 +1,448 @@
 {
   "date": "2026-09-25",
-  "edition": "测试模式 · 每日新闻情报日报",
-  "updatedAt": "2026-09-25T14:18:00+08:00",
-  "overview": "今天的主线是：AI 正从“模型发布”继续走向可审计的基础设施、软件工程代理和科学发现；与此同时，稀土供应链、能源价格与利率仍在把技术竞争放进更大的地缘经济背景中。",
+  "edition": "每日中文新闻情报日报",
+  "updatedAt": "2026-09-25T15:11:38+08:00",
+  "overview": "今日聚焦国产算力与 AI 基础设施进展：华为发布全球首个近封装光学超节点；阿里云栖大会披露 3 倍性能芯片、10 万亿参数模型与 20GW 数据中心；高通重构骁龙芯片面向智能体 AI。AI 论文与开源生态活跃，GitHub 发布多项工程实践。本次图片检索受限。",
   "hero": {
-    "kind": "hero",
-    "channel": "科技科学",
-    "title": "美印 NISAR 卫星记录堪察加火山熔岩扩散",
-    "what": "NASA 喷气推进实验室 9 月 24 日介绍，NASA 与印度空间研究组织联合运行的 NISAR 卫星利用 2025 年 12 月至 2026 年 8 月的雷达数据，制作出堪察加半岛克拉舍宁尼科夫火山喷发的时间序列。卫星每 12 天从不同方向重访一次，17 帧画面显示熔岩从北侧火山口溢出、填满内侧火山口并向外铺展。",
-    "why": "它展示了双频合成孔径雷达如何在云层和偏远环境下持续追踪火山活动，为灾害监测与应急响应提供可复用的数据链路。",
-    "images": [
+    "channel": "AI核心动态",
+    "title": "华为发布全球首个采用近封装光学技术的超节点 国产算力探路突围",
+    "what": "华为发布全球首个采用近封装光学技术的超节点，旨在提升国产算力互联带宽与能效，为大规模 AI 训练提供新方案。",
+    "why": "这是中国在先进封装与算力互连领域的重要突破，有望缓解高端算力芯片受限带来的瓶颈。",
+    "sources": [
       {
-        "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/imagerecords/154000/154776/krasheninnikova_oli_20250825_lrg.jpg?crop=faces%2Cfocalpoint&fit=clip&h=956&w=1434",
-        "alt": "NASA 卫星拍摄的堪察加克拉舍宁尼科夫火山及熔岩流",
-        "credit": "NASA Earth Observatory / Michala Garrison / Landsat data from the U.S. Geological Survey"
+        "label": "北京市人民政府门户网站",
+        "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9DZy1UNWc5d2l4Mnl0ckgtX1JUTlJfWDBWTnpfUV9sMC1CbkR1Y0xjNXEwbEhndnBHSUdoNTJuWTNXYktTS0hNMExmRFVsU1ctUTdwYjVtYm16VmRFN3V1elJKekJHTG1OZ2tOSExweWpLUUFxdFpHSUlIdw?oc=5"
       }
     ],
-    "sources": [
-      {"label": "NASA / JPL 原文", "url": "https://www.jpl.nasa.gov/news/us-india-satellite-captures-time-lapse-video-of-volcanic-eruption/"},
-      {"label": "NASA 图片说明", "url": "https://science.nasa.gov/earth/earth-observatory/mapping-kamchatka-earthquake-displacement-154776/"}
-    ]
+    "kind": "hero",
+    "image": [],
+    "images": []
   },
   "topStories": [
     {
-      "kind": "large",
       "channel": "AI核心动态",
-      "title": "Claude 代理在基因组数据中发现新的类 CRISPR 酶系统",
-      "what": "Anthropic 介绍其生命科学研究团队的早期结果：Claude 代理从超过 20 万个逆转录酶序列中筛出 3500 个候选系统，再缩小到 20 个重点对象，最终识别出一种与 DNA 重复序列相关、具有类 CRISPR 特征的新系统 ART。实验仍在继续，功能和生物学意义尚未完全确定。",
-      "why": "这是 AI 参与科学发现的一个可核查案例，但“发现候选系统”距离证明机制、可用于生物技术还有明显距离。",
-      "images": [{"url": "https://www-cdn.anthropic.com/images/4zrzovbb/website/394de337d8a5d8db93a1c048fa1cb53e16a09625-2048x1240.jpg", "alt": "Claude 从 DNA 序列中识别类 CRISPR 重复模式的示意图", "credit": "Anthropic"}],
-      "sources": [{"label": "Anthropic 原文", "url": "https://www.anthropic.com/news/claude-discovers-novel-enzyme-system"}]
+      "title": "杨植霖入选《时代》2026年全球百大AI影响力人物",
+      "what": "《时代》杂志公布2026年AI领域100位最具影响力人物，杨植霖入选。",
+      "why": "该榜单反映全球 AI 领导者的最新格局，杨植霖的入选凸显中国 AI 创新力量。",
+      "sources": [
+        {
+          "label": "Time Magazine",
+          "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1oOWZ6X2U4MkhBTVd6SFc5a2pYZHNZWE9WNWc3S0VTb2ZoUGtEcnVOVUdqcmU2RDBYQUMwcGNpcjBHdTlXcFNIczBNWlQwbmd5WlpTZGZjbmtzbFRMRHpOWHVGSHpCNW8?oc=5"
+        }
+      ],
+      "kind": "large",
+      "image": [],
+      "images": []
     },
     {
-      "kind": "large",
-      "channel": "AI Coding / Agent",
-      "title": "GitHub Copilot App 增加本地沙箱，限制文件、网络与凭据访问",
-      "what": "GitHub 9 月 23 日发布本地沙箱能力，项目级设置可以分别配置额外读写目录、只读目录、拒绝目录、外网与局域网访问，以及 Git 和 GitHub CLI 凭据。操作系统无法执行请求策略时，会直接让沙箱 shell 失败，而不是无保护地继续运行。",
-      "why": "Coding Agent 的关键问题正在从“能不能写代码”转向“能接触哪些资源”；沙箱策略会直接影响企业是否敢让代理执行真实任务。",
-      "images": [{"url": "https://github.blog/wp-content/uploads/2026/09/656087900-e37216e5-3bd4-448b-bcb5-03bd78440434.jpg", "alt": "GitHub Copilot App 本地沙箱设置界面", "credit": "GitHub"}],
-      "sources": [{"label": "GitHub Changelog", "url": "https://github.blog/changelog/2026-09-23-local-sandboxing-in-the-github-copilot-app/"}]
-    },
-    {
-      "kind": "large",
-      "channel": "全球重大新闻",
-      "title": "美日官员与企业讨论中国钇供应受限问题",
-      "what": "路透社报道，美国、日本政府与企业代表 9 月 10 日曾就中国钇供应瓶颈举行讨论，相关文件显示议题聚焦永磁体和钇供应链。钇被用于航空发动机涂层、电力设备和半导体制造工具，当前讨论反映的是供应链风险协调，并不等于已达成新的贸易协议。",
-      "why": "稀土管制正在从单一矿产议题扩散到航空、能源和芯片制造等多个产业环节。",
-      "images": [],
-      "sources": [{"label": "Reuters 报道转载", "url": "https://www.marketscreener.com/news/us-japanese-officials-discussed-china-s-yttrium-curbs-ahead-of-trump-xi-meeting-document-shows-ce785adedc8df026"}]
-    },
-    {
-      "kind": "large",
       "channel": "经济 / 科技产业",
-      "title": "中国央行节前加大短期流动性投放安排",
-      "what": "路透社 9 月 23 日报道，中国人民银行表示，临近国庆假期和月末时点，将通过短期流动性工具每日最多投放约 1 万亿元人民币，银行间市场在中秋节假期期间休市。报道将其置于节前资金面管理和流动性平稳运行的背景下。",
-      "why": "这是一项流动性操作安排，不应直接解读为全面宽松或经济刺激信号；重点在于观察资金面与后续政策组合。",
-      "images": [],
-      "sources": [{"label": "Reuters 报道转载", "url": "https://www.marketscreener.com/news/china-central-bank-to-inject-more-liquidity-as-golden-week-nears-ce785ad9dc89f425"}]
+      "title": "面向智能体AI时代，高通重构骁龙芯片",
+      "what": "高通宣布重构骁龙芯片，以适配智能体 AI 的工作负载，提升端侧推理与多模态处理能力。",
+      "why": "终端芯片的 AI 能力升级是智能体落地的重要基础，影响手机、PC 与 IoT 设备生态。",
+      "sources": [
+        {
+          "label": "sohu.com",
+          "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNU2RoZ2NWei03M2JZdENNZU5UcWNwRXJFdFQ1d2hmUDNteW1tdWpVWUxkSTFYZnNodlhBV1FkWUlHLU1sOVY1bU1sQ0FZUENGbVhuZWtsRy13M0d2M1FaMkgwWVV4Z2dSdWhwWlBENTA2SHh3SUZkU1ROOW51RC04UUt5RFpzRXdpZjNPYw?oc=5"
+        }
+      ],
+      "kind": "large",
+      "image": [],
+      "images": []
+    },
+    {
+      "channel": "前沿论文 / 技术",
+      "title": "PAWS：政策驱动的智能体世界模拟数据集",
+      "what": "论文提出 PAWS 数据集，覆盖36个美国金融经济政策事件、12,727条政策相关新闻和65,291个来源锚定的利益相关者动作，用于政策智能体模拟重放。",
+      "why": "该数据集将政策干预与历史证据对齐，可支持更可靠的金融多智能体模拟，对政策分析和 AI 经济学研究有价值。",
+      "sources": [
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2609.28547"
+        }
+      ],
+      "kind": "large",
+      "image": [],
+      "images": []
+    },
+    {
+      "channel": "GitHub / 开源项目",
+      "title": "GitHub 安全实验室推出 AI 驱动的模糊测试 Taskflow Agent",
+      "what": "GitHub 安全实验室发布基于 Taskflow Agent 框架的新模糊测试任务流，实现 AI 驱动的安全测试自动化。",
+      "why": "将 AI 代理引入模糊测试可提升漏洞发现效率，对开源安全生态有直接影响。",
+      "sources": [
+        {
+          "label": "GitHub Blog",
+          "url": "https://github.blog/security/application-security/ai-powered-fuzzing-with-the-github-security-lab-taskflow-agent/"
+        }
+      ],
+      "kind": "large",
+      "image": [],
+      "images": []
     }
   ],
   "channels": [
     {
-      "title": "🌍 全球重大新闻",
-      "note": "国际局势 · 能源 · 产业",
+      "title": "全球重大新闻",
+      "note": "国际局势与能源外交",
       "stories": [
         {
-          "kind": "standard",
           "channel": "全球重大新闻",
-          "title": "特朗普与习近平会面前，AI、贸易与伊朗议题交织",
-          "what": "美联社报道，两国领导人会面前，人工智能竞争、贸易承诺、台湾议题与伊朗战争成为同时存在的分歧与稳定性议题。报道强调，双方仍在寻求保持关系可控，但并未显示这些分歧已经解决。",
-          "why": "AI 和芯片竞争已经与传统外交、安全和贸易议题叠加，后续政策信号可能同时影响技术供应链与地缘关系。",
-          "images": [],
-          "sources": [{"label": "AP 报道", "url": "https://apnews.com/article/e560910c897fedb0448eda4cdbfdbaea"}]
-        },
-        {
+          "title": "孟加拉国为何需要稳健的核外交以保障长期能源安全",
+          "what": "The Business Standard 分析孟加拉国通过核外交实现长期能源安全的必要性。",
+          "why": "核能合作涉及地缘政治与技术风险，对南亚能源格局有影响。",
+          "sources": [
+            {
+              "label": "The Business Standard",
+              "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPN3VWTHM3VlBtNjVKYVdNZnRxZGc3UnNGUGxqdWtJeGpiemtxUXRacXhmenh4QWNUSUIyX2M2bG0wTnY4VjNMdnY4OGZieTd4Rm1hWjFyNEpaeGt3MlYtdkZVRVlWaG9SSk1GbUY5UjhlUHp5NU5USjFYVWR1bV91ZGY4UDh2VVNpalRvMnp3U1Z5eUhHV0tidVJMLW51ZHZYeFdYWC1HeHl1b2hWOG1GMzR3?oc=5"
+            }
+          ],
           "kind": "standard",
-          "channel": "全球经济",
-          "title": "亚洲市场面对高债券收益率与油价风险",
-          "what": "路透社 9 月 25 日报道，亚洲股市在长端美债收益率走高的压力下保持谨慎，布伦特原油约在每桶 105 美元附近波动。报道提到，能源供应担忧和利率重新走高正在同时抬高全球资产的折现率与成本。",
-          "why": "对科技行业而言，利率和能源价格同时上行会压缩高估值资产空间，也提高数据中心和制造业的运营成本。",
-          "images": [],
-          "sources": [{"label": "Reuters 报道转载", "url": "https://uk.marketscreener.com/news/asian-stocks-weather-bond-storm-oil-retreats-slightly-ce785adfdb8ff024"}]
+          "image": [],
+          "images": []
         }
       ]
     },
     {
-      "title": "🤖 AI核心动态",
-      "note": "模型 · 基础设施 · 科学",
+      "title": "AI核心动态",
+      "note": "国产算力与智能体基础设施",
       "stories": [
         {
-          "kind": "large",
           "channel": "AI核心动态",
-          "title": "Google 披露 Private AI Compute 的服务器端长期记忆方案",
-          "what": "Google DeepMind 介绍 Private AI Compute 的技术更新，目标是在云端保存跨设备的长期上下文，同时通过可验证的服务器软件、公开技术白皮书和独立审计来增强隐私保证。它试图解决云端连续性与本地隐私之间的长期矛盾。",
-          "why": "如果服务器端记忆要进入日常助手，用户需要验证的不只是模型能力，还包括数据如何留存、软件是否被篡改以及谁能审计。",
-          "images": [{"url": "https://lh3.googleusercontent.com/CsJavGl89SJwjdXVDdaKtAEpLbqHa_nzOW89VTThwA8rgYr9Gf3CSiUWk18i5thA57k8zhwdwmvf3F2yagtJ-P1ag-9ppxsPXcUe99DRY9asIRP2yA=w1200-h630-n-nu-rw", "alt": "Google Private AI Compute 的安全架构视觉", "credit": "Google DeepMind"}],
-          "sources": [{"label": "Google DeepMind 原文", "url": "https://deepmind.google/blog/advancing-private-ai-compute-with-secure-server-side-memory/"}]
+          "title": "智能体加速落地，算力产业如何破局？|直击AICC2026",
+          "what": "在AICC2026大会上，与会嘉宾探讨智能体加速落地背景下算力产业的瓶颈与破局路径。",
+          "why": "算力供给和软件生态是智能体规模化的关键，相关讨论反映产业最新共识。",
+          "sources": [
+            {
+              "label": "财联社",
+              "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE4yRG93MnFrcGVPeWFwZXZPdDZncTRQZFB5RTlUamdmTFJQLURMOFphN240RVVkWUR2S0p6T01mVHNDUUh5X0JaQQ?oc=5"
+            }
+          ],
+          "kind": "standard",
+          "image": [],
+          "images": []
         },
         {
-          "kind": "standard",
           "channel": "AI核心动态",
-          "title": "Google 发布 AI 与经济 ATLAS 新数据与可视化入口",
-          "what": "Google 公开 ATLAS 的新数据和交互式探索界面，并介绍与 MIT FutureTech 的研究：近半数受访科学家每天使用某种 AI，平均每周节省接近 7 小时，但验证输出和实际实验环节正在形成新的瓶颈。",
-          "why": "生产率提升未必立即转化为更多发现，真正的约束可能从提出假设转移到验证、实验和临床落地。",
-          "images": [],
-          "sources": [{"label": "Google ATLAS 原文", "url": "https://blog.google/innovation-and-ai/technology/ai/ai-economy-atlas-september-2026/"}]
+          "title": "智能体能力持续升级 多场景落地应用提速",
+          "what": "央广网报道智能体能力持续升级，多场景落地应用提速，互联网大厂加大AI基础设施建设投入。",
+          "why": "大厂加大基础设施投入意味着智能体竞争进入算力与工程能力比拼阶段。",
+          "sources": [
+            {
+              "label": "央广网",
+              "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE00YnVuX3M0TGg4dHZjS0oyc0lFR1UyMVQtdjZ5M3FMZm4tM3BQOFdwVkxtZmRPQ211VWxrRU8zRzJ2NHhJWDIwUHhOVElWdUdnZ1VuTFkwa2w1ZUt6dDRQZHh6ZklYTk1wTDR2V0Q0a2UyYTQ?oc=5"
+            }
+          ],
+          "kind": "standard",
+          "image": [],
+          "images": []
         },
         {
-          "kind": "standard",
           "channel": "AI核心动态",
-          "title": "Google 将 AI 能力扩展到天气、遗传学与灾害预测",
-          "what": "Google 近期汇总了 AlphaGenome Atlas、WeatherNext 3 和 Planetary Prediction Engine 等项目：前者覆盖人类基因组单碱基变化的预测，后两者分别面向天气预报和健康、气候与社会经济风险分析。相关能力仍需专业机构验证和具体场景评估。",
-          "why": "AI 竞争正在从聊天产品延伸到科学数据基础设施，但模型预测与现实决策之间仍隔着验证、责任和部署成本。",
-          "images": [],
-          "sources": [{"label": "Google AI 科学应用", "url": "https://blog.google/innovation-and-ai/technology/ai/ai-applications-science-people/"}, {"label": "Google DeepMind 新闻页", "url": "https://deepmind.google/blog/"}]
+          "title": "底层软件实现自主突破 国产3D算力芯片生态建设提速",
+          "what": "国产3D算力芯片在底层软件实现自主突破，生态建设提速。",
+          "why": "软件栈自主化是国产算力实用化的关键，突破有助于降低对国外工具链依赖。",
+          "sources": [
+            {
+              "label": "tech.gmw.cn",
+              "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1UN0Q5SUlrVGZnLWFPX05PX0lpZFY4VkVGRG41UF9OXy1ubDVWVWktR2Iyck1wV2xiM053SmxhQUg4TVFWS1pFazhDc0NlZk5BczFvalJNc3NyRHRRaEdOSw?oc=5"
+            }
+          ],
+          "kind": "standard",
+          "image": [],
+          "images": []
         }
       ]
     },
     {
-      "title": "🧑‍💻 AI Coding / Agent",
-      "note": "开发者工具 · 软件工程代理",
+      "title": "AI Coding / Agent",
+      "note": "编码代理与 MCP 集成",
       "stories": [
         {
-          "kind": "large",
           "channel": "AI Coding / Agent",
-          "title": "Cursor 推出 Rollouts 与 Security Review 两个代码发布代理",
-          "what": "Cursor 9 月 23 日介绍两个面向 Teams 和 Enterprise 的机器人：Rollouts 监控 PR 发布后的环境健康，Security Review 检查注入、权限绕过、秘密泄露、SSRF 和不安全反序列化等问题，并给出攻击路径和修复建议。",
-          "why": "软件代理开始覆盖“上线后验证”和安全审查，而不只是生成代码；这会把代理的价值从编辑器内扩展到交付流程。",
-          "images": [{"url": "https://cursor.com/marketing-static/_next/image?q=70&url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Fblog%2Fsecuring-our-codebase-area-ema-r4.png&w=3840", "alt": "Cursor 安全代理追踪代码审查与漏洞发现的图表", "credit": "Cursor"}],
-          "sources": [{"label": "Cursor 原文", "url": "https://cursor.com/blog/security-agents"}]
+          "title": "2026年五大 Claude Code 替代品：Codex、Copilot 等",
+          "what": "TechRepublic 评测了 2026 年 Claude Code 的五个主要替代品，包括 OpenAI Codex、GitHub Copilot 等。",
+          "why": "编码代理工具竞争加剧，开发者需要了解不同工具的优势与适用场景。",
+          "sources": [
+            {
+              "label": "TechRepublic",
+              "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNRV9LZktVQ1p4UWJpSWtJb0ZFS0lvZkpwVTRsOW1mT3M0dkZWYk45UUg1bldiU3pkMXJyd3pSMG82Mkw2VkFmS2xjZlFqYTlNQ0owVUNwVXFPV29aS0ZpNjRzYnVpRVREaUZMdUhjYlp0R3o4cm5pYW03UVBCVG02cllBbw?oc=5"
+            }
+          ],
+          "kind": "standard",
+          "image": [],
+          "images": []
         },
         {
-          "kind": "standard",
           "channel": "AI Coding / Agent",
-          "title": "GitHub Copilot App 支持 OpenTelemetry 观察代理执行轨迹",
-          "what": "GitHub 允许企业通过托管设置配置 Copilot App 的 OpenTelemetry，把代理调用模型和工具的过程发送到兼容的监控系统，用于分析会话、调查异常行为和集中管理观测策略。",
-          "why": "当代理拥有更多工具权限时，可追踪性会从“好用功能”变成企业审计、故障定位与责任边界的基础设施。",
-          "images": [],
-          "sources": [{"label": "GitHub Changelog", "url": "https://github.blog/changelog/2026-09-22-opentelemetry-in-the-github-copilot-app/"}]
+          "title": "Wiz 通过 MCP 驱动的智能体集成扩展 AI 安全生态",
+          "what": "Wiz 推出基于 MCP 的智能体集成，将安全能力嵌入 AI 编码工具。",
+          "why": "安全厂商与 AI 编码工具深度集成，有助于在开发早期发现云安全风险。",
+          "sources": [
+            {
+              "label": "konsulteer.com",
+              "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQSG1Wbk5yZ01VUUpfR1BtRWljYTcyU05uMC05UHg2S3d6VlduOEhLLUx3RzJvS2puRjBrcFF4bzVJYTJwa3ltMlNZdzhaQ1FId2hyekhxRzlFX0xjcFhwTG1FdTBFR2I3dXVEOXdWZVFPaGJhZVN4ZUxCNU05RjBQaUFtemJCSVNrSWg2c0VxdmMxczNrT1NTdVVRVS1PQnAtZmdZVWN0TQ?oc=5"
+            }
+          ],
+          "kind": "standard",
+          "image": [],
+          "images": []
+        },
+        {
+          "channel": "AI Coding / Agent",
+          "title": "Yellow 发布 SDK MCP，将非托管结算原语引入 AI 编码工具",
+          "what": "Yellow 推出 SDK MCP，使 AI 编码工具能够调用非托管结算原语。",
+          "why": "将金融结算原语嵌入编码代理，可能推动 Web3 与 AI 开发的融合。",
+          "sources": [
+            {
+              "label": "Yellow.com",
+              "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxQSWJydmF0d3lSRkF0aGw2RHR2WmIzSWdsV2Fzb3pKT0ozVlN4WV9hbVJ6Yk5qR2hmaUdXSExkdUxwOEFQUGNzU2o2NUg4OXdGR1VRVGQ0MWRHVFlabHRPMkppMFJhMzc1ZG1PbXl1ZDJEeVBNdXMwZ2hXWjNxNGRmSEI3bjJRVTlxTVU3NEwzYW05S212REVfVFV2ZUIxc2p3aUdRZEstR1M5UDZrNjV6Y3dHSmtTWDNkREdnWS1wd2ttUDZ5eTdVUEFqMTgyem9HUjJLTUlpalA?oc=5"
+            }
+          ],
+          "kind": "flash",
+          "image": [],
+          "images": []
         }
       ]
     },
     {
-      "title": "📄 前沿论文 / 技术",
-      "note": "只选有明确方法与结果的研究",
+      "title": "前沿论文 / 技术",
+      "note": "arXiv 今日精选",
       "stories": [
         {
-          "kind": "standard",
           "channel": "前沿论文 / 技术",
-          "title": "APort Vault：评估 AI 代理的支付授权安全",
-          "what": "这篇 arXiv 论文提出 APort Vault 基准，用于测试会调用工具和执行支付操作的 AI 代理如何处理授权边界。研究把支付授权拆成可评测任务，关注代理是否能在复杂工具链中识别需要确认的高影响动作。",
-          "why": "随着代理开始处理购买、转账和订阅，支付授权不应只靠自然语言指令，而需要可重复的安全评估。",
-          "images": [],
-          "sources": [{"label": "arXiv 论文", "url": "https://arxiv.org/abs/2609.22076"}]
-        },
-        {
-          "kind": "standard",
-          "channel": "前沿论文 / 技术",
-          "title": "AgentActionBench：用操作轨迹评估科学论文复现实验",
-          "what": "NLPCC 2026 Shared Task 论文提出 AgentActionBench，用 MCP-based Action Recorder 记录代理复现实验时的行为轨迹，再用论文特定的评分规则评估过程，而不只看最终答案。",
-          "why": "科学代理的可信度取决于过程是否可重放、可审计和能定位失败点，这比单次答案分数更接近真实科研工作。",
-          "images": [],
-          "sources": [{"label": "arXiv 论文", "url": "https://arxiv.org/abs/2609.11117"}]
-        }
-      ]
-    },
-    {
-      "title": "🧰 GitHub / 开源项目",
-      "note": "工具价值优先于机械 Trending",
-      "stories": [
-        {
-          "kind": "standard",
-          "channel": "GitHub / 开源",
-          "title": "Google/ax：面向集群的自主代理编排运行时",
-          "what": "GitHub Explore 将 google/ax 列为近期热门仓库，它提供类似 Kubernetes 的 Task、Workspace、Gateway 和 Model 清单，用于在集群中运行并隔离自主 AI 代理工作负载。",
-          "why": "它把代理运行从单机脚本推进到可声明、可调度的基础设施层，适合关注多代理平台和部署边界的人。",
-          "images": [],
-          "sources": [{"label": "GitHub 仓库", "url": "https://github.com/google/ax"}, {"label": "GitHub Explore", "url": "https://github.com/explore?trending=developers"}],
-          "recommendation": "值得关注"
-        },
-        {
-          "kind": "standard",
-          "channel": "GitHub / 开源",
-          "title": "claude-code-templates：配置和监控 Claude Code 的 CLI 工具",
-          "what": "davila7/claude-code-templates 是一个面向 Claude Code 的 CLI，围绕配置、模板和运行监控组织开发环境。GitHub Explore 将它列为近期活跃的开发者工具项目。",
-          "why": "Coding Agent 的竞争正在从模型本身扩展到项目初始化、规则管理和可观察性，模板化工具能减少重复配置。",
-          "images": [],
-          "sources": [{"label": "GitHub 仓库", "url": "https://github.com/davila7/claude-code-templates"}, {"label": "GitHub Explore", "url": "https://github.com/explore?trending=developers"}],
-          "recommendation": "值得关注"
-        }
-      ]
-    },
-    {
-      "title": "🎯 CS2专区",
-      "note": "Asia/Shanghai 中国标准时间",
-      "stories": [
-        {
-          "kind": "standard",
-          "channel": "A. Falcons",
-          "title": "Falcons 今日无重要新动态，未来24小时暂无已核实比赛",
-          "what": "HLTV 的 Falcons 队伍页显示，战队最近一场记录是 BLAST Open Porto 2026 半决赛 0–2 不敌 Spirit；页面当前没有列出即将进行的 Falcons 比赛。",
-          "why": "在没有新比赛或阵容公告时，最有价值的信息是明确告诉读者不要把旧赛果误当作今日动态。",
-          "images": [],
-          "sources": [{"label": "HLTV Falcons 队伍页", "url": "https://www.hltv.org/team/11283/falcons"}]
-        },
-        {
-          "kind": "flash",
-          "channel": "B. 世界前十焦点",
-          "title": "HLTV 页面当前将 Falcons 列为世界第5",
-          "what": "HLTV Falcons 队伍页当前显示其世界排名为第5；此前 9 月 7 日排名页面曾显示 Falcons 第2，说明排名会随赛事结果和积分衰减变化。这里仅记录核对到的名次，不做实力预测。",
-          "why": "排名变化会影响赛事种子、资格和观众对近期状态的判断。",
-          "images": [],
-          "sources": [{"label": "HLTV Falcons 队伍页", "url": "https://www.hltv.org/team/11283/falcons"}, {"label": "HLTV 9月7日排名", "url": "https://www.hltv.org/ranking/teams/2026/september/7/13908"}]
-        },
-        {
-          "kind": "flash",
-          "channel": "C. 顶级赛事",
-          "title": "BLAST Open Porto 已结束，下一阶段赛事以官方赛程为准",
-          "what": "BLAST 页面显示，Open Porto 2026 已于 9 月 6 日结束；页面同时列出 ESL Pro League Season 24、PGL Bucharest 2026 和 IEM Beijing 2026 等后续赛事。未来24小时暂无符合筛选标准的 Falcons 或顶级赛事后期重点场次。",
-          "why": "CS2 日报需要区分已结束赛事、未来赛程和正在进行的淘汰赛，避免把历史赛程当成直播提醒。",
-          "images": [{"url": "https://pbs.twimg.com/media/HEHIEVqWIAAdAWE.jpg", "alt": "Falcons 在 BLAST 赛事现场的比赛画面", "credit": "HLTV.org / X"}],
-          "sources": [{"label": "BLAST CS 页面", "url": "https://blast.tv/cs"}]
-        },
-        {
-          "kind": "flash",
-          "channel": "D. Valve / 游戏更新",
-          "title": "Valve 修复工具模式、地图内容与 VACnet 绕过问题",
-          "what": "Steam 的 Counter-Strike 2 更新说明提到：修复工具模式脚本加载问题，更新 Boulder、Fachwerk 和 Shelter 地图，并修复可让恶意玩家绕过 VACnet 处理的漏洞；Cologne 2026 商店物品可购买至 9 月 29 日。",
-          "why": "这次更新同时触及地图编辑、反作弊和 Major 周边内容，对普通玩家和赛事生态都有实际影响。",
-          "images": [],
-          "sources": [{"label": "Steam 官方更新", "url": "https://store.steampowered.com/news/posts/?appgroupname=Valve&appids=730%2C620%2C550%2C220%2C70%2C440%2C240%2C420%2C400%2C500%2C10%2C380%2C300%2C30%2C4000%2C360%2C340%2C320%2C280%2C80%2C40%2C130%2C60%2C50%2C20%2C570%2C219%2C410%2C219820%2C630%2C5952%2C5489%2C5268%2C81026%2C80923%2C80822%2C80788%2C80762%2C80752%2C80747%2C80739%2C80633%2C5739%2C5734%2C5724%2C5260%2C5149%2C5150%2C5141%2C5139%2C5138%2C5073%2C5051%2C5032%2C997%2C987%2C985%2C960%2C937%2C936%2C934%2C933%2C932%2C931%2C930%2C916%2C923%2C922%2C918%2C917%2C915%2C914%2C913%2C912%2C905%2C901%2C904%2C1840%2C81061%2C5825%2C5722%2C995%2C906%2C1003&enddate=1786561460&feed=steam_community_announcements"}]
-        }
-      ]
-    },
-    {
-      "title": "🇯🇵 日本动态",
-      "note": "科技 · 科研 · 社会",
-      "stories": [
-        {
+          "title": "DEEPO：双熵增强策略优化缓解多模态大模型幻觉",
+          "what": "论文提出 DEEPO，通过信号方差正则与梯度惩罚解决强化学习中高语义熵硬查询和置信错误令牌梯度消失问题，在 MLLMs 上减少幻觉。",
+          "why": "该方法针对 RL 纠正幻觉的两个弱点，为多模态模型可靠对齐提供新思路。",
+          "sources": [
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2609.28570"
+            }
+          ],
           "kind": "large",
-          "channel": "日本动态",
-          "title": "日本 H3 火箭成功把“千鸟”7号送入预定轨道",
-          "what": "日本科学技术振兴机构转译的 Science Japan 报道，H3 9号机从种子岛发射并将准天顶卫星“千鸟”7号送入预定轨道。此次成功延续了 6 月的成功发射，并修正了此前 H3 8号机任务失败后暴露的适配器问题。",
-          "why": "日本正在把 H3 从恢复可靠性的国家项目推进到稳定运营和商业发射能力，卫星导航基础设施也会随之扩展。",
-          "images": [{"url": "https://sj.jst.go.jp/news/202609/media/n0917-01p-01.jpg", "alt": "H3 9号机搭载准天顶卫星从种子岛发射", "credit": "JAXA / Science Japan"}],
-          "sources": [{"label": "Science Japan / JST", "url": "https://sj.jst.go.jp/news/202609/n0917-01p.html"}]
+          "image": [],
+          "images": []
         },
         {
-          "kind": "standard",
-          "channel": "日本动态",
-          "title": "日本南阿尔卑斯山发现大规模鹿群，高海拔生态受关注",
-          "what": "Science Japan 9 月 25 日报道，长野县南阿尔卑斯山一带发现大规模鹿群，地方部门担心鹿群向更高海拔扩张后啃食和踩踏高山植物。报道将其与全球变暖导致的栖息地变化联系起来。",
-          "why": "它是气候变化影响生态系统的一个局部观察案例，关键不在鹿群数量本身，而在高山植物和相邻地区管理压力。",
-          "images": [{"url": "https://sj.jst.go.jp/news/202609/media/n0925-01n-01.jpg", "alt": "日本南阿尔卑斯山的鹿群航拍画面", "credit": "Toho Air Service / Kyodo News / Science Japan"}],
-          "sources": [{"label": "Science Japan / JST", "url": "https://sj.jst.go.jp/news/202609/n0925-01n.html"}]
+          "channel": "前沿论文 / 技术",
+          "title": "TW3Cast：冻结路由的轻量微调基础模型在 GIFT-Eval 时间序列预测中排名第三",
+          "what": "TW3Cast 是一个不使用智能体或语言模型的时间序列预测系统，通过训练集上计算的冻结路由表选择专家，在 GIFT-Eval 基准 130 个参赛系统中排名第三。",
+          "why": "证明了精心设计的轻量微调和路由策略在时间序列预测中可匹敌复杂智能体系统，具有工程参考价值。",
+          "sources": [
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2609.28506"
+            }
+          ],
+          "kind": "large",
+          "image": [],
+          "images": []
+        },
+        {
+          "channel": "前沿论文 / 技术",
+          "title": "渐进式技能发现作为使用工具的 LLM 智能体的访问控制",
+          "what": "论文提出 skilder 框架，将能力打包为角色，智能体按需获取角色技能和工具，通过 MCP 服务器交付，以约束工具访问并保证策略合规。",
+          "why": "该框架解决企业工具集中 LLM 智能体的安全治理问题，提供了硬约束而非提示建议。",
+          "sources": [
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2609.28693"
+            }
+          ],
+          "kind": "large",
+          "image": [],
+          "images": []
         }
       ]
     },
     {
-      "title": "💹 经济 / 科技产业",
-      "note": "中国宏观 · 全球产业",
+      "title": "GitHub / 开源项目",
+      "note": "工程实践与开源生态",
       "stories": [
         {
+          "channel": "GitHub / 开源项目",
+          "title": "在 GitHub Copilot 应用中渲染超大 Pull Request",
+          "what": "GitHub 工程团队重构 Copilot 应用的 diff 界面，以打开包含百万行代码和数百条内联评论的 PR。",
+          "why": "大规模 PR 的渲染性能是开发者体验的关键，该工程实践值得关注。",
+          "sources": [
+            {
+              "label": "GitHub Blog",
+              "url": "https://github.blog/engineering/user-experience/rendering-huge-pull-requests-in-the-github-copilot-app/"
+            }
+          ],
           "kind": "standard",
-          "channel": "中国宏观经济",
-          "title": "国家统计局：8月经济运行总体平稳，工业增加值同比增长5.2%",
-          "what": "国家统计局公布的 8 月数据称，规模以上工业增加值同比增长 5.2%，1—8 月社会消费品零售总额同比增长 1.1%，同期网上商品和服务零售额增长 4.6%。不同指标表现分化，汽车、家具和部分大宗消费仍偏弱。",
-          "why": "这组数据更适合被理解为“总量保持增长、需求恢复不均衡”，不能简单概括为全面回暖或全面走弱。",
-          "images": [],
-          "sources": [{"label": "中国国家统计局", "url": "https://www.stats.gov.cn/english/PressRelease/202609/t20260915_1965305.html"}, {"label": "社会消费品零售数据", "url": "https://www.stats.gov.cn/english/PressRelease/202609/t20260916_1965341.html"}]
+          "image": [],
+          "recommendation": "值得关注",
+          "images": []
         },
         {
+          "channel": "GitHub / 开源项目",
+          "title": "使用 Copilot 将 GitHub Copilot 运行时迁移到 Rust",
+          "what": "GitHub 利用 Copilot 代理将 Copilot 运行时移植到 800,000 行生产级 Rust 代码。",
+          "why": "展示了 AI 辅助大型代码迁移的可行性与工程经验，对代码现代化有借鉴意义。",
+          "sources": [
+            {
+              "label": "GitHub Blog",
+              "url": "https://github.blog/ai-and-ml/generative-ai/migrating-the-github-copilot-runtime-to-rust-using-copilot/"
+            }
+          ],
           "kind": "standard",
-          "channel": "日本 / 全球经济",
-          "title": "日本财务大臣称日美汇率干预原则仍然有效",
-          "what": "路透社 9 月 24 日报道，日本财务大臣表示 7 月日美联合干预后形成的原则仍然存在，并拒绝评论具体汇率水平。报道提到，日元兑美元一度跌破 158，市场继续关注日本央行加息与干预风险的组合。",
-          "why": "汇率政策、利率路径和进口能源价格彼此牵动，对日本家庭、企业成本和亚洲资金流向都有影响。",
-          "images": [],
-          "sources": [{"label": "Reuters 报道转载", "url": "https://sa.marketscreener.com/news/japan-s-katayama-says-principles-of-japan-us-fx-intervention-remain-in-place-ce785ad9dc89fe2c"}]
+          "image": [],
+          "recommendation": "值得关注",
+          "images": []
+        },
+        {
+          "channel": "GitHub / 开源项目",
+          "title": "项目 HydraFusion：多模型编排实现前沿质量",
+          "what": "GitHub 推出 HydraFusion 研究预览，通过选择性编码工作流在多模型编排中匹配或超过 Opus 5 基线并降低成本。",
+          "why": "多模型编排可能成为提升编码质量同时控制成本的新范式。",
+          "sources": [
+            {
+              "label": "GitHub Blog",
+              "url": "https://github.blog/ai-and-ml/github-copilot/project-hydrafusion-frontier-quality-via-multi-model-orchestration/"
+            }
+          ],
+          "kind": "standard",
+          "image": [],
+          "recommendation": "值得关注",
+          "images": []
         }
       ]
     },
     {
-      "title": "🔬 其他值得知道的科技与科学",
-      "note": "生物学 · 认知科学",
+      "title": "CS2专区",
+      "note": "今日 CS2 焦点",
       "stories": [
         {
+          "channel": "CS2专区",
+          "title": "HLTV 世界排名 CS2 2026 最佳战队更新",
+          "what": "EGamersWorld 更新 HLTV 世界排名，展示 CS2 当前最佳战队。",
+          "why": "HLTV 排名是 CS2 战队实力的权威参考，影响赛事种子与粉丝关注。",
+          "sources": [
+            {
+              "label": "EGamersWorld",
+              "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1xTnVfVDEtNDlIVEloWFpxQjFXTXlCTTlHaGl6VldGT2ltSG5RV2c5T3R2X0NITWowanRGaFVza3JKNGJKRlBwODFOZmo2ZmZGN0VVTWltcFlEb1pPblRCRWJOdHhxSVdT?oc=5"
+            }
+          ],
           "kind": "standard",
-          "channel": "其他科技与科学",
-          "title": "人工冬眠实验显示：长期记忆可能依赖连接结构而非突触强度",
-          "what": "OIST 与合作机构的研究发现，人工冬眠期间小鼠海马体中的突触数量和部分增强连接会减少，但与记忆痕迹相关的突触连接模式仍有选择性保留；研究成果发表于 Science。",
-          "why": "结果挑战了“记忆主要靠持续维持突触增强”的简单解释，为理解记忆如何在神经结构变化中保持提供了新的实验线索。",
-          "images": [],
-          "sources": [{"label": "Science Japan / JST", "url": "https://sj.jst.go.jp/news/202609/n0925-02k.html"}, {"label": "Science 论文 DOI", "url": "https://www.science.org/doi/10.1126/science.aee7004"}]
+          "image": [],
+          "images": []
+        }
+      ]
+    },
+    {
+      "title": "日本动态",
+      "note": "涉日要闻",
+      "stories": [
+        {
+          "channel": "日本动态",
+          "title": "印尼总统在印尼-日本商业论坛强调绿色能源与经济外交",
+          "what": "印尼总统普拉博沃在印尼-日本商业论坛上重申印尼对绿色能源和经济外交的承诺。",
+          "why": "印尼与日本的经济合作涉及能源转型，对区域供应链有影响。",
+          "sources": [
+            {
+              "label": "Sekretariat Kabinet Republik Indonesia",
+              "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxOaUFva1QwUjdmcDlrVTNCQkJqSFZsZlZWYzVqQUlmQlpJRXFqbG1aS09KZE4yVHpkLVRMcjNJQUNwQlZKWUdsRmxqeHRRdkN3bHZlRndIX0xiVXhadEpIaFhTLTJ2QjY0YnVBQnpRcFJKOFdYa2w3YTMzMWJwdTRQUGI5N1d1OVpOQWhfX3NQQU9idUdGYTBpUXJhMjFxS3czR25DRHJoaFdTbDI4Mk5vQlRHUUJGVXdXc0l0NDh3N2I0Q1FpSHRCUjkzWG9YOWIxWVhxN2RxWVQ?oc=5"
+            }
+          ],
+          "kind": "standard",
+          "image": [],
+          "images": []
+        }
+      ]
+    },
+    {
+      "title": "经济 / 科技产业",
+      "note": "产业趋势与巨头动向",
+      "stories": [
+        {
+          "channel": "经济 / 科技产业",
+          "title": "阿里云栖大会发布3倍性能芯片、10万亿参数模型与20GW数据中心",
+          "what": "阿里云栖大会展示多项成果：3倍性能芯片、10万亿参数模型、20GW数据中心规划等。",
+          "why": "阿里云的硬件与模型规模升级显示国内云厂商在 AI 基础设施上的激进投入。",
+          "sources": [
+            {
+              "label": "财联社",
+              "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE5sMGw3eXU5Q081M3luMjRjWWF4cllxbFVRVzBSbDR4bEhza0NyS1ZXNGhaeUtmYk9ZNDJsNGg3TzUtNC1Cbmp5eQ?oc=5"
+            }
+          ],
+          "kind": "large",
+          "image": [],
+          "images": []
+        },
+        {
+          "channel": "经济 / 科技产业",
+          "title": "实探第五届数贸会：AI“画风”焕新 国产算力走到台前",
+          "what": "第五届数贸会上 AI 应用展现新形态，国产算力产品集中亮相。",
+          "why": "数贸会是数字贸易风向标，国产算力走向台前反映自主产业链加速成熟。",
+          "sources": [
+            {
+              "label": "中证网",
+              "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE82Y0dDRmpsSUkwWkFzQ2pfT0pqS2hwb1RIeHd1LXhCNklfQmIyTHd1WTZPanN0MUM0ejU2M2dOTS1wckRfbXlTbnBYVkZscUlEek8yZ1BPTVExWXEzTENkWlk4d0FpWngwWEZaZlBCVGhBSFEwUzJhZQ?oc=5"
+            }
+          ],
+          "kind": "standard",
+          "image": [],
+          "images": []
+        }
+      ]
+    },
+    {
+      "title": "其他值得知道的科技与科学",
+      "note": "跨学科进展",
+      "stories": [
+        {
+          "channel": "其他值得知道的科技与科学",
+          "title": "BaseCamp：自动化 DNA 测序数据管道的智能体 AI 框架",
+          "what": "论文提出 BaseCamp，将 DNA 测序管道中的决策层分解为六个专业 AI 智能体，自动化质量阈值选择、变异调用判定和异常诊断。",
+          "why": "生物信息学中的判断密集型决策自动化可提高一致性并减轻专家负担。",
+          "sources": [
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2609.28557"
+            }
+          ],
+          "kind": "standard",
+          "image": [],
+          "images": []
+        },
+        {
+          "channel": "其他值得知道的科技与科学",
+          "title": "在世界模型中训练物体永久性",
+          "what": "论文构建 WROP 数据集，包含150个认知科学启发任务，用于训练视频模型的物体永久性等物理先验。",
+          "why": "提升世界模型的物理直觉对具身智能和视频生成具有基础价值。",
+          "sources": [
+            {
+              "label": "arXiv",
+              "url": "https://arxiv.org/abs/2609.28654"
+            }
+          ],
+          "kind": "standard",
+          "image": [],
+          "images": []
         }
       ]
     }
   ],
   "closing": {
     "themes": [
-      "AI 的下一阶段竞争正在转向隐私、沙箱、可观测性和科学验证等“系统能力”。",
-      "稀土、能源和利率把技术产业放进供应链与宏观金融的共同约束中。",
-      "卫星、火箭和生物研究显示，真正值得追踪的进展往往来自可验证的工程与实验，而不是单纯的产品口号。"
+      "国产算力与先进封装突破",
+      "智能体与编码代理生态加速",
+      "AI 安全与科学自动化"
     ],
     "links": [
-      {"label": "NASA/JPL：NISAR 火山时间序列", "url": "https://www.jpl.nasa.gov/news/us-india-satellite-captures-time-lapse-video-of-volcanic-eruption/"},
-      {"label": "Anthropic：类 CRISPR 酶系统", "url": "https://www.anthropic.com/news/claude-discovers-novel-enzyme-system"},
-      {"label": "GitHub：Copilot 本地沙箱", "url": "https://github.blog/changelog/2026-09-23-local-sandboxing-in-the-github-copilot-app/"}
+      {
+        "label": "华为超节点官方报道",
+        "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9DZy1UNWc5d2l4Mnl0ckgtX1JUTlJfWDBWTnpfUV9sMC1CbkR1Y0xjNXEwbEhndnBHSUdoNTJuWTNXYktTS0hNMExmRFVsU1ctUTdwYjVtYm16VmRFN3V1elJKekJHTG1OZ2tOSExweWpLUUFxdFpHSUlIdw?oc=5"
+      },
+      {
+        "label": "PAWS 论文",
+        "url": "https://arxiv.org/abs/2609.28547"
+      },
+      {
+        "label": "GitHub Copilot 运行时 Rust 迁移",
+        "url": "https://github.blog/ai-and-ml/generative-ai/migrating-the-github-copilot-runtime-to-rust-using-copilot/"
+      }
     ]
   }
 }
