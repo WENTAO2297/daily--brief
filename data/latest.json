@@ -1,27 +1,35 @@
 {
   "date": "2026-11-09",
-  "updatedAt": "2026-11-09T10:19:12+08:00",
+  "updatedAt": "2026-11-09T10:56:35+08:00",
   "edition": "全球版 · 测试模式",
-  "overview": "过去约24小时，非洲和欧洲接连发生致命事故，伊拉克天然气田停产也冲击库区供电。美国政治争议、阿根廷紧缩路线及日本汇市动向同样值得关注。",
+  "overview": "埃及列车相撞和伊拉克气田遇袭仍在调查。科技版回看周末前后的 AI、开发工具和论文进展，CS2 聚焦 IEM 北京站决赛及 Falcons 下一场赛程。",
   "hero": {
     "kind": "hero",
     "channel": "🌍 全球重大新闻",
     "region": "非洲",
     "title": "埃及两列火车相撞，至少7人死亡",
-    "what": "两列同向行驶的列车在吉萨市外相撞，多节车厢脱轨。事故造成至少7人死亡、100多人受伤。现有摘要未提供事故原因或调查进展。",
-    "why": "伤亡规模和铁路事故调查将成为埃及交通安全的焦点。",
     "sources": [
       {
         "label": "BBC",
         "url": "https://www.bbc.co.uk/news/articles/cwvgr20mmmevo?at_medium=RSS&at_campaign=rss"
+      },
+      {
+        "label": "美联社",
+        "url": "https://apnews.com/article/4ad591268ce015d85ae302e22185b235"
       }
     ],
     "images": [
       {
-        "url": "https://ichef.bbci.co.uk/ace/standard/640/cpsprodpb/3886/live/ab03aa70-db8a-11f1-b441-2b33b063138f.jpg",
-        "alt": "埃及两列火车相撞，至少7人死亡",
-        "credit": "BBC"
+        "url": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/14ad/live/715c1200-db97-11f1-a42b-dbe60e973664.jpg",
+        "alt": "11 月 8 日埃及吉萨省列车相撞后，人员聚集在脱轨车厢旁",
+        "credit": "BBC 刊载 · 11 月 8 日吉萨省事故现场"
       }
+    ],
+    "summary": "埃及卫生部门通报，吉萨省一列客车追尾同轨停驶列车，7 人死亡、至少 125 人受伤。检方已到现场调查。",
+    "paragraphs": [
+      "11 月 8 日，两列客车在埃及吉萨省阿亚特地区相撞，事故地点在开罗以南约 52 公里。埃及卫生部通报，7 人死亡、至少 125 人受伤，遇难者包括一名列车工作人员。超过 70 名伤者在接受治疗后出院。",
+      "埃及交通部说，开往法尤姆的列车撞上了开往阿斯旺列车的末节车厢。检方初步勘查发现，两车行驶方向相同，被撞列车当时停在同一条轨道上。",
+      "埃及总统塞西要求尽快调查事故。铁路部门调派救援人员和起重设备清理现场，着手恢复线路运营。检方的初步勘查尚未确定追尾原因。"
     ]
   },
   "topStories": [
@@ -30,48 +38,71 @@
       "channel": "🌍 全球重大新闻",
       "region": "中东",
       "title": "无人机袭击后伊拉克Khor Mor气田停产",
-      "what": "无人机袭击导致伊拉克库尔德地区的Khor Mor天然气田停产。报道说，库区超过70%的地方因此失去供电；摘要未说明袭击方或停产期限。",
-      "why": "天然气生产受阻已影响区域供电，凸显能源基础设施面临的安全风险。",
       "sources": [
         {
           "label": "Al Jazeera",
           "url": "https://www.aljazeera.com/news/2026/11/9/drone-attack-suspends-production-at-iraqs-khor-mor-gasfield?traffic_source=rss"
+        },
+        {
+          "label": "964media",
+          "url": "https://en.964media.com/54956/"
         }
       ],
       "images": [
         {
           "url": "https://www.aljazeera.com/wp-content/uploads/2026/11/reuters_6af0eefb-1794174715.jpg?resize=1920%2C1440",
           "alt": "无人机袭击后伊拉克Khor Mor气田停产",
-          "credit": "Al Jazeera"
+          "credit": "Ako Rasheed／路透社，经半岛电视台刊载（2025 年资料图）"
         }
+      ],
+      "summary": "袭击引发设施起火，天然气供应中断。当地部门称，库尔德地区超过七成区域一度失去电力。",
+      "paragraphs": [
+        "当地时间 11 月 8 日晚，无人机击中伊拉克北部库尔德地区的 Khor Mor 气田。伊拉克及库区官员说，设施起火，生产暂停，依靠气田供气的电站受到波及。",
+        "当地媒体 964 援引库区主管部门称，电网损失近 3,000 兆瓦的发电能力，埃尔比勒、杜胡克等地部分区域停电。Khor Mor 向库区多座电站供气，停产后影响很快传导到电网。",
+        "伊拉克总理下令开展联合调查。有关部门暂未公布袭击责任方和气田复产时间。"
       ]
     },
     {
       "kind": "large",
       "channel": "🌍 全球重大新闻",
       "region": "非洲",
-      "title": "塞内加尔外海移民船沉没，34人死亡",
-      "what": "一艘移民船在塞内加尔外海沉没，造成34人死亡。报道将事故置于西非经大西洋前往西班牙加那利群岛的危险航线上，摘要未提供获救人数。",
-      "why": "这条航线上持续发生致命事故，移民偷渡风险仍然突出。",
+      "title": "塞内加尔外海沉船，官方通报至少 21 人死亡",
       "sources": [
         {
           "label": "Le Monde",
           "url": "https://www.lemonde.fr/en/international/article/2026/11/08/migrant-boat-sinks-off-senegal-leaving-34-dead_6775276_4.html"
+        },
+        {
+          "label": "美联社",
+          "url": "https://apnews.com/article/23ac42374197523c90216dc48ab6f2ec"
+        },
+        {
+          "label": "法新社／NAMPA",
+          "url": "https://www.nampa.org/text/23061235"
         }
       ],
-      "images": []
+      "images": [],
+      "id": "16rrsr4",
+      "summary": "内政部报告找到一名幸存者。法新社援引当地媒体和非政府组织报道，死亡人数已升至至少 34 人。",
+      "paragraphs": [
+        "一艘载有移民的船在塞内加尔西北部凯贝梅尔附近海域沉没。塞内加尔内政部 11 月 8 日通报至少 21 人死亡、1 人获救，搜救队仍在寻找其他可能的幸存者。官方没有公布船上总人数。",
+        "法新社随后援引塞内加尔通讯社和当地非政府组织报道，死亡人数已升至至少 34 人。这一数字来自媒体和民间组织，内政部此前公布的是至少 21 人死亡。",
+        "事故发生在从西非横渡大西洋、前往西班牙加那利群岛的移民航线上。塞内加尔总统法耶向遇难者家属表示慰问。"
+      ]
     },
     {
       "kind": "large",
       "channel": "🌍 全球重大新闻",
       "region": "欧洲",
       "title": "波兰克拉科夫枪击案造成六人死亡",
-      "what": "BBC称，克拉科夫主广场发生随机枪击，造成六人死亡；随后又在枪手住所发现三具遗体。现有摘要没有说明这三具遗体与枪击案的具体关联。",
-      "why": "案件造成多人死亡，现场调查和受害者身份确认仍是关键。",
       "sources": [
         {
           "label": "BBC",
           "url": "https://www.bbc.co.uk/news/articles/cmd7q15drwgeo?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "label": "美联社",
+          "url": "https://apnews.com/article/poland-shooting-krakow-market-dead-69a65400657ffd0c8b3fa104bd472b97"
         }
       ],
       "images": [
@@ -80,6 +111,12 @@
           "alt": "波兰克拉科夫枪击案造成六人死亡",
           "credit": "BBC"
         }
+      ],
+      "summary": "袭击发生在克拉科夫老城主广场，枪手在与警方交火后受伤。波兰已进入为期两天的全国哀悼。",
+      "paragraphs": [
+        "波兰克拉科夫老城主广场 11 月 7 日发生枪击。美联社援引当地当局报道，6 人死亡、15 人受伤。警方在交火中击伤并控制一名 24 岁嫌疑人。",
+        "警方随后在嫌疑人位于奥斯特罗维茨-希维恩托克日斯基的住所发现另外三具遗体。波兰总理图斯克说，死者是嫌疑人的近亲。警方正在调查两处事件的经过。",
+        "波兰 11 月 8 日开始为期两天的全国哀悼。克拉科夫市民和游客在主广场献花、点燃蜡烛。"
       ]
     },
     {
@@ -87,12 +124,18 @@
       "channel": "🌍 全球重大新闻",
       "region": "非洲",
       "title": "非国大在南非地方选举中创下历来最差成绩",
-      "what": "南非非洲人国民大会（ANC）在地方选举中取得该党历来最差结果。总统拉马福萨表示应尊重选民裁决，党秘书长则称结果“灾难性”。",
-      "why": "选举结果给长期执政的非国大带来压力，迫使其回应选民的不满。",
       "sources": [
         {
           "label": "BBC",
           "url": "https://www.bbc.co.uk/news/articles/cwrkygrxp11mo?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "label": "南非政府新闻服务",
+          "url": "https://www.sanews.gov.za/south-africa/iec-declares-lge-2026-free-and-fair"
+        },
+        {
+          "label": "美联社",
+          "url": "https://apnews.com/article/35f673cfe16bee26a94f9810d221771f"
         }
       ],
       "images": [
@@ -101,6 +144,12 @@
           "alt": "非国大在南非地方选举中创下历来最差成绩",
           "credit": "BBC"
         }
+      ],
+      "summary": "南非选举委员会公布最终结果。非洲人国民大会获 30.76% 选票，多地市议会未产生过半数政党。",
+      "paragraphs": [
+        "南非独立选举委员会 11 月 8 日宣布，11 月 4 日举行的地方选举已完成计票，全国投票率为 52%。非洲人国民大会（ANC）获 30.76% 的选票和 3,246 个议席，民主联盟获 24.64% 和 1,695 席。",
+        "美联社报道，这是非国大历次选举中的最低得票表现。选举委员会公布的结果显示，不少市议会没有任何一党取得过半议席，接下来的地方政府组建将涉及各党协商。",
+        "总统拉马福萨表示应尊重选民的选择。选举委员会称，将复盘本次投票和选举组织工作。"
       ]
     }
   ],
@@ -114,12 +163,14 @@
           "channel": "🌍 全球重大新闻",
           "region": "美洲",
           "title": "特朗普称大规模驱逐政策“太严厉”",
-          "what": "特朗普在CBS《60 Minutes》节目中说，强硬的移民打击政策“太严厉”，并称大规模驱逐在政治上伤害了他。此番表态出现在中期选举失利之后。",
-          "why": "这番说法显示移民政策可能成为共和党检讨选举表现时的争议焦点。",
           "sources": [
             {
               "label": "BBC",
               "url": "https://www.bbc.co.uk/news/articles/cmg476w7wnl2o?at_medium=RSS&at_campaign=rss"
+            },
+            {
+              "label": "CBS 采访全文",
+              "url": "https://www.cbsnews.com/news/donald-trump-2026-post-midterm-elections-interview-60-minutes-transcript/"
             }
           ],
           "images": [
@@ -128,6 +179,11 @@
               "alt": "特朗普称大规模驱逐政策“太严厉”",
               "credit": "BBC"
             }
+          ],
+          "summary": "美国总统在中期选举后的 CBS 采访中说，部分移民执法过于严厉，尤其涉及已在美生活多年的人。",
+          "paragraphs": [
+            "当地时间 11 月 8 日，CBS 播出特朗普在中期选举后的《60 Minutes》采访。他说，政府在驱逐部分已在美国生活十年以上的人时做得过严，也认为移民执法对共和党的选举表现既有帮助，也有负面影响。",
+            "特朗普是在回顾共和党中期选举失利时作出这一表态的。CBS 公布了采访全文。特朗普在这段采访中未宣布新的移民执法规则。"
           ]
         },
         {
@@ -135,8 +191,6 @@
           "channel": "🌍 全球重大新闻",
           "region": "美洲",
           "title": "杰弗里斯支持弹劾赫格塞思，民主党拟调查特朗普盟友",
-          "what": "众议院民主党领袖杰弗里斯支持弹劾国防部长赫格塞思，并表示民主党人将推动对特朗普盟友展开委员会调查。五角大楼称，赫格塞思不会被所谓“虚假调查”吓退。",
-          "why": "这预示国会监督和党派对抗将成为中期选举后的政治焦点。",
           "sources": [
             {
               "label": "Al Jazeera",
@@ -153,6 +207,11 @@
               "alt": "杰弗里斯支持弹劾赫格塞思，民主党拟调查特朗普盟友",
               "credit": "Al Jazeera"
             }
+          ],
+          "summary": "众议院民主党领袖表示支持推动弹劾国防部长。五角大楼回应称，赫格塞思不会因调查表态退缩。",
+          "paragraphs": [
+            "美国众议院民主党领袖哈基姆·杰弗里斯在中期选举后的公开表态中表示，支持弹劾国防部长皮特·赫格塞思。他同时说，民主党人打算利用众议院委员会调查特朗普盟友。",
+            "五角大楼驳斥了有关调查的表态。杰弗里斯的发言表明了民主党领导层的立场，弹劾及委员会调查仍须经过各自的国会程序。"
           ]
         },
         {
@@ -160,12 +219,18 @@
           "channel": "🌍 全球重大新闻",
           "region": "美洲",
           "title": "教皇利奥十四世在阿根廷批评米莱紧缩政策",
-          "what": "教皇利奥十四世访问阿根廷期间公开批评总统米莱的紧缩措施，主张经济应服务于民众、增长成果应惠及所有人。报道说，他在布宜诺斯艾利斯的演说获得热烈掌声；这是其12天拉美行程的第二站。",
-          "why": "教皇的表态将民生与经济调整的争论带入阿根廷的政治和公共讨论。",
           "sources": [
             {
               "label": "The Guardian",
               "url": "https://www.theguardian.com/world/2026/nov/09/pope-leo-argentina-visit-speech-javier-milei-austerity"
+            },
+            {
+              "label": "梵蒂冈讲话全文",
+              "url": "https://press.vatican.va/content/leo-xiv/en/speeches/2026/november/documents/20261108-argentina-autorita.html"
+            },
+            {
+              "label": "美联社",
+              "url": "https://apnews.com/article/cc1937bec636468892ac71bf5d59ea88"
             }
           ],
           "images": [
@@ -174,6 +239,11 @@
               "alt": "教皇利奥十四世在阿根廷批评米莱紧缩政策",
               "credit": "The Guardian"
             }
+          ],
+          "summary": "教皇在布宜诺斯艾利斯发表讲话，把民众生活和社会保障放在经济调整的讨论中心。",
+          "paragraphs": [
+            "教皇利奥十四世 11 月 8 日抵达阿根廷，在布宜诺斯艾利斯与总统米莱、外交使节和民间代表会面。梵蒂冈公布的讲稿显示，他把人的尊严、社会责任和弱势群体处境列为经济政策应考虑的事项。",
+            "美联社将这番讲话置于米莱削减公共开支、推动市场化改革的背景中，认为它体现了双方在社会政策上的分歧。阿根廷是此次乌拉圭、阿根廷、秘鲁访问行程的第二站。"
           ]
         },
         {
@@ -181,8 +251,6 @@
           "channel": "🌍 全球重大新闻",
           "region": "亚太",
           "title": "印度以灯火、祈祷和烟花庆祝排灯节",
-          "what": "印度各地民众以祈祷、灯饰、烟花和传统甜食庆祝排灯节。报道说，数百万人参与这一重要印度教节日。",
-          "why": "排灯节是印度重要的宗教与社会节庆，也展现了节日传统在各地的延续。",
           "sources": [
             {
               "label": "Al Jazeera",
@@ -191,66 +259,111 @@
             {
               "label": "BBC",
               "url": "https://www.bbc.co.uk/news/articles/cm70pdwz122ro?at_medium=RSS&at_campaign=rss"
-            }
-          ],
-          "images": []
-        },
-        {
-          "kind": "standard",
-          "channel": "🌍 全球重大新闻",
-          "region": "亚太",
-          "title": "澳洲前警员在庭审中否认杀害伴侣",
-          "what": "在悉尼庭审作证的前警员Beau Lamarre-Condon否认曾“处决”Jesse Baird，并称未意识到对方脸部有严重枪伤。他被控于2024年在Paddington杀害Baird及其伴侣Luke Davies，已表示不认罪。",
-          "why": "庭审证词将影响这起谋杀案的审理，也使涉案前警员的责任受到关注。",
-          "sources": [
+            },
             {
-              "label": "The Guardian",
-              "url": "https://www.theguardian.com/australia-news/2026/nov/09/beau-lamarre-condon-trial-reenacts-shooting-jesse-baird-ntwnfb"
+              "label": "美联社",
+              "url": "https://apnews.com/article/12115fd0300a07d05037f333715230e7"
+            },
+            {
+              "label": "美联社空气质量报道",
+              "url": "https://apnews.com/article/0e05558e5c306397850df463c6a025e7"
             }
           ],
-          "images": []
+          "images": [],
+          "summary": "印度多地在 11 月 8 日迎来排灯节。家庭团聚、祈祷和点灯是主要庆祝方式。",
+          "paragraphs": [
+            "11 月 8 日，印度各地民众点亮油灯和灯饰，以祈祷、传统甜点及家庭聚会庆祝排灯节。各地庆祝习俗不同，部分地区也燃放烟花。",
+            "美联社报道，今年庆祝活动与印度北部冬季空气质量转差的时段重叠。烟花叠加原有污染源，是当地讨论节庆活动安排时面临的一个问题。"
+          ]
         },
         {
           "kind": "standard",
           "channel": "🌍 全球重大新闻",
           "region": "亚太",
           "title": "印尼灭火行动直升机坠毁，一名机组人员死亡",
-          "what": "一架参与灭火行动的直升机在印度尼西亚坠毁，一名印尼机组人员死亡。一名澳大利亚人和一名新西兰人获救。",
-          "why": "事故发生在灭火行动中，再次凸显执行高风险救援和消防任务时的安全问题。",
           "sources": [
             {
               "label": "BBC",
               "url": "https://www.bbc.co.uk/news/articles/cxnv0442ml6vo?at_medium=RSS&at_campaign=rss"
+            },
+            {
+              "label": "澳大利亚广播公司",
+              "url": "https://www.abc.net.au/news/2026-11-08/indonesia-helicopter-crash-borneo-australians/107361384"
             }
           ],
-          "images": []
+          "images": [],
+          "summary": "失事直升机在加里曼丹执行灭火任务。一名印尼机组人员死亡，澳大利亚和新西兰两名机组人员生还。",
+          "paragraphs": [
+            "一架参与灭火的直升机 11 月 8 日在印度尼西亚加里曼丹坠毁。澳大利亚广播公司援引印尼搜救机构报道，搜救人员在当地时间当晚确认一名印尼机组人员死亡，两名来自澳大利亚和新西兰的机组人员获救。",
+            "航迹显示，飞机当天从南加里曼丹省首府马辰起飞，随后飞往受火灾影响的区域。此前同一周，加里曼丹还发生过另一起灭火直升机坠毁事故，造成三名印尼机组人员死亡。"
+          ]
         },
         {
           "kind": "standard",
           "channel": "🌍 全球重大新闻",
           "region": "美洲",
           "title": "英伟达调查涉及黄仁勋的安全疑虑",
-          "what": "BBC报道称，英伟达正调查有关首席执行官黄仁勋与一名被怀疑是中国间谍者有婚外关系的报道。黄仁勋承认曾对妻子不忠，并表示会配合安全调查；目前摘要未提供调查结论。",
-          "why": "相关指控涉及企业高层与安全审查，但目前仍待调查厘清。",
           "sources": [
             {
               "label": "BBC",
               "url": "https://www.bbc.co.uk/news/articles/c3dxw10rjn9no?at_medium=RSS&at_campaign=rss"
+            },
+            {
+              "label": "美联社",
+              "url": "https://apnews.com/article/68839e7ca6ba2b121529f7e475e501d6"
+            }
+          ],
+          "images": [],
+          "summary": "英伟达董事会确认调查涉及首席执行官的安全疑虑，并表示目前没有理由认为机密已泄露。",
+          "paragraphs": [
+            "英伟达董事会 11 月 8 日表示，将调查有关首席执行官黄仁勋可能成为外国情报活动目标的报道。美联社援引董事会声明称，调查将审视可获得的信息。",
+            "董事会同时表示，目前没有理由认为国家安全或英伟达的商业机密受到损害。报道中的情报活动指控仍属待查事项。"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "🤖 AI核心动态",
+      "note": "模型 · 多模态 · 基础设施",
+      "stories": [
+        {
+          "kind": "standard",
+          "channel": "🤖 AI核心动态",
+          "region": "美洲",
+          "title": "OpenAI 向首批安全团队开放 GPT‑6 Cyber",
+          "summary": "网络安全专用模型先向获批的 Daybreak Red 客户开放，面向授权环境中的漏洞验证和修复工作。",
+          "paragraphs": [
+            "OpenAI 11 月 5 日（美国当地时间）公布 GPT‑6 Cyber，先向获得 Daybreak Red 资格的安全团队提供 API 和 Codex 访问，用于授权测试、复现漏洞和验证补丁。",
+            "在 OpenAI 自己发布的 ExploitGym 评测中，新模型在指定漏洞验证任务中的成功率为 48.5%，高于 GPT‑5.6 Cyber 的 32.1%。OpenAI 据此将其网络安全能力评级从 High 提高到 Critical。这组成绩来自厂商在受控环境下的评测。",
+            "开放范围受安全资格审核约束。OpenAI 表示，Daybreak Red 的 API 默认启用 IP 白名单，部署时也会监测模型是否超出任务授权。"
+          ],
+          "sources": [
+            {
+              "label": "OpenAI 公告",
+              "url": "https://openai.com/index/introducing-gpt-6-cyber/"
             }
           ],
           "images": []
         },
         {
           "kind": "standard",
-          "channel": "🌍 全球重大新闻",
-          "region": "亚太",
-          "title": "澳洲一宗家暴谋杀案中，被告家人遭控事后协助",
-          "what": "新南威尔士州Wagga Wagga一名23岁女子于9月遭多处刺伤死亡。一名被控谋杀她的男子的家人现被控事后协助相关罪行。",
-          "why": "新增指控扩大了案件调查范围，后续司法程序将厘清相关人员是否承担责任。",
+          "channel": "🤖 AI核心动态",
+          "region": "跨地区",
+          "title": "LeRobot 0.7 支持机器人训练数据流式读取与远程推理",
+          "summary": "Hugging Face 的机器人框架允许训练时直接读取云端数据集，并把大型策略放到远端 GPU 上运行。",
+          "paragraphs": [
+            "LeRobot 团队 11 月 5 日发布 0.7.0。训练任务现在可以从 Hugging Face Hub、Storage Bucket 或 LanceDB 流式读取样本，无需先把整套数据下载到本机。",
+            "更新增加了远程推理，机器人可以将大型控制策略交给 GPU 服务器运行。部分支持文本交互的策略或外部视觉语言规划器，还允许操作者在运行时调整子任务，具体能力取决于所用模型。",
+            "发布说明提醒，采用旧版 FSDP 保存的训练检查点无法直接续训，已有模型权重仍可用于加载。需要迁移现有训练任务的团队应区分这两种文件。"
+          ],
           "sources": [
             {
-              "label": "The Guardian",
-              "url": "https://www.theguardian.com/australia-news/2026/nov/09/danielle-madgwick-dv-murder-family-of-accused-charged-ntwnfb"
+              "label": "LeRobot 官方发布说明",
+              "url": "https://huggingface.co/blog/lerobot/lerobot-release-v070"
+            },
+            {
+              "label": "GitHub 版本记录",
+              "url": "https://github.com/huggingface/lerobot/releases/tag/v0.7.0"
             }
           ],
           "images": []
@@ -258,29 +371,188 @@
       ]
     },
     {
-      "title": "🤖 AI核心动态",
-      "note": "模型 · 多模态 · 基础设施",
-      "stories": []
-    },
-    {
       "title": "🧑‍💻 AI Coding / Agent",
       "note": "开发者工具 · 软件工程代理",
-      "stories": []
+      "stories": [
+        {
+          "kind": "standard",
+          "channel": "🧑‍💻 AI Coding / Agent",
+          "region": "跨地区",
+          "title": "GitHub Copilot 在 Slack 和 Teams 正式开放",
+          "summary": "团队成员可在对话中让 @GitHub 调查故障、建立 Issue，或发起代码修改并提交拉取请求。",
+          "paragraphs": [
+            "GitHub 11 月 6 日宣布，Slack 与 Microsoft Teams 内的 @GitHub 功能正式开放。消息可以交给 Copilot 查找问题、创建 Issue，或启动编码会话并生成拉取请求。",
+            "Teams 的 Canvas 会在讨论旁展示实施计划、代码改动和预览，供同事共同检查。GitHub 说，@GitHub 现在能从消息中识别目标仓库，减少启动会话前手动选择仓库的步骤。",
+            "由该入口创建的 Issue 和拉取请求会标注发起人的 Slack 或 Teams 会话身份，团队可以从代码协作记录追溯任务来源。"
+          ],
+          "sources": [
+            {
+              "label": "GitHub Changelog",
+              "url": "https://github.blog/changelog/2026-11-06-github-copilot-in-slack-and-teams-is-generally-available/"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://github.blog/wp-content/uploads/2026/11/f5117dd56aefe8316aa8272c4ebdd472ae00acf53c2dc2020b5bfa815070450e-2400x1260-1.jpeg?resize=2064%2C1096",
+              "alt": "GitHub 发布的 Slack 与 Teams 集成配图",
+              "credit": "GitHub Changelog"
+            }
+          ]
+        },
+        {
+          "kind": "standard",
+          "channel": "🧑‍💻 AI Coding / Agent",
+          "region": "美洲",
+          "title": "Claude Code 支持在后台执行 MCP 长任务",
+          "summary": "使用支持 MCP Tasks 的服务时，终端可以继续处理会话，工具完成后再把结果返回。",
+          "paragraphs": [
+            "Anthropic 在 11 月 6 日发布的 Claude Code v2.1.319 中加入 MCP Tasks 支持。当兼容的 MCP 服务器将工具调用作为任务运行时，Claude Code 会把它移至后台，完成后再把结果交回当前会话。",
+            "新版还加入了 permissions.denyInsteadOfPrompting 设置。开启后，本来会停下来等待许可的工具调用将被直接拒绝，其余任务可以继续。这项设置适用于终端会话、子智能体和协作代理。",
+            "如果现有流程依赖工具结果在下一步执行前返回，版本说明提供了保持同步等待的环境选项。后台执行的前提是所连接的 MCP 服务支持任务接口。"
+          ],
+          "sources": [
+            {
+              "label": "Anthropic GitHub Release",
+              "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.319"
+            }
+          ],
+          "images": []
+        }
+      ]
     },
     {
       "title": "📄 前沿论文 / 技术",
       "note": "问题 · 方法 · 实验结果",
-      "stories": []
+      "stories": [
+        {
+          "kind": "standard",
+          "channel": "📄 前沿论文 / 技术",
+          "region": "跨地区",
+          "title": "XStack 用 20 个真实仓库测试代码智能体迁移能力",
+          "summary": "从 PyTorch 迁到 JAX 和 TPU 的 140 次尝试中，两轮核验后仅 44 次通过。",
+          "paragraphs": [
+            "11 月 6 日公告批次的一篇 arXiv 预印本提出 XStack。作者给七个代码智能体各自分配 20 个 PyTorch 仓库和一台干净的 TPU 机器，要求迁移成可运行的 JAX 仓库，并用原论文或项目报告的实验结果核验。",
+            "第一阶段有 30 次通过；补充原实验配置与运行细节后，最终达到 44 次，约占 31%。在这套样本中，Claude Opus 5 通过 15 个仓库，GPT-5.6-sol 通过 9 个，其他受测智能体最多通过 8 个。",
+            "研究团队还人工检查了达到数值门槛的结果，发现部分代码用了错误的数据划分或没有完成预期的实验。作者因此把可运行、数值符合与执行过程正确分开验收。这项结果仅反映所测试的 PyTorch 到 JAX／TPU 迁移，论文尚未同行评审。"
+          ],
+          "sources": [
+            {
+              "label": "arXiv 原文",
+              "url": "https://arxiv.org/abs/2611.08472"
+            },
+            {
+              "label": "XStack 方法与结果",
+              "url": "https://arxiv.org/html/2611.08472v1#S3"
+            }
+          ],
+          "images": []
+        },
+        {
+          "kind": "standard",
+          "channel": "📄 前沿论文 / 技术",
+          "region": "跨地区",
+          "title": "ReproBridge 把实验复现步骤做成可交接材料",
+          "summary": "预印本在 36 篇论文的测试中发现，提供代码修订、环境和启动说明后，受测模型的平均复现成功率上升。",
+          "paragraphs": [
+            "同样在 11 月 6 日公告的 arXiv 预印本 ReproBridge，把复现机器学习实验时确认的细节整理为四类交付物：修订后的代码、环境配置、实验启动脚本和复现指南。研究从 36 篇论文收集指标，核验后将 1,029 个任务纳入后续比较。",
+            "研究团队报告，使用上述材料后，四个受测模型的平均复现成功率从 76.4% 升至 92.6%。去掉修订代码或环境配置时，成功率的下降最明显。结果由独立审计流程检查是否执行了指定实验。",
+            "文中 19.7% 的平均 API 费用降幅仅统计后续复现会话，前期整理、运行验证和人工审查另计。结果来自该基准和所选模型，论文尚未同行评审。"
+          ],
+          "sources": [
+            {
+              "label": "arXiv 原文",
+              "url": "https://arxiv.org/abs/2611.08452"
+            },
+            {
+              "label": "ReproBridge 实验与局限",
+              "url": "https://arxiv.org/html/2611.08452v1#S4"
+            }
+          ],
+          "images": []
+        }
+      ]
     },
     {
       "title": "🧰 GitHub / 开源项目",
       "note": "近期发布 · 实用工具",
-      "stories": []
+      "stories": [
+        {
+          "kind": "standard",
+          "channel": "🧰 GitHub / 开源项目",
+          "region": "跨地区",
+          "title": "OpenCLIP 4.2.1 发布五款音频—文本模型",
+          "summary": "新版提供可处理不同长度音频的 NaFlex CLAP 权重，并调整了训练入口和批数据格式。",
+          "paragraphs": [
+            "OpenCLIP 团队 11 月 6 日发布 v4.2.1。此次新增五款 NaFlex CLAP 音频—文本模型，参数量从约 2,700 万到 3.4 亿，预训练权重以 Apache 2.0 许可发布。",
+            "图像侧的 NaFlex CLIP 支持不同分辨率与宽高比，并可按 token 预算组织训练批次。用于生成图像或音频描述的 GenLIP、GenLAP 此次提供训练配置，发布说明未给出预训练权重。",
+            "训练接口改用 TrainingTask 和字典式批数据，并加入 FSDP2 与 torch.compile 支持。依赖旧训练入口或自行构造批数据的项目，升级前可对照迁移说明检查集成。"
+          ],
+          "sources": [
+            {
+              "label": "OpenCLIP GitHub Release",
+              "url": "https://github.com/mlfoundations/open_clip/releases/tag/v4.2.1"
+            }
+          ],
+          "images": []
+        },
+        {
+          "kind": "standard",
+          "channel": "🧰 GitHub / 开源项目",
+          "region": "跨地区",
+          "title": "llama.cpp 预发布版本接入 Kimi-K3.1-Pro 文本推理",
+          "summary": "b12180 增加新模型架构和转换器，保留稀疏注意力与专家权重，暂未接入视觉分支。",
+          "paragraphs": [
+            "llama.cpp 的 b12180 预发布版本于北京时间 11 月 7 日加入 Kimi-K3.1-Pro 支持。转换器识别 kimi_k31 架构，保留路由专家的 MXFP4 权重，同时跳过视觉编码器与多模态投影层，首版覆盖文本推理。",
+            "项目发布记录称，维护者在一个八层切片上与原始检查点逐项核对了 38 个张量，并验证了稀疏注意力的索引路径。它说明了转换和架构兼容性，尚未给出整模型在实际设备上的吞吐量。"
+          ],
+          "sources": [
+            {
+              "label": "llama.cpp GitHub Release",
+              "url": "https://github.com/ggml-org/llama.cpp/releases/tag/b12180"
+            }
+          ],
+          "images": []
+        }
+      ]
     },
     {
       "title": "🎯 CS2专区",
       "note": "Falcons · 世界前十 · 顶级赛事 · Valve",
-      "stories": []
+      "stories": [
+        {
+          "kind": "standard",
+          "channel": "🎯 CS2专区",
+          "region": "中国",
+          "title": "MOUZ 一图未失夺得 IEM 北京站冠军",
+          "summary": "MOUZ 在五局三胜制决赛中 3 比 0 击败 The MongolZ。Falcons 的下一场比赛在 11 月 11 日，对手是 Vitality。",
+          "paragraphs": [
+            "11 月 8 日，MOUZ 在 IEM 北京站决赛以 3 比 0 击败 The MongolZ。三张地图依次为 Mirage 13 比 5、Dust2 13 比 6、Inferno 13 比 4。赛事主办方 ESL 确认，MOUZ 整站未丢一张地图，队员 xertioN 获评赛事最有价值选手。",
+            "NAVI 在季军赛击败 BETBOOM。Falcons 在北京站止步小组赛。核查时 HLTV 最新可见的世界排名为 11 月 2 日版，Falcons 位列第 6，尚未见到北京站结束后的新榜。",
+            "截至本期更新，Falcons 未来 24 小时内没有已公布的比赛。下一场是北京时间 11 月 11 日 12:30 的 BLAST Rivals 香港站 A 组上半区半决赛，对阵 Vitality，采用三局两胜制。"
+          ],
+          "sources": [
+            {
+              "label": "ESL 官方战报",
+              "url": "https://eslfaceitgroup.com/press/mouz-triumphs-at-intel-extreme-masters-beijing-2026-reclaiming-their-place-at-the-top/"
+            },
+            {
+              "label": "HLTV 世界排名",
+              "url": "https://www.hltv.org/ranking/teams/2026/november/2"
+            },
+            {
+              "label": "BLAST 官方赛程",
+              "url": "https://blast.tv/cs/tournaments/rivals-2026-season-2/match/cfce2be1/vitality-falcons/matchups"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://eslfaceitgroup.com/wp-content/uploads/2026/11/IEM-Beijing-trophy-lift-1-1536x1025.jpg",
+              "alt": "MOUZ 夺得 IEM 北京站冠军后举起奖杯",
+              "credit": "ESL FACEIT Group"
+            }
+          ]
+        }
+      ]
     },
     {
       "title": "🇯🇵 日本动态",
@@ -290,46 +562,68 @@
           "kind": "standard",
           "channel": "🇯🇵 日本动态",
           "region": "日本",
-          "title": "日本披露夏季曾连续三天干预日元",
-          "what": "日本公布的数据称，夏季曾连续三天进行日元干预；交易员此前普遍认为干预只持续了两天。摘要未提供干预金额或具体日期。",
-          "why": "干预时长信息可能影响市场对日本汇市操作方式的判断。",
+          "title": "日本披露曾连续三个交易日干预日元，合计约 15.4 万亿日元",
           "sources": [
             {
               "label": "The Japan Times",
               "url": "https://www.japantimes.co.jp/business/2026/11/09/markets/japan-july-sept-yen-intervention/"
+            },
+            {
+              "label": "日本财务省",
+              "url": "https://www.mof.go.jp/english/policy/international_policy/reference/feio/quarter/2026_3Qe.html"
             }
           ],
-          "images": []
+          "images": [],
+          "id": "b074hs",
+          "summary": "日本财务省披露 7 月至 9 月外汇干预明细，确认 8 月 3 日也曾卖出美元、买入日元。",
+          "paragraphs": [
+            "日本财务省 11 月 9 日公布季度外汇干预明细。7 月 30 日、7 月 31 日及下一个交易日 8 月 3 日，日本均卖出美元、买入日元，三次合计 15.3993 万亿日元。",
+            "7 月 30 日操作规模为 7.9756 万亿日元，31 日为 5.5523 万亿日元，8 月 3 日为 1.8714 万亿日元。季度明细补齐了单日操作数据，《日本时报》报道称，交易员此前普遍认为这一轮干预只持续了两个交易日。"
+          ]
         },
         {
           "kind": "standard",
           "channel": "🇯🇵 日本动态",
           "region": "日本",
           "title": "日本企业面对成本上涨，调价仍难获消费者接受",
-          "what": "在成本上升之际，日本企业难以把涨价转嫁给消费者。报道指出，长期通缩时期形成的消费习惯，使消费者对价格上调较为抗拒。",
-          "why": "企业能否调价关系到成本压力如何在公司利润与家庭支出之间分摊。",
           "sources": [
             {
               "label": "The Japan Times",
               "url": "https://www.japantimes.co.jp/business/2026/11/09/companies/japan-firms-price-hikes-tough-sell/"
+            },
+            {
+              "label": "日本银行",
+              "url": "https://www.boj.or.jp/en/about/press/koen_2026/ko261015a.htm"
             }
           ],
-          "images": []
+          "images": [],
+          "summary": "《日本时报》报道，长期低通胀时期形成的消费习惯，仍让部分企业难以把成本压力转嫁给顾客。",
+          "paragraphs": [
+            "《日本时报》11 月 9 日报道，日本部分消费企业面临成本上涨，但对提高售价保持谨慎。长期物价平稳形成的消费预期，使部分顾客仍对价格变动敏感。",
+            "日本银行审议委员小枝淳子此前在演讲中区分了企业间和消费端的成本转嫁。她指出，成本冲击在企业间传递较为活跃，消费品涨价则更集中于厂商预计涨价后仍有人购买的商品。"
+          ]
         },
         {
           "kind": "standard",
           "channel": "🇯🇵 日本动态",
           "region": "日本",
           "title": "日本地方政府借助私人车库应对洪水风险",
-          "what": "日本一些地方政府正与私营企业合作，让司机在暴雨或洪水风险下把车辆停放到私人车库，以减少车辆受灾风险。",
-          "why": "这类合作为地方政府应对强降雨和洪水提供了新的车辆安置方式。",
           "sources": [
             {
               "label": "The Japan Times",
               "url": "https://www.japantimes.co.jp/news/2026/11/09/japan/society/multistory-parking-floods/"
+            },
+            {
+              "label": "日本国土交通省",
+              "url": "https://www.mlit.go.jp/report/press/road01_hh_002059.html"
             }
           ],
-          "images": []
+          "images": [],
+          "summary": "日本部分地方政府与企业合作，在强降雨预警时利用民营多层停车设施，为车辆提供临时避险位置。",
+          "paragraphs": [
+            "据《日本时报》11 月 9 日报道，日本一些地方政府与民营停车设施运营方合作，在可能发生洪水时允许居民将汽车移往较高楼层。此类合作把现有停车设施纳入地方防灾安排。",
+            "停车设施进水是日本此前多次强降雨暴露的问题。日本国土交通省今年 3 月发布了适用于其直辖地下停车场的防浸水指南，涵盖灾前检查和应急准备。"
+          ]
         }
       ]
     },
@@ -342,12 +636,14 @@
           "channel": "💹 经济 / 科技产业",
           "region": "欧洲",
           "title": "英国认真考虑限制未满16岁者使用Vinted和eBay",
-          "what": "英国文化大臣确认，政府正认真考虑把Vinted和eBay列入未满16岁者禁用平台的清单。报道提到，相关禁令可能于明年3月实施，但目前仍处于考虑阶段。",
-          "why": "若政策推进，将影响未成年人使用二手交易平台的方式及平台运营。",
           "sources": [
             {
               "label": "BBC",
               "url": "https://www.bbc.co.uk/news/articles/cmzxjvpqrjxro?at_medium=RSS&at_campaign=rss"
+            },
+            {
+              "label": "Sky News",
+              "url": "https://news.sky.com/story/government-considering-banning-under-16s-from-vinted-and-ebay-13609954"
             }
           ],
           "images": [
@@ -356,6 +652,11 @@
               "alt": "英国认真考虑限制未满16岁者使用Vinted和eBay",
               "credit": "BBC"
             }
+          ],
+          "summary": "文化大臣莉萨·南迪表示，英国政府正考虑把部分线上交易平台纳入未满 16 岁用户的限制范围。",
+          "paragraphs": [
+            "英国文化大臣莉萨·南迪 11 月 8 日接受 BBC 采访时说，政府正认真考虑将 Vinted 和 eBay 等线上交易平台纳入面向未满 16 岁用户的限制范围。",
+            "讨论的焦点是年龄限制是否应从社交平台扩展到提供线上交易的服务。英国天空新闻报道称，英国通信管理局此前认为年龄检查可以减少低龄用户接触不当内容，同时提醒部分未成年人可能绕过检查。有关二手交易平台的范围仍在评估。"
           ]
         }
       ]
@@ -369,12 +670,18 @@
           "channel": "🔬 其他值得知道的科技与科学",
           "region": "美洲",
           "title": "NASA招募新一代宇航员，面向未来月球任务",
-          "what": "NASA启动新一轮宇航员招募，希望为未来在月球生活和工作的任务寻找人员。申请截止日期为12月3日，招募与Artemis计划及建设月球基地有关。",
-          "why": "招募将为NASA后续载人月球任务储备人员。",
           "sources": [
             {
               "label": "The Guardian",
               "url": "https://www.theguardian.com/science/2026/nov/08/nasa-astronauts-moon-applications-open"
+            },
+            {
+              "label": "NASA 招募公告",
+              "url": "https://www.nasa.gov/news-release/nasa-seeks-next-generation-of-explorers-to-join-astronaut-corps/"
+            },
+            {
+              "label": "美联社",
+              "url": "https://apnews.com/article/789a68a0425551b9870b17911eaa042e"
             }
           ],
           "images": [
@@ -383,6 +690,12 @@
               "alt": "NASA招募新一代宇航员，面向未来月球任务",
               "credit": "The Guardian"
             }
+          ],
+          "summary": "NASA 已开放新一届宇航员申请，美东时间 12 月 3 日截止，入选者将接受面向后续载人任务的训练。",
+          "paragraphs": [
+            "美国国家航空航天局开放新一届宇航员申请。根据 NASA 公告，符合条件的美国公民须在美东时间 12 月 3 日 23:59 前提交材料。",
+            "NASA 将招募与 Artemis 月球计划联系起来。新一届宇航员将训练如何在月面开展活动、在地球以外的环境生活和工作。美联社报道，NASA 预计于 2027 年底确定人选、2028 年初启动训练。",
+            "NASA 说，上一轮申请收到超过 8,000 份材料，最终于 2025 年选出 10 名候选人。新一轮报名开放时间与具体飞行任务分配是两个阶段。"
           ]
         }
       ]
@@ -390,23 +703,34 @@
   ],
   "closing": {
     "themes": [
-      "多地致命事故与基础设施安全",
-      "选举失利后的政治问责与政策争论",
-      "能源、汇率与企业应对成本压力"
+      "埃及铁路事故进入调查，伊拉克气田停产波及库区供电。",
+      "AI 工具把更多任务移到后台或远端，实际可用性仍取决于授权、接口和验证。",
+      "两项预印本从跨框架迁移与实验复现入手，检验代码智能体能否交付可复查的结果。"
     ],
     "links": [
       {
-        "label": "埃及两列火车相撞，至少7人死亡",
-        "url": "https://www.bbc.co.uk/news/articles/cwvgr20mmmevo?at_medium=RSS&at_campaign=rss"
+        "label": "埃及列车相撞的调查进展",
+        "url": "https://apnews.com/article/egypt-train-crash-giza-collision-cairo-injuries-4ad591268ce015d85ae302e22185b235"
       },
       {
-        "label": "无人机袭击后伊拉克Khor Mor气田停产",
-        "url": "https://www.aljazeera.com/news/2026/11/9/drone-attack-suspends-production-at-iraqs-khor-mor-gasfield?traffic_source=rss"
+        "label": "XStack：跨框架仓库迁移评测",
+        "url": "https://arxiv.org/abs/2611.08472"
       },
       {
-        "label": "塞内加尔外海移民船沉没，34人死亡",
-        "url": "https://www.lemonde.fr/en/international/article/2026/11/08/migrant-boat-sinks-off-senegal-leaving-34-dead_6775276_4.html"
+        "label": "ESL：IEM 北京站官方战报",
+        "url": "https://eslfaceitgroup.com/press/mouz-triumphs-at-intel-extreme-masters-beijing-2026-reclaiming-their-place-at-the-top/"
       }
     ]
+  },
+  "apiUsage": {
+    "model": "gpt-6-luna",
+    "input_tokens": 5482,
+    "cached_input_tokens": 0,
+    "output_tokens": 7402,
+    "reasoning_effort": "high",
+    "reasoning_tokens": 4660,
+    "estimated_usd": 0.004249,
+    "paid_search_calls": 0,
+    "note": "这是本期初次生成的用量。后续核实与补稿未新增 API 费用。"
   }
 }

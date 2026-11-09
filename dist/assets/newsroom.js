@@ -16,11 +16,13 @@ const app = document.getElementById('app');
 const nav = document.getElementById('channels');
 const archiveLink = document.getElementById('archive-link');
 const issueDate = document.getElementById('issue-date');
+const generationUsage = document.getElementById('generation-usage');
 const params = new URLSearchParams(location.search);
 const requestedDate = params.get('date');
 const datePattern = /^\d{4}-\d{2}-\d{2}$/;
 const chinaDate = new Intl.DateTimeFormat('zh-CN', {dateStyle: 'full', timeZone: 'Asia/Shanghai'});
 const chinaTime = new Intl.DateTimeFormat('zh-CN', {hour: '2-digit', minute: '2-digit', hourCycle: 'h23', timeZone: 'Asia/Shanghai'});
+const tokenCount = new Intl.NumberFormat('zh-CN');
 
 const esc = value => String(value ?? '').replace(/[&<>"']/g, char => (
   {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[char]
@@ -71,6 +73,7 @@ function photo(story, style, count = 1, eager = false) {
 }
 
 function storyKey(story) {
+  if (story.id) return story.id;
   // Keep shared links tied to the story when an edition is re-ordered.
   const identity = `${story.sources?.[0]?.url || ''}|${story.title}`;
   let hash = 2166136261;
@@ -123,6 +126,26 @@ function setEditionDate(date) {
   issueDate.textContent = dateLabel(date);
 }
 
+function renderUsage(usage) {
+  generationUsage.hidden = false;
+  if (!usage || !Number.isFinite(usage.estimated_usd)) {
+    generationUsage.textContent = '本期未记录 API 用量。';
+    return;
+  }
+  const total = tokenCount.format(usage.input_tokens + usage.output_tokens);
+  const amount = `$${usage.estimated_usd.toFixed(6)}`;
+  generationUsage.innerHTML = `<details>
+    <summary><span>本期生成用量</span><span class="usage-figures"><b>${total} tokens</b><span>估算 ${amount}</span></span></summary>
+    <dl>
+      <div><dt>模型</dt><dd>${esc(usage.model)}${usage.reasoning_effort ? `（${esc(usage.reasoning_effort)}）` : ''}</dd></div>
+      <div><dt>输入</dt><dd>${tokenCount.format(usage.input_tokens)} tokens${usage.cached_input_tokens ? `，缓存 ${tokenCount.format(usage.cached_input_tokens)}` : ''}</dd></div>
+      <div><dt>输出</dt><dd>${tokenCount.format(usage.output_tokens)} tokens${usage.reasoning_tokens ? `，含推理 ${tokenCount.format(usage.reasoning_tokens)}` : ''}</dd></div>
+    </dl>
+    <p>Token 数来自 OpenAI 返回值。金额为美元，按 <a href="https://developers.openai.com/api/docs/pricing" target="_blank" rel="noopener noreferrer">OpenAI 标准单价</a>换算，结算以平台账单为准。</p>
+    ${usage.note ? `<p>${esc(usage.note)}</p>` : ''}
+  </details>`;
+}
+
 function blockTitle(title, side = '') {
   return `<header class="block-title"><h2>${esc(title)}</h2>${side}</header>`;
 }
@@ -134,7 +157,7 @@ function storyMeta(story, label = '', withSource = true) {
 }
 
 function teaser(story, limit) {
-  const text = (story.what || story.summary || '').replace(/\s+/g, ' ').trim();
+  const text = (story.summary || story.what || '').replace(/\s+/g, ' ').trim();
   if (text.length <= limit) return text;
   const prefix = text.slice(0, limit);
   const sentenceEnd = Math.max(prefix.lastIndexOf('。'), prefix.lastIndexOf('！'), prefix.lastIndexOf('？'));
@@ -169,7 +192,7 @@ function readingRail(closing) {
 
 function homeSection(section) {
   const href = datedPage({channel: section.id});
-  const [first, ...rest] = section.home;
+  const [first, ...rest] = section.id === 'world' ? section.home.slice(0, 4) : section.home;
   return `<section class="desk">${blockTitle(section.name, `<a class="section-link" href="${esc(href)}">查看全部 ${section.stories.length} 条 <span aria-hidden="true">›</span></a>`)}
     ${rest.length ? `<div class="desk-layout">${feature(first)}${storyList(rest)}</div>` : feature(first)}
   </section>`;
@@ -192,7 +215,7 @@ function renderHome(model) {
         ${blockTitle('头条')}
         ${lead ? `<article class="lead">${photo(lead, 'lead-image', 1, true)}
           <div class="lead-text">${storyMeta(lead, sections.get(lead.desk)?.short)}${headline(lead)}
-          <p class="teaser">${esc(teaser(lead, 148))}</p><a class="read-story" href="${esc(lead.href)}">阅读全文 <span aria-hidden="true">›</span></a></div></article>` : '<p class="empty-state">本期暂无头条。</p>'}
+          <p class="teaser">${esc(teaser(lead, 120))}</p><a class="read-story" href="${esc(lead.href)}">查看报道 <span aria-hidden="true">›</span></a></div></article>` : '<p class="empty-state">本期暂无头条。</p>'}
       </section>
       <section class="top-panel">${blockTitle('重点新闻')}
         ${top.length ? storyList(top, 'top-list', 63) : '<p class="empty-state">本期暂无重点新闻。</p>'}
@@ -226,18 +249,22 @@ function renderArticle(model, story) {
   const related = (section?.stories || []).filter(item => item.id !== story.id).slice(0, 3);
   const links = (story.sources || []).map(item => readLabel(item.url, item.label || '原文')).filter(Boolean);
   const back = section ? datedPage({channel: section.id}) : datedPage();
+  const body = story.paragraphs?.length ? story.paragraphs : [story.what || story.summary, story.why].filter(Boolean);
+  const deck = story.paragraphs?.length && story.summary !== body[0] ? story.summary : '';
   app.innerHTML = `<article class="article">
     <a class="back-link" href="${esc(back)}"><span aria-hidden="true">‹ </span>${esc(section?.name || '本期首页')}</a>
     <h1>${esc(story.title)}</h1>
+    ${deck ? `<p class="article-deck">${esc(deck)}</p>` : ''}
     <p class="article-byline"><time datetime="${esc(model.edition.date)}">${esc(dateLabel(model.edition.date))}收录</time>
       ${story.region ? `<span>${esc(story.region)}</span>` : ''}${story.sources?.[0]?.label ? `<span>${esc(story.sources[0].label)}</span>` : ''}</p>
     ${photo(story, 'article-photo', 2, true)}
-    <div class="article-copy">
-      <h2>发生了什么</h2><p>${esc(story.what || story.summary || '')}</p>
-      ${story.why ? `<div class="why"><h2>为什么重要</h2><p>${esc(story.why)}</p></div>` : ''}
-      ${links.length ? `<h2>报道来源</h2><ul class="source-list">${links.map(link => `<li>${link}</li>`).join('')}</ul>` : ''}
+    <div class="article-grid">
+      <div class="article-copy">${body.map(paragraph => `<p>${esc(paragraph)}</p>`).join('')}</div>
+      ${links.length || related.length ? `<aside class="article-notes" aria-label="来源与延伸阅读">
+        ${links.length ? `<section><h2>报道来源</h2><ul class="source-list">${links.map(link => `<li>${link}</li>`).join('')}</ul></section>` : ''}
+        ${related.length ? `<section class="related"><h2>同频道报道</h2><ul class="related-list">${related.map(item => `<li><a href="${esc(item.href)}">${esc(item.title)}</a></li>`).join('')}</ul></section>` : ''}
+      </aside>` : ''}
     </div>
-    ${related.length ? `<section class="related"><h2>同频道报道</h2><ul class="related-list">${related.map(item => `<li><a href="${esc(item.href)}">${esc(item.title)}</a></li>`).join('')}</ul></section>` : ''}
   </article>`;
   renderNav(story.desk);
 }
@@ -276,6 +303,7 @@ async function start() {
   }
   const edition = await readJSON(requestedDate || 'latest');
   setEditionDate(edition.date);
+  renderUsage(edition.apiUsage);
   const model = organize(edition);
   const storyId = params.get('story');
   const sectionId = params.get('channel');

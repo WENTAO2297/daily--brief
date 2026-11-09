@@ -42,7 +42,10 @@ FEEDS = [
     ("coding", "global", "Cursor", "https://cursor.com/changelog/rss.xml"),
     ("papers", "global", "arXiv cs.AI", "https://rss.arxiv.org/rss/cs.AI"),
     ("papers", "global", "arXiv cs.CL", "https://rss.arxiv.org/rss/cs.CL"),
+    ("papers", "global", "arXiv cs.LG", "https://rss.arxiv.org/rss/cs.LG"),
     ("papers", "global", "Nature Machine Intelligence", "https://www.nature.com/natmachintell.rss"),
+    ("open", "global", "OpenCLIP", "https://github.com/mlfoundations/open_clip/releases.atom"),
+    ("open", "global", "llama.cpp", "https://github.com/ggml-org/llama.cpp/releases.atom"),
     ("open", "global", "vLLM", "https://github.com/vllm-project/vllm/releases.atom"),
     ("open", "global", "Transformers", "https://github.com/huggingface/transformers/releases.atom"),
     ("open", "global", "Ollama", "https://github.com/ollama/ollama/releases.atom"),
@@ -60,6 +63,10 @@ FEEDS = [
     ("science", "global", "Nature", "https://www.nature.com/nature.rss"),
     ("science", "global", "The Guardian", "https://www.theguardian.com/science/rss"),
 ]
+ARXIV_RECENT = "https://export.arxiv.org/api/query?" + urllib.parse.urlencode({
+    "search_query": "cat:cs.AI OR cat:cs.LG OR cat:cs.CL",
+    "sortBy": "submittedDate", "sortOrder": "descending", "max_results": 20,
+})
 LIMITS = {"world": 18, "ai": 7, "coding": 5, "papers": 6, "open": 5, "cs2": 5, "japan": 5, "economy": 7, "science": 5}
 USER_AGENT = "DailyBrief/1.0 (+https://github.com/WENTAO2297/daily--brief)"
 GENERIC_IMAGE = re.compile(r"(?:^|[/_.-])(logo|favicon|placeholder|default|avatar|defaultshare)(?:[/_.-]|$)", re.I)
@@ -118,15 +125,25 @@ def feed_candidates(feed: tuple, now: datetime) -> list[dict]:
         return []
 
     items = []
+    cutoff = now - timedelta(hours=72)
+    if now.weekday() == 0 and channel in {"ai", "coding", "papers", "open"}:
+        friday = now.replace(hour=0, minute=0, second=0, microsecond=0) - timedelta(days=3)
+        cutoff = min(cutoff, friday)
     for entry in root.iter():
         if tag(entry) not in {"item", "entry"}:
             continue
         published = parse_date(child(entry, "pubDate", "published", "date", "updated"))
-        if not published or not now - timedelta(hours=72) <= published <= now + timedelta(minutes=15):
+        if not published or not cutoff <= published <= now + timedelta(minutes=15):
             continue
         title = plain(child(entry, "title"))
         links = [node for node in entry if tag(node) == "link" and node.get("rel", "alternate") == "alternate"]
-        article = next((u for node in links if (u := https_url(node.get("href") or (node.text or "")))), "")
+        article = ""
+        for node in links:
+            link = node.get("href") or (node.text or "")
+            if publisher.startswith("arXiv") and link.startswith("http://arxiv.org/"):
+                link = "https://" + link.removeprefix("http://")
+            if article := https_url(link):
+                break
         if not title or not article:
             continue
         if publisher == "NHK" and not re.search(r"政府|首相|選挙|経済|研究|大学|科学|技術|入管|留学|外国人|雇用|外交|地震|台風|災害|電力|輸出|半導体|AI", title):
@@ -142,7 +159,7 @@ def feed_candidates(feed: tuple, now: datetime) -> list[dict]:
         items.append({
             "channel": channel, "desk": desk, "publisher": publisher, "url": article,
             "title": title[:240], "published": published.astimezone(now.tzinfo).isoformat(),
-            "summary": plain(child(entry, "description", "summary", "encoded", "content"))[:460],
+            "summary": plain(child(entry, "description", "summary", "encoded", "content"))[:950 if channel == "papers" else 460],
             "image_candidates": list(dict.fromkeys(images))[-4:],
             "fresh": published >= now - timedelta(hours=30),
         })
@@ -154,8 +171,15 @@ class PageMetadata(HTMLParser):
         super().__init__()
         self.images: list[str] = []
         self.descriptions: list[str] = []
+        self.paragraphs: list[str] = []
+        self.article_depth = 0
+        self.paragraph: list[str] | None = None
 
     def handle_starttag(self, name, attrs):
+        if name == "article":
+            self.article_depth += 1
+        if name == "p" and self.article_depth and len(self.paragraphs) < 5:
+            self.paragraph = []
         if name != "meta":
             return
         values = dict(attrs)
@@ -165,6 +189,19 @@ class PageMetadata(HTMLParser):
             self.images.append(content)
         if key in {"description", "og:description", "twitter:description"}:
             self.descriptions.append(plain(content))
+
+    def handle_endtag(self, name):
+        if name == "p" and self.paragraph is not None:
+            text = plain("".join(self.paragraph))
+            if len(text) >= 45 and text not in self.paragraphs:
+                self.paragraphs.append(text)
+            self.paragraph = None
+        if name == "article" and self.article_depth:
+            self.article_depth -= 1
+
+    def handle_data(self, data):
+        if self.paragraph is not None:
+            self.paragraph.append(data)
 
 
 def verify_image(url: str) -> str:
@@ -196,9 +233,9 @@ def verify_image(url: str) -> str:
 def enrich(item: dict) -> dict:
     images = list(reversed(item.pop("image_candidates")))
     image = next((valid for url in images if (valid := verify_image(url))), "")
-    if not image or len(item["summary"]) < 75:
+    if not image or item["channel"] in {"world", "ai", "economy", "japan", "science", "cs2"}:
         try:
-            raw, url = fetch(item["url"], 300_000, timeout=5)
+            raw, url = fetch(item["url"], 450_000, timeout=5)
             parser = PageMetadata()
             parser.feed(raw.decode("utf-8", errors="replace"))
             if not image:
@@ -207,6 +244,8 @@ def enrich(item: dict) -> dict:
             summary = max(parser.descriptions, key=len, default="")
             if len(summary) > len(item["summary"]):
                 item["summary"] = summary[:460]
+            if parser.paragraphs:
+                item["excerpt"] = "\n".join(parser.paragraphs)[:1050]
         except (OSError, ValueError):
             pass
     item["image"] = image
@@ -216,6 +255,8 @@ def enrich(item: dict) -> dict:
 def collect_candidates(now: datetime) -> list[dict]:
     with ThreadPoolExecutor(max_workers=12) as executor:
         feed_items = list(executor.map(lambda feed: feed_candidates(feed, now), FEEDS))
+    if not any(item["channel"] == "papers" for feed in feed_items for item in feed):
+        feed_items.append(feed_candidates(("papers", "global", "arXiv", ARXIV_RECENT), now))
     distinct = {}
     for item in (item for feed in feed_items for item in feed):
         key = item["url"].split("?", 1)[0].rstrip("/")

@@ -17,7 +17,7 @@ python3 -m http.server 8000 --directory dist
 
 在仓库的 Actions Secrets 配置 `OPENAI_API_KEY`（需有 Responses 写入权限），再从 [Generate and publish daily brief](https://github.com/WENTAO2297/daily--brief/actions/workflows/daily-brief.yml) 点击 **Run workflow**，选择 `main`。日报只手动生成，定时触发已关闭。
 
-工作流从公开新闻源分地区和频道收集候选，检查文章配图，用一次 OpenAI Responses API 请求编写日报。来源和配图来自已抓取的资料，校验通过后保存并发布到 GitHub Pages。Actions 的运行摘要显示实际输入、输出 token 数，以及按官方标准单价计算的费用估算。
+工作流从公开新闻源分地区和频道收集候选，核对摘要、原文摘录和配图，用一次 OpenAI Responses API 请求编写导语和正文。校验通过后发布到 GitHub Pages。Actions 摘要和该期日报页脚都显示 API 返回的 token 数，以及按标准单价换算的费用估算。
 
 ## 文件
 
