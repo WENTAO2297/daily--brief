@@ -1,6 +1,6 @@
 {
   "date": "2026-11-09",
-  "updatedAt": "2026-11-09T10:56:35+08:00",
+  "updatedAt": "2026-11-09T11:18:19+08:00",
   "edition": "全球版 · 测试模式",
   "overview": "埃及列车相撞和伊拉克气田遇袭仍在调查。科技版回看周末前后的 AI、开发工具和论文进展，CS2 聚焦 IEM 北京站决赛及 Falcons 下一场赛程。",
   "hero": {
@@ -431,8 +431,8 @@
           "title": "XStack 用 20 个真实仓库测试代码智能体迁移能力",
           "summary": "从 PyTorch 迁到 JAX 和 TPU 的 140 次尝试中，两轮核验后仅 44 次通过。",
           "paragraphs": [
-            "11 月 6 日公告批次的一篇 arXiv 预印本提出 XStack。作者给七个代码智能体各自分配 20 个 PyTorch 仓库和一台干净的 TPU 机器，要求迁移成可运行的 JAX 仓库，并用原论文或项目报告的实验结果核验。",
-            "第一阶段有 30 次通过；补充原实验配置与运行细节后，最终达到 44 次，约占 31%。在这套样本中，Claude Opus 5 通过 15 个仓库，GPT-5.6-sol 通过 9 个，其他受测智能体最多通过 8 个。",
+            "XStack 的研究团队让七个代码智能体各自把 20 个 PyTorch 仓库迁到 JAX 和 TPU 上。每次测试都从干净的 TPU 环境开始，迁移后的代码还要复现原论文或项目报告中的实验结果。团队于北京时间 11 月 6 日将预印本提交至 arXiv。",
+            "第一阶段有 30 次通过。作者提供原实验配置和运行细节后，通过数增至 44 次，约占 31%。在这套样本中，Claude Opus 5 通过 15 个仓库，GPT-5.6-sol 通过 9 个，其他受测智能体最多通过 8 个。",
             "研究团队还人工检查了达到数值门槛的结果，发现部分代码用了错误的数据划分或没有完成预期的实验。作者因此把可运行、数值符合与执行过程正确分开验收。这项结果仅反映所测试的 PyTorch 到 JAX／TPU 迁移，论文尚未同行评审。"
           ],
           "sources": [
@@ -454,7 +454,7 @@
           "title": "ReproBridge 把实验复现步骤做成可交接材料",
           "summary": "预印本在 36 篇论文的测试中发现，提供代码修订、环境和启动说明后，受测模型的平均复现成功率上升。",
           "paragraphs": [
-            "同样在 11 月 6 日公告的 arXiv 预印本 ReproBridge，把复现机器学习实验时确认的细节整理为四类交付物：修订后的代码、环境配置、实验启动脚本和复现指南。研究从 36 篇论文收集指标，核验后将 1,029 个任务纳入后续比较。",
+            "ReproBridge 的研究团队为机器学习实验准备了四样复现材料，包括修订后的代码、环境配置、启动脚本和复现指南。他们从 36 篇论文中选出 1,029 项参考结果可验证的任务，比较模型拿到原始代码和拿到整套材料时的表现。论文于北京时间 11 月 6 日提交至 arXiv。",
             "研究团队报告，使用上述材料后，四个受测模型的平均复现成功率从 76.4% 升至 92.6%。去掉修订代码或环境配置时，成功率的下降最明显。结果由独立审计流程检查是否执行了指定实验。",
             "文中 19.7% 的平均 API 费用降幅仅统计后续复现会话，前期整理、运行验证和人工审查另计。结果来自该基准和所选模型，论文尚未同行评审。"
           ],
@@ -524,11 +524,11 @@
           "channel": "🎯 CS2专区",
           "region": "中国",
           "title": "MOUZ 一图未失夺得 IEM 北京站冠军",
-          "summary": "MOUZ 在五局三胜制决赛中 3 比 0 击败 The MongolZ。Falcons 的下一场比赛在 11 月 11 日，对手是 Vitality。",
+          "summary": "MOUZ 三图横扫 The MongolZ，xertioN 当选赛事 MVP。Falcons 转战香港，首战对阵 Vitality。",
           "paragraphs": [
-            "11 月 8 日，MOUZ 在 IEM 北京站决赛以 3 比 0 击败 The MongolZ。三张地图依次为 Mirage 13 比 5、Dust2 13 比 6、Inferno 13 比 4。赛事主办方 ESL 确认，MOUZ 整站未丢一张地图，队员 xertioN 获评赛事最有价值选手。",
-            "NAVI 在季军赛击败 BETBOOM。Falcons 在北京站止步小组赛。核查时 HLTV 最新可见的世界排名为 11 月 2 日版，Falcons 位列第 6，尚未见到北京站结束后的新榜。",
-            "截至本期更新，Falcons 未来 24 小时内没有已公布的比赛。下一场是北京时间 11 月 11 日 12:30 的 BLAST Rivals 香港站 A 组上半区半决赛，对阵 Vitality，采用三局两胜制。"
+            "11 月 8 日，MOUZ 在 IEM 北京站决赛以 3 比 0 击败 The MongolZ。他们先以 13 比 5 拿下 Mirage，随后在 Dust2 以 13 比 6 再下一城，最后以 13 比 4 赢下 Inferno。据 ESL 赛后战报，MOUZ 从小组赛到决赛一图未失，xertioN 获评赛事最有价值选手。",
+            "NAVI 在季军赛以 2 比 0 击败 BETBOOM。Falcons 此前在小组赛败者组最后一轮以 1 比 2 不敌 NAVI，无缘淘汰赛。",
+            "Falcons 将在 BLAST Rivals 香港站 A 组首战对阵 Vitality。比赛定于北京时间 11 月 11 日 12:30 开打，采用三局两胜制。"
           ],
           "sources": [
             {
@@ -536,8 +536,8 @@
               "url": "https://eslfaceitgroup.com/press/mouz-triumphs-at-intel-extreme-masters-beijing-2026-reclaiming-their-place-at-the-top/"
             },
             {
-              "label": "HLTV 世界排名",
-              "url": "https://www.hltv.org/ranking/teams/2026/november/2"
+              "label": "HLTV 赛事比分",
+              "url": "https://www.hltv.org/results?event=8245"
             },
             {
               "label": "BLAST 官方赛程",
