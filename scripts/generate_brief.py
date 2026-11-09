@@ -6,6 +6,7 @@ import argparse
 import json
 import os
 import re
+import sys
 import urllib.error
 import urllib.request
 from collections import Counter
@@ -86,6 +87,27 @@ def record_usage(response: dict) -> None:
                  f"\n\n按官方标准单价估算 **{cost:.6f} USD**。付费搜索 0 次，最终账单以 OpenAI 为准。\n")
 
 
+def parse_edition(response: dict) -> dict:
+    decoder = json.JSONDecoder()
+    for item in response["output"]:
+        if item["type"] != "message" or item.get("role", "assistant") != "assistant":
+            continue
+        text = "".join(part["text"] for part in item["content"]
+                       if part["type"] == "output_text").lstrip()
+        if not text:
+            continue
+        try:
+            edition, end = decoder.raw_decode(text)
+        except ValueError:
+            continue
+        if not isinstance(edition, dict) or edition.keys() != SCHEMA["properties"].keys():
+            continue
+        if text[end:].strip():
+            print("Ignored trailing content after the edition JSON; validating the edition before publication.", file=sys.stderr)
+        return edition
+    raise RuntimeError("OpenAI returned no complete daily brief JSON object")
+
+
 def call_openai(key: str, candidates: list[dict]) -> dict:
     evidence = [{
         "id": item["id"], "channel": item["channel"], "desk_hint": item["desk"],
@@ -120,11 +142,7 @@ def call_openai(key: str, candidates: list[dict]) -> dict:
     if response.get("status") != "completed":
         reason = (response.get("incomplete_details") or {}).get("reason", "unknown")
         raise RuntimeError(f"OpenAI response {response.get('status')}: {reason}")
-    text = "".join(part["text"] for item in response["output"] if item["type"] == "message"
-                   for part in item["content"] if part["type"] == "output_text")
-    if not text:
-        raise RuntimeError("OpenAI returned no editorial text")
-    return json.loads(text)
+    return parse_edition(response)
 
 
 def build_brief(edited: dict, candidates: list[dict]) -> dict:
