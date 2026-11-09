@@ -204,9 +204,10 @@ function teaser(story, limit) {
 
 const headline = story => `<h3><a href="${esc(story.href)}">${esc(story.title)}</a></h3>`;
 
-function compact(story, limit = 0) {
+function compact(story, limit, showImage) {
   const summary = limit ? teaser(story, limit) : '';
-  return `<article class="compact-story"><div>${storyMeta(story)}${headline(story)}${summary ? `<p class="teaser">${esc(summary)}</p>` : ''}</div>${photos(storyImages(story), 'thumbnail')}</article>`;
+  const image = showImage ? photos(storyImages(story), 'thumbnail') : '';
+  return `<article class="compact-story"><div>${storyMeta(story)}${headline(story)}${summary ? `<p class="teaser">${esc(summary)}</p>` : ''}</div>${image}</article>`;
 }
 
 function feature(story) {
@@ -215,8 +216,8 @@ function feature(story) {
   </article>`;
 }
 
-function storyList(stories, className = 'story-list', limit = 0) {
-  return `<ul class="${className}">${stories.map(story => `<li>${compact(story, limit)}</li>`).join('')}</ul>`;
+function storyList(stories, {className = 'story-list', limit = 0, imageLimit = stories.length} = {}) {
+  return `<ul class="${className}">${stories.map((story, index) => `<li>${compact(story, limit, index < imageLimit)}</li>`).join('')}</ul>`;
 }
 
 const matchMetrics = [
@@ -362,7 +363,7 @@ function homeSection(sections, section) {
       <a class="section-link" href="${esc(href)}">查看全部 ${section.stories.length} 条 <span aria-hidden="true">›</span></a>
       ${channelTabs(sections, section, true)}
     </header>
-    ${rest.length ? `<div class="desk-layout">${feature(first)}${storyList(rest)}</div>` : feature(first)}
+    ${rest.length ? `<div class="desk-layout">${feature(first)}${storyList(rest, {imageLimit: 0})}</div>` : feature(first)}
   </section>`;
 }
 
@@ -391,7 +392,7 @@ function renderHome(model) {
         </article>` : '<p class="empty-state">本期暂无头条。</p>'}
       </section>
       <section class="top-panel">${blockTitle('重点新闻')}
-        ${top.length ? storyList(top, 'top-list', 63) : '<p class="empty-state">本期暂无重点新闻。</p>'}
+        ${top.length ? storyList(top, {className: 'top-list', limit: 63, imageLimit: 1}) : '<p class="empty-state">本期暂无重点新闻。</p>'}
       </section>
     </div>
     <div class="body-grid">
@@ -410,7 +411,7 @@ function renderChannel(model, section) {
   const lead = extras ? section.stories[0] : null;
   const remaining = lead ? section.stories.slice(1) : section.stories;
   const empty = `<div class="empty-state"><p>本期这个频道暂无收录。</p><a href="${esc(pageURL({view: 'archive'}))}">浏览往期日报</a></div>`;
-  const coverage = (lead ? feature(lead) : '') + (remaining.length ? storyList(remaining, 'story-list', 112) : '');
+  const coverage = (lead ? feature(lead) : '') + (remaining.length ? storyList(remaining, {limit: 112}) : '');
   const news = `<div class="channel-news">
     ${extras ? blockTitle('频道报道') : ''}
     ${coverage || empty}

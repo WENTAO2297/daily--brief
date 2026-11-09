@@ -77,21 +77,27 @@ main.wrap { min-height: 52vh; padding-block: 23px 64px; }
 .top-list, .story-list, .archive-list { margin: 0; padding: 0; list-style: none; }
 .top-list > li + li, .story-list > li + li { border-top: 1px solid var(--rule); }
 .compact-story { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: 12px; padding-block: 13px; min-width: 0; }
+.top-list .compact-story { grid-template-columns: minmax(0, 1fr); gap: 10px; }
 .top-list > li:first-child .compact-story { padding-top: 0; }
 .compact-story h3 { margin-top: 4px; font-size: 17px; font-weight: 730; line-height: 1.38; overflow-wrap: anywhere; }
+.top-list > li:first-child h3 { font: 750 clamp(20px, 1.4vw, 23px)/1.27 var(--display); }
 .compact-story .teaser { margin-top: 5px; }
 .thumbnail { width: 91px; overflow: hidden; background: var(--wash); }
 .thumbnail img { aspect-ratio: 4/3; object-fit: cover; }
+.top-list .thumbnail { width: 100%; }
+.top-list .thumbnail img { aspect-ratio: 2.8; max-height: 168px; }
 
 .body-grid { margin-top: 28px; }
 .desk-title { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 5px 12px; }
 .desk-title .section-link { justify-self: end; white-space: nowrap; }
 .desk-title .channel-tabs { grid-column: 1/-1; margin-bottom: 0; }
-.desk-layout { display: grid; gap: 10px; }
+.top-panel, .desk-layout { container-type: inline-size; }
+.desk-layout { display: grid; align-content: start; gap: 10px; }
 .desk-layout > .story-list { border-top: 1px solid var(--rule); }
 .feature-story { min-width: 0; }
 .feature-story h3 { font: 750 clamp(21px, 2vw, 28px)/1.28 var(--display); margin-block: 4px 6px; }
 .feature-image img { aspect-ratio: 16/9; object-fit: cover; }
+.desk-layout .feature-image img { object-fit: contain; background: var(--paper); }
 .feature-image { margin-bottom: 8px; }
 .desk > .feature-story { max-width: 590px; }
 .channel-empty-list { border-top: 1px solid var(--rule); padding-top: 12px; color: var(--muted); font-size: 13px; }
@@ -303,13 +309,10 @@ main.wrap { min-height: 52vh; padding-block: 23px 64px; }
   .lead h3 { text-wrap: balance; }
   .top-list .compact-story { padding-block: 9px; }
   .top-list .teaser { line-height: 1.52; }
-  .top-list .thumbnail { width: clamp(84px, 7.4vw, 106px); }
-  .top-list .thumbnail img { aspect-ratio: 3/2; }
 }
 @media (min-width: 721px) and (max-width: 1150px), (min-width: 721px) and (max-height: 780px) {
   .lead-image img { max-height: 265px; }
   .top-list .compact-story { padding-block: 7px; }
-  .top-list .thumbnail { width: 76px; }
   .top-list .teaser { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
   .top-list > li + li .teaser { -webkit-line-clamp: 1; }
 }
@@ -323,21 +326,22 @@ main.wrap { min-height: 52vh; padding-block: 23px 64px; }
   .desk-title .section-link { grid-column: -2; grid-row: 1; }
   .desk-title .channel-tabs { grid-column: 2; grid-row: 1; gap: 3px 9px; }
   .desk-title .channel-tabs a { padding: 0 0 2px; font-size: 13px; }
-  .desk-layout .feature-story:has(.feature-image) {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) clamp(86px, 9.8vw, 166px);
-    column-gap: 15px;
-    align-items: start;
+  .desk .feature-story { display: flex; flex-direction: column; gap: 10px; }
+  .desk .feature-image { order: 1; margin: 0; }
+  .desk-layout .feature-image img { max-height: 212px; }
+  @container (min-width: 500px) {
+    .top-list .compact-story:has(.thumbnail), .desk-layout .feature-story:has(.feature-image) {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 36%);
+      column-gap: 20px;
+      align-items: start;
+    }
+    .top-list .thumbnail img { aspect-ratio: 3/2; }
   }
-  .desk-layout .feature-text { grid-area: 1 / 1; }
-  .desk-layout .feature-image { grid-area: 1 / 2; margin-bottom: 0; }
-  .desk-layout .feature-image img { aspect-ratio: 4/3; }
-  .desk > .feature-story { display: flex; flex-direction: column; gap: 10px; max-width: none; }
-  .desk > .feature-story .feature-image { order: 1; margin: 0; }
+  .desk > .feature-story { max-width: none; }
   .desk > .feature-story .feature-image img { aspect-ratio: 2.7; max-height: 190px; }
   .desk .feature-story h3 { font-size: clamp(21px, 1.65vw, 25px); }
   .desk .story-list .compact-story { padding-block: 9px; }
-  .desk .story-list .thumbnail { width: 76px; }
   .reading-guide section:only-child { grid-column: 1/-1; }
   .reading-guide section + section { border: 0; padding: 0; }
 }
