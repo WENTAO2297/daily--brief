@@ -1,14 +1,15 @@
 # 每日新闻情报日报
 
-这是一个 iPhone 优先的新闻 App 信息流。日报内容从 `data/latest.json` 读取，网页不调用 OpenAI API；每日报告包含主视觉、今日重点、多个频道卡片和收尾链接。
+这是一个适配手机和桌面的中文新闻网站。首页汇集头条、重点新闻和频道报道；文章详情、频道和往期日报可通过链接直接打开。网页从静态 JSON 读取内容。
 
 ## 本地预览
 
 ```bash
-python3 -m http.server 8000
+python3 scripts/build_site.py
+python3 -m http.server 8000 --directory dist
 ```
 
-然后打开 `http://localhost:8000`。需要通过本地 HTTP 服务预览，因为页面会使用 `fetch()` 读取日报 JSON。
+然后打开 `http://localhost:8000`。修改页面或样式后，重新运行 `python3 scripts/build_site.py` 同步部署目录和往期索引。这一步不调用 API。
 
 ## 在线访问
 
@@ -20,7 +21,7 @@ python3 -m http.server 8000
 
 ## 文件
 
-- `index.html`：手机端新闻 App 信息流页面
+- `index.html`、`assets/`：网页结构、样式和页面逻辑
 - `data/YYYY-MM-DD.json`：按日期保存的完整日报
 - `data/latest.json`：首页读取的最新日报
 - `CODEX_HANDOFF.md`：项目后续任务与约束

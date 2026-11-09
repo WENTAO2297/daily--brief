@@ -15,6 +15,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from brief_sources import SSL_CONTEXT, collect_candidates
+from build_site import build_site
 
 ROOT = Path(__file__).resolve().parents[1]
 NOW = datetime.now(ZoneInfo("Asia/Shanghai"))
@@ -228,11 +229,11 @@ def build_brief(edited: dict, candidates: list[dict]) -> dict:
 
 def write_brief(brief: dict) -> None:
     payload = json.dumps(brief, ensure_ascii=False, indent=2) + "\n"
-    for directory in (ROOT / "data", ROOT / "dist" / "data"):
-        directory.mkdir(parents=True, exist_ok=True)
-        for name in (f"{TODAY}.json", "latest.json"):
-            (directory / name).write_text(payload, encoding="utf-8")
-    (ROOT / "dist" / "index.html").write_bytes((ROOT / "index.html").read_bytes())
+    directory = ROOT / "data"
+    directory.mkdir(parents=True, exist_ok=True)
+    for name in (f"{TODAY}.json", "latest.json"):
+        (directory / name).write_text(payload, encoding="utf-8")
+    build_site(ROOT)
 
 
 def main() -> None:
