@@ -1,19 +1,22 @@
-name: Generate daily brief
+name: Generate and publish daily brief
 
 on:
   workflow_dispatch:
   # Automatic daily trigger paused. Run manually only if needed.
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
-  group: daily-brief-generator
+  group: pages
   cancel-in-progress: false
 
 jobs:
   generate:
     runs-on: ubuntu-latest
+    timeout-minutes: 12
+    permissions:
+      contents: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
@@ -27,7 +30,7 @@ jobs:
 
       - name: Generate and validate today's brief
         env:
-          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: python scripts/generate_brief.py
 
       - name: Commit generated brief
@@ -41,3 +44,23 @@ jobs:
           fi
           git commit -m "chore: update daily brief"
           git push origin HEAD:main
+
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./dist
+
+  deploy:
+    needs: generate
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

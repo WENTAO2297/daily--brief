@@ -14,7 +14,9 @@ python3 -m http.server 8000
 
 公开站点：<https://wentao2297.github.io/daily--brief/>
 
-每次向 `main` 分支推送更新时，GitHub Actions 会自动从 `dist/` 发布新版网页。另有一个每日生成工作流：北京时间 07:30 自动收集 RSS/网页候选新闻，调用 DeepSeek Flash 进行筛选、DeepSeek Pro 生成最终 JSON，校验后提交 `data/` 和 `dist/`。也可以从手机在 GitHub Actions 页面手动点击 `Run workflow`。
+在仓库的 Actions Secrets 配置 `OPENAI_API_KEY`（需有 Responses 写入权限），再从 [Generate and publish daily brief](https://github.com/WENTAO2297/daily--brief/actions/workflows/daily-brief.yml) 点击 **Run workflow**，选择 `main`。日报只手动生成，定时触发已关闭。
+
+工作流从公开新闻源分地区和频道收集候选，检查文章配图，用一次 OpenAI Responses API 请求编写日报。来源和配图来自已抓取的资料，校验通过后保存并发布到 GitHub Pages。Actions 的运行摘要显示实际输入、输出 token 数，以及按官方标准单价计算的费用估算。
 
 ## 文件
 
@@ -27,4 +29,4 @@ python3 -m http.server 8000
 
 ## 当前阶段
 
-本仓库已经完成“多频道日报 JSON 写入 GitHub → GitHub Pages 自动发布 → 手机网站读取日报”的闭环。当前处于测试模式：云端工作流按上海时间每天 07:30 独立重建当天日报，目标为 18–25 条卡片和尽量多的真实图片，并推送到 `main`；需要在 GitHub Actions Secrets 中配置 `DEEPSEEK_API_KEY`。
+测试模式下每次独立重建当天日报。同一期的新闻去重，信息不足时允许缩短。可用 `python3 scripts/generate_brief.py --sources-only` 只检查公开来源和配图，无需 API 密钥。

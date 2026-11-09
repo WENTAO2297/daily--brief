@@ -51,6 +51,7 @@
     .hero .media figcaption { color:#c6d6dc; background:#142a3a; }
     .image-group { display:grid; grid-template-columns:repeat(2,1fr); gap:3px; }
     .image-group img { min-height:150px; aspect-ratio:1.35; }
+    .image-group img:only-child { grid-column:1/-1; }
     .empty { color:#677986; background:#fff; border:1px dashed #c6d4dc; padding:16px; border-radius:15px; }
     .closing { color:#e5f0f3; background:#142a3a; border-radius:20px; padding:21px 19px; }
     .closing h2 { color:#fff; }
@@ -90,6 +91,12 @@
       const body = shown.length > 1 ? `<div class="image-group">${shown.map(i => `<img src="${esc(valid(i.url))}" alt="${esc(i.alt)}" loading="lazy">`).join('')}</div>` : `<img src="${esc(valid(shown[0].url))}" alt="${esc(shown[0].alt)}"${hero ? '' : ' loading="lazy"'}>`;
       return `<figure class="media">${body}${shown[0].credit ? `<figcaption>图片：${esc(shown[0].credit)}</figcaption>` : ''}</figure>`;
     };
+    app.addEventListener('error', (event) => {
+      if (event.target.tagName !== 'IMG') return;
+      const figure = event.target.closest('figure');
+      event.target.remove();
+      if (figure && !figure.querySelector('img')) figure.remove();
+    }, true);
     const card = (item, hero = false) => {
       const kind = item.kind || (hero ? 'hero' : 'standard');
       const cls = hero ? 'hero' : `story ${kind}`;
