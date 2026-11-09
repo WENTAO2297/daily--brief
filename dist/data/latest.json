@@ -1,447 +1,429 @@
 {
-  "date": "2026-09-25",
-  "edition": "每日中文新闻情报日报",
-  "updatedAt": "2026-09-25T15:11:38+08:00",
-  "overview": "今日聚焦国产算力与 AI 基础设施进展：华为发布全球首个近封装光学超节点；阿里云栖大会披露 3 倍性能芯片、10 万亿参数模型与 20GW 数据中心；高通重构骁龙芯片面向智能体 AI。AI 论文与开源生态活跃，GitHub 发布多项工程实践。本次图片检索受限。",
+  "date": "2026-11-09",
+  "updatedAt": "2026-11-09T10:19:12+08:00",
+  "edition": "全球版 · 测试模式",
+  "overview": "过去约24小时，非洲和欧洲接连发生致命事故，伊拉克天然气田停产也冲击库区供电。美国政治争议、阿根廷紧缩路线及日本汇市动向同样值得关注。",
   "hero": {
-    "channel": "AI核心动态",
-    "title": "华为发布全球首个采用近封装光学技术的超节点 国产算力探路突围",
-    "what": "华为发布全球首个采用近封装光学技术的超节点，旨在提升国产算力互联带宽与能效，为大规模 AI 训练提供新方案。",
-    "why": "这是中国在先进封装与算力互连领域的重要突破，有望缓解高端算力芯片受限带来的瓶颈。",
+    "kind": "hero",
+    "channel": "🌍 全球重大新闻",
+    "region": "非洲",
+    "title": "埃及两列火车相撞，至少7人死亡",
+    "what": "两列同向行驶的列车在吉萨市外相撞，多节车厢脱轨。事故造成至少7人死亡、100多人受伤。现有摘要未提供事故原因或调查进展。",
+    "why": "伤亡规模和铁路事故调查将成为埃及交通安全的焦点。",
     "sources": [
       {
-        "label": "北京市人民政府门户网站",
-        "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9DZy1UNWc5d2l4Mnl0ckgtX1JUTlJfWDBWTnpfUV9sMC1CbkR1Y0xjNXEwbEhndnBHSUdoNTJuWTNXYktTS0hNMExmRFVsU1ctUTdwYjVtYm16VmRFN3V1elJKekJHTG1OZ2tOSExweWpLUUFxdFpHSUlIdw?oc=5"
+        "label": "BBC",
+        "url": "https://www.bbc.co.uk/news/articles/cwvgr20mmmevo?at_medium=RSS&at_campaign=rss"
       }
     ],
-    "kind": "hero",
-    "image": [],
-    "images": []
+    "images": [
+      {
+        "url": "https://ichef.bbci.co.uk/ace/standard/640/cpsprodpb/3886/live/ab03aa70-db8a-11f1-b441-2b33b063138f.jpg",
+        "alt": "埃及两列火车相撞，至少7人死亡",
+        "credit": "BBC"
+      }
+    ]
   },
   "topStories": [
     {
-      "channel": "AI核心动态",
-      "title": "杨植霖入选《时代》2026年全球百大AI影响力人物",
-      "what": "《时代》杂志公布2026年AI领域100位最具影响力人物，杨植霖入选。",
-      "why": "该榜单反映全球 AI 领导者的最新格局，杨植霖的入选凸显中国 AI 创新力量。",
+      "kind": "large",
+      "channel": "🌍 全球重大新闻",
+      "region": "中东",
+      "title": "无人机袭击后伊拉克Khor Mor气田停产",
+      "what": "无人机袭击导致伊拉克库尔德地区的Khor Mor天然气田停产。报道说，库区超过70%的地方因此失去供电；摘要未说明袭击方或停产期限。",
+      "why": "天然气生产受阻已影响区域供电，凸显能源基础设施面临的安全风险。",
       "sources": [
         {
-          "label": "Time Magazine",
-          "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1oOWZ6X2U4MkhBTVd6SFc5a2pYZHNZWE9WNWc3S0VTb2ZoUGtEcnVOVUdqcmU2RDBYQUMwcGNpcjBHdTlXcFNIczBNWlQwbmd5WlpTZGZjbmtzbFRMRHpOWHVGSHpCNW8?oc=5"
+          "label": "Al Jazeera",
+          "url": "https://www.aljazeera.com/news/2026/11/9/drone-attack-suspends-production-at-iraqs-khor-mor-gasfield?traffic_source=rss"
         }
       ],
+      "images": [
+        {
+          "url": "https://www.aljazeera.com/wp-content/uploads/2026/11/reuters_6af0eefb-1794174715.jpg?resize=1920%2C1440",
+          "alt": "无人机袭击后伊拉克Khor Mor气田停产",
+          "credit": "Al Jazeera"
+        }
+      ]
+    },
+    {
       "kind": "large",
-      "image": [],
+      "channel": "🌍 全球重大新闻",
+      "region": "非洲",
+      "title": "塞内加尔外海移民船沉没，34人死亡",
+      "what": "一艘移民船在塞内加尔外海沉没，造成34人死亡。报道将事故置于西非经大西洋前往西班牙加那利群岛的危险航线上，摘要未提供获救人数。",
+      "why": "这条航线上持续发生致命事故，移民偷渡风险仍然突出。",
+      "sources": [
+        {
+          "label": "Le Monde",
+          "url": "https://www.lemonde.fr/en/international/article/2026/11/08/migrant-boat-sinks-off-senegal-leaving-34-dead_6775276_4.html"
+        }
+      ],
       "images": []
     },
     {
-      "channel": "经济 / 科技产业",
-      "title": "面向智能体AI时代，高通重构骁龙芯片",
-      "what": "高通宣布重构骁龙芯片，以适配智能体 AI 的工作负载，提升端侧推理与多模态处理能力。",
-      "why": "终端芯片的 AI 能力升级是智能体落地的重要基础，影响手机、PC 与 IoT 设备生态。",
+      "kind": "large",
+      "channel": "🌍 全球重大新闻",
+      "region": "欧洲",
+      "title": "波兰克拉科夫枪击案造成六人死亡",
+      "what": "BBC称，克拉科夫主广场发生随机枪击，造成六人死亡；随后又在枪手住所发现三具遗体。现有摘要没有说明这三具遗体与枪击案的具体关联。",
+      "why": "案件造成多人死亡，现场调查和受害者身份确认仍是关键。",
       "sources": [
         {
-          "label": "sohu.com",
-          "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNU2RoZ2NWei03M2JZdENNZU5UcWNwRXJFdFQ1d2hmUDNteW1tdWpVWUxkSTFYZnNodlhBV1FkWUlHLU1sOVY1bU1sQ0FZUENGbVhuZWtsRy13M0d2M1FaMkgwWVV4Z2dSdWhwWlBENTA2SHh3SUZkU1ROOW51RC04UUt5RFpzRXdpZjNPYw?oc=5"
+          "label": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cmd7q15drwgeo?at_medium=RSS&at_campaign=rss"
         }
       ],
-      "kind": "large",
-      "image": [],
-      "images": []
+      "images": [
+        {
+          "url": "https://ichef.bbci.co.uk/ace/standard/640/cpsprodpb/f6c3/live/95455f00-dac5-11f1-bda8-29fb69dbc026.jpg",
+          "alt": "波兰克拉科夫枪击案造成六人死亡",
+          "credit": "BBC"
+        }
+      ]
     },
     {
-      "channel": "前沿论文 / 技术",
-      "title": "PAWS：政策驱动的智能体世界模拟数据集",
-      "what": "论文提出 PAWS 数据集，覆盖36个美国金融经济政策事件、12,727条政策相关新闻和65,291个来源锚定的利益相关者动作，用于政策智能体模拟重放。",
-      "why": "该数据集将政策干预与历史证据对齐，可支持更可靠的金融多智能体模拟，对政策分析和 AI 经济学研究有价值。",
+      "kind": "large",
+      "channel": "🌍 全球重大新闻",
+      "region": "非洲",
+      "title": "非国大在南非地方选举中创下历来最差成绩",
+      "what": "南非非洲人国民大会（ANC）在地方选举中取得该党历来最差结果。总统拉马福萨表示应尊重选民裁决，党秘书长则称结果“灾难性”。",
+      "why": "选举结果给长期执政的非国大带来压力，迫使其回应选民的不满。",
       "sources": [
         {
-          "label": "arXiv",
-          "url": "https://arxiv.org/abs/2609.28547"
+          "label": "BBC",
+          "url": "https://www.bbc.co.uk/news/articles/cwrkygrxp11mo?at_medium=RSS&at_campaign=rss"
         }
       ],
-      "kind": "large",
-      "image": [],
-      "images": []
-    },
-    {
-      "channel": "GitHub / 开源项目",
-      "title": "GitHub 安全实验室推出 AI 驱动的模糊测试 Taskflow Agent",
-      "what": "GitHub 安全实验室发布基于 Taskflow Agent 框架的新模糊测试任务流，实现 AI 驱动的安全测试自动化。",
-      "why": "将 AI 代理引入模糊测试可提升漏洞发现效率，对开源安全生态有直接影响。",
-      "sources": [
+      "images": [
         {
-          "label": "GitHub Blog",
-          "url": "https://github.blog/security/application-security/ai-powered-fuzzing-with-the-github-security-lab-taskflow-agent/"
+          "url": "https://ichef.bbci.co.uk/ace/standard/640/cpsprodpb/2630/live/78c708a0-db5c-11f1-adda-c54f54e3ce6a.jpg",
+          "alt": "非国大在南非地方选举中创下历来最差成绩",
+          "credit": "BBC"
         }
-      ],
-      "kind": "large",
-      "image": [],
-      "images": []
+      ]
     }
   ],
   "channels": [
     {
-      "title": "全球重大新闻",
-      "note": "国际局势与能源外交",
+      "title": "🌍 全球重大新闻",
+      "note": "国际局势 · 外交 · 能源",
       "stories": [
         {
-          "channel": "全球重大新闻",
-          "title": "孟加拉国为何需要稳健的核外交以保障长期能源安全",
-          "what": "The Business Standard 分析孟加拉国通过核外交实现长期能源安全的必要性。",
-          "why": "核能合作涉及地缘政治与技术风险，对南亚能源格局有影响。",
+          "kind": "standard",
+          "channel": "🌍 全球重大新闻",
+          "region": "美洲",
+          "title": "特朗普称大规模驱逐政策“太严厉”",
+          "what": "特朗普在CBS《60 Minutes》节目中说，强硬的移民打击政策“太严厉”，并称大规模驱逐在政治上伤害了他。此番表态出现在中期选举失利之后。",
+          "why": "这番说法显示移民政策可能成为共和党检讨选举表现时的争议焦点。",
           "sources": [
             {
-              "label": "The Business Standard",
-              "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPN3VWTHM3VlBtNjVKYVdNZnRxZGc3UnNGUGxqdWtJeGpiemtxUXRacXhmenh4QWNUSUIyX2M2bG0wTnY4VjNMdnY4OGZieTd4Rm1hWjFyNEpaeGt3MlYtdkZVRVlWaG9SSk1GbUY5UjhlUHp5NU5USjFYVWR1bV91ZGY4UDh2VVNpalRvMnp3U1Z5eUhHV0tidVJMLW51ZHZYeFdYWC1HeHl1b2hWOG1GMzR3?oc=5"
+              "label": "BBC",
+              "url": "https://www.bbc.co.uk/news/articles/cmg476w7wnl2o?at_medium=RSS&at_campaign=rss"
             }
           ],
+          "images": [
+            {
+              "url": "https://ichef.bbci.co.uk/ace/standard/640/cpsprodpb/28ee/live/18b61b60-dbb4-11f1-b35d-8ff000e4934a.jpg",
+              "alt": "特朗普称大规模驱逐政策“太严厉”",
+              "credit": "BBC"
+            }
+          ]
+        },
+        {
           "kind": "standard",
-          "image": [],
+          "channel": "🌍 全球重大新闻",
+          "region": "美洲",
+          "title": "杰弗里斯支持弹劾赫格塞思，民主党拟调查特朗普盟友",
+          "what": "众议院民主党领袖杰弗里斯支持弹劾国防部长赫格塞思，并表示民主党人将推动对特朗普盟友展开委员会调查。五角大楼称，赫格塞思不会被所谓“虚假调查”吓退。",
+          "why": "这预示国会监督和党派对抗将成为中期选举后的政治焦点。",
+          "sources": [
+            {
+              "label": "Al Jazeera",
+              "url": "https://www.aljazeera.com/news/2026/11/9/jeffries-backs-hegseth-impeachment-as-democrats-vow-probes-of-trump-allies?traffic_source=rss"
+            },
+            {
+              "label": "BBC",
+              "url": "https://www.bbc.co.uk/news/articles/cj4g1nwx39wno?at_medium=RSS&at_campaign=rss"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://www.aljazeera.com/wp-content/uploads/2026/11/afp_6af0da4e599b-1794169422.jpg?resize=1920%2C1440",
+              "alt": "杰弗里斯支持弹劾赫格塞思，民主党拟调查特朗普盟友",
+              "credit": "Al Jazeera"
+            }
+          ]
+        },
+        {
+          "kind": "standard",
+          "channel": "🌍 全球重大新闻",
+          "region": "美洲",
+          "title": "教皇利奥十四世在阿根廷批评米莱紧缩政策",
+          "what": "教皇利奥十四世访问阿根廷期间公开批评总统米莱的紧缩措施，主张经济应服务于民众、增长成果应惠及所有人。报道说，他在布宜诺斯艾利斯的演说获得热烈掌声；这是其12天拉美行程的第二站。",
+          "why": "教皇的表态将民生与经济调整的争论带入阿根廷的政治和公共讨论。",
+          "sources": [
+            {
+              "label": "The Guardian",
+              "url": "https://www.theguardian.com/world/2026/nov/09/pope-leo-argentina-visit-speech-javier-milei-austerity"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://i.guim.co.uk/img/media/cebae71e5fdd86b5579126f7d39addd8b86cf7f9/123_0_2842_2274/master/2842.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=920553499e2d4cef68f79a76ce8f99b1",
+              "alt": "教皇利奥十四世在阿根廷批评米莱紧缩政策",
+              "credit": "The Guardian"
+            }
+          ]
+        },
+        {
+          "kind": "standard",
+          "channel": "🌍 全球重大新闻",
+          "region": "亚太",
+          "title": "印度以灯火、祈祷和烟花庆祝排灯节",
+          "what": "印度各地民众以祈祷、灯饰、烟花和传统甜食庆祝排灯节。报道说，数百万人参与这一重要印度教节日。",
+          "why": "排灯节是印度重要的宗教与社会节庆，也展现了节日传统在各地的延续。",
+          "sources": [
+            {
+              "label": "Al Jazeera",
+              "url": "https://www.aljazeera.com/video/2026/11/9/indias-night-lights-up-for-diwali?traffic_source=rss"
+            },
+            {
+              "label": "BBC",
+              "url": "https://www.bbc.co.uk/news/articles/cm70pdwz122ro?at_medium=RSS&at_campaign=rss"
+            }
+          ],
+          "images": []
+        },
+        {
+          "kind": "standard",
+          "channel": "🌍 全球重大新闻",
+          "region": "亚太",
+          "title": "澳洲前警员在庭审中否认杀害伴侣",
+          "what": "在悉尼庭审作证的前警员Beau Lamarre-Condon否认曾“处决”Jesse Baird，并称未意识到对方脸部有严重枪伤。他被控于2024年在Paddington杀害Baird及其伴侣Luke Davies，已表示不认罪。",
+          "why": "庭审证词将影响这起谋杀案的审理，也使涉案前警员的责任受到关注。",
+          "sources": [
+            {
+              "label": "The Guardian",
+              "url": "https://www.theguardian.com/australia-news/2026/nov/09/beau-lamarre-condon-trial-reenacts-shooting-jesse-baird-ntwnfb"
+            }
+          ],
+          "images": []
+        },
+        {
+          "kind": "standard",
+          "channel": "🌍 全球重大新闻",
+          "region": "亚太",
+          "title": "印尼灭火行动直升机坠毁，一名机组人员死亡",
+          "what": "一架参与灭火行动的直升机在印度尼西亚坠毁，一名印尼机组人员死亡。一名澳大利亚人和一名新西兰人获救。",
+          "why": "事故发生在灭火行动中，再次凸显执行高风险救援和消防任务时的安全问题。",
+          "sources": [
+            {
+              "label": "BBC",
+              "url": "https://www.bbc.co.uk/news/articles/cxnv0442ml6vo?at_medium=RSS&at_campaign=rss"
+            }
+          ],
+          "images": []
+        },
+        {
+          "kind": "standard",
+          "channel": "🌍 全球重大新闻",
+          "region": "美洲",
+          "title": "英伟达调查涉及黄仁勋的安全疑虑",
+          "what": "BBC报道称，英伟达正调查有关首席执行官黄仁勋与一名被怀疑是中国间谍者有婚外关系的报道。黄仁勋承认曾对妻子不忠，并表示会配合安全调查；目前摘要未提供调查结论。",
+          "why": "相关指控涉及企业高层与安全审查，但目前仍待调查厘清。",
+          "sources": [
+            {
+              "label": "BBC",
+              "url": "https://www.bbc.co.uk/news/articles/c3dxw10rjn9no?at_medium=RSS&at_campaign=rss"
+            }
+          ],
+          "images": []
+        },
+        {
+          "kind": "standard",
+          "channel": "🌍 全球重大新闻",
+          "region": "亚太",
+          "title": "澳洲一宗家暴谋杀案中，被告家人遭控事后协助",
+          "what": "新南威尔士州Wagga Wagga一名23岁女子于9月遭多处刺伤死亡。一名被控谋杀她的男子的家人现被控事后协助相关罪行。",
+          "why": "新增指控扩大了案件调查范围，后续司法程序将厘清相关人员是否承担责任。",
+          "sources": [
+            {
+              "label": "The Guardian",
+              "url": "https://www.theguardian.com/australia-news/2026/nov/09/danielle-madgwick-dv-murder-family-of-accused-charged-ntwnfb"
+            }
+          ],
           "images": []
         }
       ]
     },
     {
-      "title": "AI核心动态",
-      "note": "国产算力与智能体基础设施",
+      "title": "🤖 AI核心动态",
+      "note": "模型 · 多模态 · 基础设施",
+      "stories": []
+    },
+    {
+      "title": "🧑‍💻 AI Coding / Agent",
+      "note": "开发者工具 · 软件工程代理",
+      "stories": []
+    },
+    {
+      "title": "📄 前沿论文 / 技术",
+      "note": "问题 · 方法 · 实验结果",
+      "stories": []
+    },
+    {
+      "title": "🧰 GitHub / 开源项目",
+      "note": "近期发布 · 实用工具",
+      "stories": []
+    },
+    {
+      "title": "🎯 CS2专区",
+      "note": "Falcons · 世界前十 · 顶级赛事 · Valve",
+      "stories": []
+    },
+    {
+      "title": "🇯🇵 日本动态",
+      "note": "政策 · 科技 · 科研",
       "stories": [
         {
-          "channel": "AI核心动态",
-          "title": "智能体加速落地，算力产业如何破局？|直击AICC2026",
-          "what": "在AICC2026大会上，与会嘉宾探讨智能体加速落地背景下算力产业的瓶颈与破局路径。",
-          "why": "算力供给和软件生态是智能体规模化的关键，相关讨论反映产业最新共识。",
+          "kind": "standard",
+          "channel": "🇯🇵 日本动态",
+          "region": "日本",
+          "title": "日本披露夏季曾连续三天干预日元",
+          "what": "日本公布的数据称，夏季曾连续三天进行日元干预；交易员此前普遍认为干预只持续了两天。摘要未提供干预金额或具体日期。",
+          "why": "干预时长信息可能影响市场对日本汇市操作方式的判断。",
           "sources": [
             {
-              "label": "财联社",
-              "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE4yRG93MnFrcGVPeWFwZXZPdDZncTRQZFB5RTlUamdmTFJQLURMOFphN240RVVkWUR2S0p6T01mVHNDUUh5X0JaQQ?oc=5"
+              "label": "The Japan Times",
+              "url": "https://www.japantimes.co.jp/business/2026/11/09/markets/japan-july-sept-yen-intervention/"
             }
           ],
-          "kind": "standard",
-          "image": [],
-          "images": []
+          "images": [
+            {
+              "url": "https://www.japantimes.co.jp/japantimes/uploads/images/2026/11/09/572944.jpg",
+              "alt": "日本披露夏季曾连续三天干预日元",
+              "credit": "The Japan Times"
+            }
+          ]
         },
         {
-          "channel": "AI核心动态",
-          "title": "智能体能力持续升级 多场景落地应用提速",
-          "what": "央广网报道智能体能力持续升级，多场景落地应用提速，互联网大厂加大AI基础设施建设投入。",
-          "why": "大厂加大基础设施投入意味着智能体竞争进入算力与工程能力比拼阶段。",
+          "kind": "standard",
+          "channel": "🇯🇵 日本动态",
+          "region": "日本",
+          "title": "日本企业面对成本上涨，调价仍难获消费者接受",
+          "what": "在成本上升之际，日本企业难以把涨价转嫁给消费者。报道指出，长期通缩时期形成的消费习惯，使消费者对价格上调较为抗拒。",
+          "why": "企业能否调价关系到成本压力如何在公司利润与家庭支出之间分摊。",
           "sources": [
             {
-              "label": "央广网",
-              "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE00YnVuX3M0TGg4dHZjS0oyc0lFR1UyMVQtdjZ5M3FMZm4tM3BQOFdwVkxtZmRPQ211VWxrRU8zRzJ2NHhJWDIwUHhOVElWdUdnZ1VuTFkwa2w1ZUt6dDRQZHh6ZklYTk1wTDR2V0Q0a2UyYTQ?oc=5"
+              "label": "The Japan Times",
+              "url": "https://www.japantimes.co.jp/business/2026/11/09/companies/japan-firms-price-hikes-tough-sell/"
             }
           ],
-          "kind": "standard",
-          "image": [],
-          "images": []
+          "images": [
+            {
+              "url": "https://www.japantimes.co.jp/japantimes/uploads/images/2026/11/09/572929.jpg",
+              "alt": "日本企业面对成本上涨，调价仍难获消费者接受",
+              "credit": "The Japan Times"
+            }
+          ]
         },
         {
-          "channel": "AI核心动态",
-          "title": "底层软件实现自主突破 国产3D算力芯片生态建设提速",
-          "what": "国产3D算力芯片在底层软件实现自主突破，生态建设提速。",
-          "why": "软件栈自主化是国产算力实用化的关键，突破有助于降低对国外工具链依赖。",
+          "kind": "standard",
+          "channel": "🇯🇵 日本动态",
+          "region": "日本",
+          "title": "日本地方政府借助私人车库应对洪水风险",
+          "what": "日本一些地方政府正与私营企业合作，让司机在暴雨或洪水风险下把车辆停放到私人车库，以减少车辆受灾风险。",
+          "why": "这类合作为地方政府应对强降雨和洪水提供了新的车辆安置方式。",
           "sources": [
             {
-              "label": "tech.gmw.cn",
-              "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1UN0Q5SUlrVGZnLWFPX05PX0lpZFY4VkVGRG41UF9OXy1ubDVWVWktR2Iyck1wV2xiM053SmxhQUg4TVFWS1pFazhDc0NlZk5BczFvalJNc3NyRHRRaEdOSw?oc=5"
+              "label": "The Japan Times",
+              "url": "https://www.japantimes.co.jp/news/2026/11/09/japan/society/multistory-parking-floods/"
             }
           ],
-          "kind": "standard",
-          "image": [],
-          "images": []
+          "images": [
+            {
+              "url": "https://www.japantimes.co.jp/japantimes/uploads/images/2026/11/09/572924.jpg",
+              "alt": "日本地方政府借助私人车库应对洪水风险",
+              "credit": "The Japan Times"
+            }
+          ]
         }
       ]
     },
     {
-      "title": "AI Coding / Agent",
-      "note": "编码代理与 MCP 集成",
+      "title": "💹 经济 / 科技产业",
+      "note": "中国宏观 · 全球经济与科技产业",
       "stories": [
         {
-          "channel": "AI Coding / Agent",
-          "title": "2026年五大 Claude Code 替代品：Codex、Copilot 等",
-          "what": "TechRepublic 评测了 2026 年 Claude Code 的五个主要替代品，包括 OpenAI Codex、GitHub Copilot 等。",
-          "why": "编码代理工具竞争加剧，开发者需要了解不同工具的优势与适用场景。",
-          "sources": [
-            {
-              "label": "TechRepublic",
-              "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNRV9LZktVQ1p4UWJpSWtJb0ZFS0lvZkpwVTRsOW1mT3M0dkZWYk45UUg1bldiU3pkMXJyd3pSMG82Mkw2VkFmS2xjZlFqYTlNQ0owVUNwVXFPV29aS0ZpNjRzYnVpRVREaUZMdUhjYlp0R3o4cm5pYW03UVBCVG02cllBbw?oc=5"
-            }
-          ],
           "kind": "standard",
-          "image": [],
-          "images": []
-        },
-        {
-          "channel": "AI Coding / Agent",
-          "title": "Wiz 通过 MCP 驱动的智能体集成扩展 AI 安全生态",
-          "what": "Wiz 推出基于 MCP 的智能体集成，将安全能力嵌入 AI 编码工具。",
-          "why": "安全厂商与 AI 编码工具深度集成，有助于在开发早期发现云安全风险。",
+          "channel": "💹 经济 / 科技产业",
+          "region": "欧洲",
+          "title": "英国认真考虑限制未满16岁者使用Vinted和eBay",
+          "what": "英国文化大臣确认，政府正认真考虑把Vinted和eBay列入未满16岁者禁用平台的清单。报道提到，相关禁令可能于明年3月实施，但目前仍处于考虑阶段。",
+          "why": "若政策推进，将影响未成年人使用二手交易平台的方式及平台运营。",
           "sources": [
             {
-              "label": "konsulteer.com",
-              "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQSG1Wbk5yZ01VUUpfR1BtRWljYTcyU05uMC05UHg2S3d6VlduOEhLLUx3RzJvS2puRjBrcFF4bzVJYTJwa3ltMlNZdzhaQ1FId2hyekhxRzlFX0xjcFhwTG1FdTBFR2I3dXVEOXdWZVFPaGJhZVN4ZUxCNU05RjBQaUFtemJCSVNrSWg2c0VxdmMxczNrT1NTdVVRVS1PQnAtZmdZVWN0TQ?oc=5"
+              "label": "BBC",
+              "url": "https://www.bbc.co.uk/news/articles/cmzxjvpqrjxro?at_medium=RSS&at_campaign=rss"
             }
           ],
-          "kind": "standard",
-          "image": [],
-          "images": []
-        },
-        {
-          "channel": "AI Coding / Agent",
-          "title": "Yellow 发布 SDK MCP，将非托管结算原语引入 AI 编码工具",
-          "what": "Yellow 推出 SDK MCP，使 AI 编码工具能够调用非托管结算原语。",
-          "why": "将金融结算原语嵌入编码代理，可能推动 Web3 与 AI 开发的融合。",
-          "sources": [
+          "images": [
             {
-              "label": "Yellow.com",
-              "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxQSWJydmF0d3lSRkF0aGw2RHR2WmIzSWdsV2Fzb3pKT0ozVlN4WV9hbVJ6Yk5qR2hmaUdXSExkdUxwOEFQUGNzU2o2NUg4OXdGR1VRVGQ0MWRHVFlabHRPMkppMFJhMzc1ZG1PbXl1ZDJEeVBNdXMwZ2hXWjNxNGRmSEI3bjJRVTlxTVU3NEwzYW05S212REVfVFV2ZUIxc2p3aUdRZEstR1M5UDZrNjV6Y3dHSmtTWDNkREdnWS1wd2ttUDZ5eTdVUEFqMTgyem9HUjJLTUlpalA?oc=5"
+              "url": "https://ichef.bbci.co.uk/ace/standard/640/cpsprodpb/1427/live/5d17fd80-db61-11f1-adda-c54f54e3ce6a.jpg",
+              "alt": "英国认真考虑限制未满16岁者使用Vinted和eBay",
+              "credit": "BBC"
             }
-          ],
-          "kind": "flash",
-          "image": [],
-          "images": []
+          ]
         }
       ]
     },
     {
-      "title": "前沿论文 / 技术",
-      "note": "arXiv 今日精选",
+      "title": "🔬 其他值得知道的科技与科学",
+      "note": "太空 · 芯片 · 科学突破",
       "stories": [
         {
-          "channel": "前沿论文 / 技术",
-          "title": "DEEPO：双熵增强策略优化缓解多模态大模型幻觉",
-          "what": "论文提出 DEEPO，通过信号方差正则与梯度惩罚解决强化学习中高语义熵硬查询和置信错误令牌梯度消失问题，在 MLLMs 上减少幻觉。",
-          "why": "该方法针对 RL 纠正幻觉的两个弱点，为多模态模型可靠对齐提供新思路。",
-          "sources": [
-            {
-              "label": "arXiv",
-              "url": "https://arxiv.org/abs/2609.28570"
-            }
-          ],
-          "kind": "large",
-          "image": [],
-          "images": []
-        },
-        {
-          "channel": "前沿论文 / 技术",
-          "title": "TW3Cast：冻结路由的轻量微调基础模型在 GIFT-Eval 时间序列预测中排名第三",
-          "what": "TW3Cast 是一个不使用智能体或语言模型的时间序列预测系统，通过训练集上计算的冻结路由表选择专家，在 GIFT-Eval 基准 130 个参赛系统中排名第三。",
-          "why": "证明了精心设计的轻量微调和路由策略在时间序列预测中可匹敌复杂智能体系统，具有工程参考价值。",
-          "sources": [
-            {
-              "label": "arXiv",
-              "url": "https://arxiv.org/abs/2609.28506"
-            }
-          ],
-          "kind": "large",
-          "image": [],
-          "images": []
-        },
-        {
-          "channel": "前沿论文 / 技术",
-          "title": "渐进式技能发现作为使用工具的 LLM 智能体的访问控制",
-          "what": "论文提出 skilder 框架，将能力打包为角色，智能体按需获取角色技能和工具，通过 MCP 服务器交付，以约束工具访问并保证策略合规。",
-          "why": "该框架解决企业工具集中 LLM 智能体的安全治理问题，提供了硬约束而非提示建议。",
-          "sources": [
-            {
-              "label": "arXiv",
-              "url": "https://arxiv.org/abs/2609.28693"
-            }
-          ],
-          "kind": "large",
-          "image": [],
-          "images": []
-        }
-      ]
-    },
-    {
-      "title": "GitHub / 开源项目",
-      "note": "工程实践与开源生态",
-      "stories": [
-        {
-          "channel": "GitHub / 开源项目",
-          "title": "在 GitHub Copilot 应用中渲染超大 Pull Request",
-          "what": "GitHub 工程团队重构 Copilot 应用的 diff 界面，以打开包含百万行代码和数百条内联评论的 PR。",
-          "why": "大规模 PR 的渲染性能是开发者体验的关键，该工程实践值得关注。",
-          "sources": [
-            {
-              "label": "GitHub Blog",
-              "url": "https://github.blog/engineering/user-experience/rendering-huge-pull-requests-in-the-github-copilot-app/"
-            }
-          ],
           "kind": "standard",
-          "image": [],
-          "recommendation": "值得关注",
-          "images": []
-        },
-        {
-          "channel": "GitHub / 开源项目",
-          "title": "使用 Copilot 将 GitHub Copilot 运行时迁移到 Rust",
-          "what": "GitHub 利用 Copilot 代理将 Copilot 运行时移植到 800,000 行生产级 Rust 代码。",
-          "why": "展示了 AI 辅助大型代码迁移的可行性与工程经验，对代码现代化有借鉴意义。",
+          "channel": "🔬 其他值得知道的科技与科学",
+          "region": "美洲",
+          "title": "NASA招募新一代宇航员，面向未来月球任务",
+          "what": "NASA启动新一轮宇航员招募，希望为未来在月球生活和工作的任务寻找人员。申请截止日期为12月3日，招募与Artemis计划及建设月球基地有关。",
+          "why": "招募将为NASA后续载人月球任务储备人员。",
           "sources": [
             {
-              "label": "GitHub Blog",
-              "url": "https://github.blog/ai-and-ml/generative-ai/migrating-the-github-copilot-runtime-to-rust-using-copilot/"
+              "label": "The Guardian",
+              "url": "https://www.theguardian.com/science/2026/nov/08/nasa-astronauts-moon-applications-open"
             }
           ],
-          "kind": "standard",
-          "image": [],
-          "recommendation": "值得关注",
-          "images": []
-        },
-        {
-          "channel": "GitHub / 开源项目",
-          "title": "项目 HydraFusion：多模型编排实现前沿质量",
-          "what": "GitHub 推出 HydraFusion 研究预览，通过选择性编码工作流在多模型编排中匹配或超过 Opus 5 基线并降低成本。",
-          "why": "多模型编排可能成为提升编码质量同时控制成本的新范式。",
-          "sources": [
+          "images": [
             {
-              "label": "GitHub Blog",
-              "url": "https://github.blog/ai-and-ml/github-copilot/project-hydrafusion-frontier-quality-via-multi-model-orchestration/"
+              "url": "https://i.guim.co.uk/img/media/3a9abe8a915ee753ebc3551a7608358908e01fe4/464_0_4640_3712/master/4640.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=d6a4736bbe1207edd2f27ade7639c0cc",
+              "alt": "NASA招募新一代宇航员，面向未来月球任务",
+              "credit": "The Guardian"
             }
-          ],
-          "kind": "standard",
-          "image": [],
-          "recommendation": "值得关注",
-          "images": []
-        }
-      ]
-    },
-    {
-      "title": "CS2专区",
-      "note": "今日 CS2 焦点",
-      "stories": [
-        {
-          "channel": "CS2专区",
-          "title": "HLTV 世界排名 CS2 2026 最佳战队更新",
-          "what": "EGamersWorld 更新 HLTV 世界排名，展示 CS2 当前最佳战队。",
-          "why": "HLTV 排名是 CS2 战队实力的权威参考，影响赛事种子与粉丝关注。",
-          "sources": [
-            {
-              "label": "EGamersWorld",
-              "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1xTnVfVDEtNDlIVEloWFpxQjFXTXlCTTlHaGl6VldGT2ltSG5RV2c5T3R2X0NITWowanRGaFVza3JKNGJKRlBwODFOZmo2ZmZGN0VVTWltcFlEb1pPblRCRWJOdHhxSVdT?oc=5"
-            }
-          ],
-          "kind": "standard",
-          "image": [],
-          "images": []
-        }
-      ]
-    },
-    {
-      "title": "日本动态",
-      "note": "涉日要闻",
-      "stories": [
-        {
-          "channel": "日本动态",
-          "title": "印尼总统在印尼-日本商业论坛强调绿色能源与经济外交",
-          "what": "印尼总统普拉博沃在印尼-日本商业论坛上重申印尼对绿色能源和经济外交的承诺。",
-          "why": "印尼与日本的经济合作涉及能源转型，对区域供应链有影响。",
-          "sources": [
-            {
-              "label": "Sekretariat Kabinet Republik Indonesia",
-              "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxOaUFva1QwUjdmcDlrVTNCQkJqSFZsZlZWYzVqQUlmQlpJRXFqbG1aS09KZE4yVHpkLVRMcjNJQUNwQlZKWUdsRmxqeHRRdkN3bHZlRndIX0xiVXhadEpIaFhTLTJ2QjY0YnVBQnpRcFJKOFdYa2w3YTMzMWJwdTRQUGI5N1d1OVpOQWhfX3NQQU9idUdGYTBpUXJhMjFxS3czR25DRHJoaFdTbDI4Mk5vQlRHUUJGVXdXc0l0NDh3N2I0Q1FpSHRCUjkzWG9YOWIxWVhxN2RxWVQ?oc=5"
-            }
-          ],
-          "kind": "standard",
-          "image": [],
-          "images": []
-        }
-      ]
-    },
-    {
-      "title": "经济 / 科技产业",
-      "note": "产业趋势与巨头动向",
-      "stories": [
-        {
-          "channel": "经济 / 科技产业",
-          "title": "阿里云栖大会发布3倍性能芯片、10万亿参数模型与20GW数据中心",
-          "what": "阿里云栖大会展示多项成果：3倍性能芯片、10万亿参数模型、20GW数据中心规划等。",
-          "why": "阿里云的硬件与模型规模升级显示国内云厂商在 AI 基础设施上的激进投入。",
-          "sources": [
-            {
-              "label": "财联社",
-              "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE5sMGw3eXU5Q081M3luMjRjWWF4cllxbFVRVzBSbDR4bEhza0NyS1ZXNGhaeUtmYk9ZNDJsNGg3TzUtNC1Cbmp5eQ?oc=5"
-            }
-          ],
-          "kind": "large",
-          "image": [],
-          "images": []
-        },
-        {
-          "channel": "经济 / 科技产业",
-          "title": "实探第五届数贸会：AI“画风”焕新 国产算力走到台前",
-          "what": "第五届数贸会上 AI 应用展现新形态，国产算力产品集中亮相。",
-          "why": "数贸会是数字贸易风向标，国产算力走向台前反映自主产业链加速成熟。",
-          "sources": [
-            {
-              "label": "中证网",
-              "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE82Y0dDRmpsSUkwWkFzQ2pfT0pqS2hwb1RIeHd1LXhCNklfQmIyTHd1WTZPanN0MUM0ejU2M2dOTS1wckRfbXlTbnBYVkZscUlEek8yZ1BPTVExWXEzTENkWlk4d0FpWngwWEZaZlBCVGhBSFEwUzJhZQ?oc=5"
-            }
-          ],
-          "kind": "standard",
-          "image": [],
-          "images": []
-        }
-      ]
-    },
-    {
-      "title": "其他值得知道的科技与科学",
-      "note": "跨学科进展",
-      "stories": [
-        {
-          "channel": "其他值得知道的科技与科学",
-          "title": "BaseCamp：自动化 DNA 测序数据管道的智能体 AI 框架",
-          "what": "论文提出 BaseCamp，将 DNA 测序管道中的决策层分解为六个专业 AI 智能体，自动化质量阈值选择、变异调用判定和异常诊断。",
-          "why": "生物信息学中的判断密集型决策自动化可提高一致性并减轻专家负担。",
-          "sources": [
-            {
-              "label": "arXiv",
-              "url": "https://arxiv.org/abs/2609.28557"
-            }
-          ],
-          "kind": "standard",
-          "image": [],
-          "images": []
-        },
-        {
-          "channel": "其他值得知道的科技与科学",
-          "title": "在世界模型中训练物体永久性",
-          "what": "论文构建 WROP 数据集，包含150个认知科学启发任务，用于训练视频模型的物体永久性等物理先验。",
-          "why": "提升世界模型的物理直觉对具身智能和视频生成具有基础价值。",
-          "sources": [
-            {
-              "label": "arXiv",
-              "url": "https://arxiv.org/abs/2609.28654"
-            }
-          ],
-          "kind": "standard",
-          "image": [],
-          "images": []
+          ]
         }
       ]
     }
   ],
   "closing": {
     "themes": [
-      "国产算力与先进封装突破",
-      "智能体与编码代理生态加速",
-      "AI 安全与科学自动化"
+      "多地致命事故与基础设施安全",
+      "选举失利后的政治问责与政策争论",
+      "能源、汇率与企业应对成本压力"
     ],
     "links": [
       {
-        "label": "华为超节点官方报道",
-        "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9DZy1UNWc5d2l4Mnl0ckgtX1JUTlJfWDBWTnpfUV9sMC1CbkR1Y0xjNXEwbEhndnBHSUdoNTJuWTNXYktTS0hNMExmRFVsU1ctUTdwYjVtYm16VmRFN3V1elJKekJHTG1OZ2tOSExweWpLUUFxdFpHSUlIdw?oc=5"
+        "label": "埃及两列火车相撞，至少7人死亡",
+        "url": "https://www.bbc.co.uk/news/articles/cwvgr20mmmevo?at_medium=RSS&at_campaign=rss"
       },
       {
-        "label": "PAWS 论文",
-        "url": "https://arxiv.org/abs/2609.28547"
+        "label": "无人机袭击后伊拉克Khor Mor气田停产",
+        "url": "https://www.aljazeera.com/news/2026/11/9/drone-attack-suspends-production-at-iraqs-khor-mor-gasfield?traffic_source=rss"
       },
       {
-        "label": "GitHub Copilot 运行时 Rust 迁移",
-        "url": "https://github.blog/ai-and-ml/generative-ai/migrating-the-github-copilot-runtime-to-rust-using-copilot/"
+        "label": "塞内加尔外海移民船沉没，34人死亡",
+        "url": "https://www.lemonde.fr/en/international/article/2026/11/08/migrant-boat-sinks-off-senegal-leaving-34-dead_6775276_4.html"
       }
     ]
   }
