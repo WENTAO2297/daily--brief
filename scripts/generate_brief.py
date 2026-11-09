@@ -232,11 +232,16 @@ def build_brief(edited: dict, candidates: list[dict]) -> dict:
 
 
 def write_brief(brief: dict) -> None:
-    payload = json.dumps(brief, ensure_ascii=False, indent=2) + "\n"
     directory = ROOT / "data"
     directory.mkdir(parents=True, exist_ok=True)
-    for name in (f"{TODAY}.json", "latest.json"):
-        (directory / name).write_text(payload, encoding="utf-8")
+    edition_path = directory / f"{TODAY}.json"
+    if edition_path.is_file():
+        previous = json.loads(edition_path.read_text(encoding="utf-8"))
+        if "cs2Results" in previous:
+            brief.setdefault("cs2Results", previous["cs2Results"])
+    payload = json.dumps(brief, ensure_ascii=False, indent=2) + "\n"
+    for path in (edition_path, directory / "latest.json"):
+        path.write_text(payload, encoding="utf-8")
     build_site(ROOT)
 
 

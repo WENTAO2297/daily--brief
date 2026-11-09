@@ -22,6 +22,7 @@ const requestedDate = params.get('date');
 const datePattern = /^\d{4}-\d{2}-\d{2}$/;
 const chinaDate = new Intl.DateTimeFormat('zh-CN', {dateStyle: 'full', timeZone: 'Asia/Shanghai'});
 const chinaTime = new Intl.DateTimeFormat('zh-CN', {hour: '2-digit', minute: '2-digit', hourCycle: 'h23', timeZone: 'Asia/Shanghai'});
+const matchDate = new Intl.DateTimeFormat('zh-CN', {month: 'long', day: 'numeric', timeZone: 'Asia/Shanghai'});
 const tokenCount = new Intl.NumberFormat('zh-CN');
 
 const esc = value => String(value ?? '').replace(/[&<>"']/g, char => (
@@ -83,6 +84,7 @@ function storyKey(story) {
 
 function organize(edition) {
   const sections = new Map(desks.map(([id, short, name]) => [id, {id, short, name, note: '', stories: [], home: []}]));
+  sections.get('cs2').results = edition.cs2Results || [];
   const stories = new Map();
   function add(story, fallbackDesk) {
     if (!story?.title) return null;
@@ -179,6 +181,74 @@ function storyList(stories, className = 'story-list', limit = 0) {
   return `<ul class="${className}">${stories.map(story => `<li>${compact(story, limit)}</li>`).join('')}</ul>`;
 }
 
+const matchMetrics = [
+  ['K–D', '击杀数与死亡数'],
+  ['Swing', '选手对回合胜率的影响'],
+  ['ADR', '平均每回合伤害'],
+  ['KAST', '取得击杀或助攻、存活或被队友补枪的回合占比'],
+  ['Rating', 'HLTV 对选手表现的综合评分'],
+];
+
+function matchTeamTable(team, rows, ratingVersion) {
+  return `<table class="match-table">
+    <caption>${esc(team)}</caption>
+    <thead><tr><th scope="col">选手</th>${matchMetrics.map(([label]) =>
+      `<th scope="col">${esc(label)}${label === 'Rating' && ratingVersion ? ` <small>${esc(ratingVersion)}</small>` : ''}</th>`
+    ).join('')}</tr></thead>
+    <tbody>${rows.map(player => {
+      const swingTone = player.swing > 0 ? 'stat-high' : player.swing < 0 ? 'stat-low' : '';
+      const ratingTone = player.rating > 1.04 ? 'stat-high' : player.rating < 0.96 ? 'stat-low' : '';
+      const swing = `${player.swing > 0 ? '+' : ''}${player.swing.toFixed(2)}%`;
+      return `<tr><th scope="row">${esc(player.name)}</th><td>${player.kills}–${player.deaths}</td>
+        <td class="${swingTone}">${swing}</td><td>${player.adr.toFixed(1)}</td><td>${player.kast.toFixed(1)}%</td>
+        <td class="rating-value ${ratingTone}">${player.rating.toFixed(2)}</td></tr>`;
+    }).join('')}</tbody>
+  </table>`;
+}
+
+function matchPanel(match) {
+  const maps = match.maps || [];
+  const views = [{name: '全场', stats: match.stats}, ...maps];
+  const firstStats = views.findIndex(view => view.stats?.teams?.length);
+  const hasStats = firstStats !== -1;
+  const day = matchDate.format(new Date(`${match.date}T12:00:00+08:00`));
+  const source = readLabel(match.source?.url, match.source?.label || '比赛来源');
+  const [left, right] = match.teams;
+  const [winsLeft, winsRight] = match.score;
+  return `<section class="match-panel" aria-label="${esc(`${match.event} ${left} 对阵 ${right}`)}">
+    <header class="match-header">
+      <h2>${esc(match.event)} <span>${esc(match.round)}</span></h2>
+      <p><time datetime="${esc(match.date)}">${esc(day)}</time>${match.bestOf ? `<span>BO${esc(match.bestOf)}</span>` : ''}</p>
+    </header>
+    <div class="match-score">
+      <span class="${winsLeft > winsRight ? 'match-winner' : ''}">${esc(left)}</span>
+      <strong>${winsLeft}<span>–</span>${winsRight}</strong>
+      <span class="${winsRight > winsLeft ? 'match-winner' : ''}">${esc(right)}</span>
+    </div>
+    ${hasStats ? `<div class="match-tabs" role="group" aria-label="选择选手数据">
+      ${views.map((view, index) => `<button type="button" data-match-tab="${index}" aria-pressed="${index === firstStats}">
+        <span>${esc(view.name)}</span>${view.score ? `<small>${view.score.join('–')}</small>` : ''}</button>`).join('')}
+    </div>
+    ${views.map((view, index) => `<div class="match-view" data-match-view="${index}"${index === firstStats ? '' : ' hidden'}>
+      ${view.stats?.teams?.length ? view.stats.teams.map((rows, side) => matchTeamTable(match.teams[side], rows, match.ratingVersion)).join('')
+        : '<p class="match-empty">暂无这场比赛的选手数据。</p>'}
+      ${view.stats?.url ? `<p class="match-data-link">${readLabel(view.stats.url, '查看原始数据')}</p>` : ''}
+    </div>`).join('')}` : maps.length ? `<ul class="match-map-scores">${maps.map(map =>
+      `<li><span>${esc(map.name)}</span><b>${map.score.join('–')}</b></li>`).join('')}</ul>` : ''}
+    ${source || hasStats ? `<footer class="match-footer">${source}
+      ${hasStats ? `<details><summary>指标说明</summary><dl>${matchMetrics.map(([label, definition]) =>
+        `<div><dt>${esc(label)}</dt><dd>${esc(definition)}</dd></div>`).join('')}</dl></details>` : ''}</footer>` : ''}
+  </section>`;
+}
+
+function matchTeaser(match, href) {
+  return `<a class="match-teaser" href="${esc(href)}">
+    <span>${esc(match.event)} ${esc(match.round)}</span>
+    <span class="match-teaser-score">${esc(match.teams[0])} <strong>${match.score.join('–')}</strong> ${esc(match.teams[1])}</span>
+    <span>比赛数据 <span aria-hidden="true">›</span></span>
+  </a>`;
+}
+
 function readingRail(closing) {
   const themes = closing?.themes || [];
   const links = (closing?.links || []).map(item => readLabel(item.url, item.label || '原文')).filter(Boolean);
@@ -193,15 +263,18 @@ function readingRail(closing) {
 function homeSection(section) {
   const href = datedPage({channel: section.id});
   const [first, ...rest] = section.id === 'world' ? section.home.slice(0, 4) : section.home;
-  return `<section class="desk">${blockTitle(section.name, `<a class="section-link" href="${esc(href)}">查看全部 ${section.stories.length} 条 <span aria-hidden="true">›</span></a>`)}
-    ${rest.length ? `<div class="desk-layout">${feature(first)}${storyList(rest)}</div>` : feature(first)}
+  const linkText = section.stories.length ? `查看全部 ${section.stories.length} 条` : '进入频道';
+  const result = section.results?.[0];
+  return `<section class="desk">${blockTitle(section.name, `<a class="section-link" href="${esc(href)}">${linkText} <span aria-hidden="true">›</span></a>`)}
+    ${result ? matchTeaser(result, href) : ''}
+    ${rest.length ? `<div class="desk-layout">${feature(first)}${storyList(rest)}</div>` : first ? feature(first) : ''}
   </section>`;
 }
 
 function renderHome(model) {
   const {edition, lead, top, sections, stories} = model;
-  const available = [...sections.values()].filter(section => section.home.length);
-  const empty = [...sections.values()].filter(section => !section.stories.length);
+  const available = [...sections.values()].filter(section => section.home.length || section.results?.length);
+  const empty = [...sections.values()].filter(section => !section.stories.length && !section.results?.length);
   const updated = new Date(edition.updatedAt);
   app.innerHTML = `<h1 class="sr-only">每日新闻情报日报首页</h1>
     <div class="edition-line"><strong><time datetime="${esc(edition.date)}">${esc(dateLabel(edition.date))}</time></strong>
@@ -233,13 +306,17 @@ function renderHome(model) {
 
 function renderChannel(model, section) {
   document.title = `${section.name} | 每日新闻情报日报`;
+  const results = section.results || [];
+  const news = section.stories.length ? `<div class="channel-news">
+    ${results.length ? blockTitle('频道报道') : ''}
+    ${storyList(section.stories, 'story-list', 112)}
+  </div>` : '';
   app.innerHTML = `<a class="back-link" href="${esc(datedPage())}"><span aria-hidden="true">‹ </span>本期首页</a>
     <header class="channel-header"><h1>${esc(section.name)}</h1>
       <p>${esc(section.note || dateLabel(model.edition.date))}${section.stories.length ? `　${section.stories.length} 条报道` : ''}</p>
     </header>
-    <div class="channel-news">
-      ${section.stories.length ? storyList(section.stories, 'story-list', 112) : `<div class="empty-state"><p>本期这个频道暂无收录。</p><a href="${esc(pageURL({view: 'archive'}))}">浏览往期日报</a></div>`}
-    </div>`;
+    ${results.length ? `<div class="cs2-channel"><div class="match-results">${results.map(matchPanel).join('')}</div>${news}</div>`
+      : news || `<div class="channel-news"><div class="empty-state"><p>本期这个频道暂无收录。</p><a href="${esc(pageURL({view: 'archive'}))}">浏览往期日报</a></div></div>`}`;
   renderNav(section.id);
 }
 
@@ -251,12 +328,14 @@ function renderArticle(model, story) {
   const back = section ? datedPage({channel: section.id}) : datedPage();
   const body = story.paragraphs?.length ? story.paragraphs : [story.what || story.summary, story.why].filter(Boolean);
   const deck = story.paragraphs?.length && story.summary !== body[0] ? story.summary : '';
+  const results = (section?.results || []).filter(match => match.storyId === story.id);
   app.innerHTML = `<article class="article">
     <a class="back-link" href="${esc(back)}"><span aria-hidden="true">‹ </span>${esc(section?.name || '本期首页')}</a>
     <h1>${esc(story.title)}</h1>
     ${deck ? `<p class="article-deck">${esc(deck)}</p>` : ''}
     <p class="article-byline"><time datetime="${esc(model.edition.date)}">${esc(dateLabel(model.edition.date))}收录</time>
-      ${story.region ? `<span>${esc(story.region)}</span>` : ''}${story.sources?.[0]?.label ? `<span>${esc(story.sources[0].label)}</span>` : ''}</p>
+      ${story.region ? `<span>${esc(story.region)}</span>` : ''}${story.sources?.[0]?.label ? `<span>${esc(story.sources[0].label)}</span>` : ''}
+      ${results.length ? '<a class="section-link" href="#match-results">比分与 Rating</a>' : ''}</p>
     ${photo(story, 'article-photo', 2, true)}
     <div class="article-grid">
       <div class="article-copy">${body.map(paragraph => `<p>${esc(paragraph)}</p>`).join('')}</div>
@@ -265,6 +344,7 @@ function renderArticle(model, story) {
         ${related.length ? `<section class="related"><h2>同频道报道</h2><ul class="related-list">${related.map(item => `<li><a href="${esc(item.href)}">${esc(item.title)}</a></li>`).join('')}</ul></section>` : ''}
       </aside>` : ''}
     </div>
+    ${results.length ? `<div id="match-results" class="match-results">${results.map(matchPanel).join('')}</div>` : ''}
   </article>`;
   renderNav(story.desk);
 }
@@ -323,6 +403,17 @@ async function start() {
 app.addEventListener('error', event => {
   if (event.target.tagName === 'IMG') event.target.closest('figure')?.remove();
 }, true);
+app.addEventListener('click', event => {
+  const button = event.target.closest('button[data-match-tab]');
+  if (!button || button.getAttribute('aria-pressed') === 'true') return;
+  const panel = button.closest('.match-panel');
+  for (const tab of panel.querySelectorAll('[data-match-tab]')) {
+    tab.setAttribute('aria-pressed', String(tab === button));
+  }
+  for (const view of panel.querySelectorAll('[data-match-view]')) {
+    view.hidden = view.dataset.matchView !== button.dataset.matchTab;
+  }
+});
 start().catch(error => {
   if (requestedDate && error.message === '404') {
     renderError('找不到这一期日报', '这个日期没有已发布的日报。', './?view=archive', '浏览往期日报');

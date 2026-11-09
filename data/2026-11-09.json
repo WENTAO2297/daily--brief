@@ -1,6 +1,6 @@
 {
   "date": "2026-11-09",
-  "updatedAt": "2026-11-09T11:18:19+08:00",
+  "updatedAt": "2026-11-09T11:30:55+08:00",
   "edition": "全球版 · 测试模式",
   "overview": "埃及列车相撞和伊拉克气田遇袭仍在调查。科技版回看周末前后的 AI、开发工具和论文进展，CS2 聚焦 IEM 北京站决赛及 Falcons 下一场赛程。",
   "hero": {
@@ -722,6 +722,112 @@
       }
     ]
   },
+  "cs2Results": [
+    {
+      "event": "IEM 北京站",
+      "round": "决赛",
+      "date": "2026-11-08",
+      "bestOf": 5,
+      "teams": ["The MongolZ", "MOUZ"],
+      "score": [0, 3],
+      "ratingVersion": "3.0",
+      "storyId": "1q5fdpg",
+      "source": {
+        "label": "HLTV 比赛页",
+        "url": "https://www.hltv.org/matches/2400011/the-mongolz-vs-mouz-iem-beijing-2026"
+      },
+      "stats": {
+        "url": "https://www.hltv.org/stats/matches/132871/the-mongolz-vs-mouz",
+        "teams": [
+          [
+            {"name": "Techno", "kills": 41, "deaths": 40, "swing": 0.7, "adr": 80.4, "kast": 68.5, "rating": 1.13},
+            {"name": "cobrazera", "kills": 25, "deaths": 46, "swing": -3.67, "adr": 55.1, "kast": 61.1, "rating": 0.74},
+            {"name": "910", "kills": 29, "deaths": 38, "swing": -3.18, "adr": 64.2, "kast": 59.3, "rating": 0.73},
+            {"name": "bLitz", "kills": 24, "deaths": 44, "swing": -4.42, "adr": 59.3, "kast": 61.1, "rating": 0.66},
+            {"name": "nin9", "kills": 24, "deaths": 45, "swing": -4.54, "adr": 62.9, "kast": 61.1, "rating": 0.63}
+          ],
+          [
+            {"name": "xertioN", "kills": 47, "deaths": 32, "swing": 2.69, "adr": 98.1, "kast": 85.2, "rating": 1.44},
+            {"name": "Spinx", "kills": 46, "deaths": 27, "swing": 3.35, "adr": 80.9, "kast": 77.8, "rating": 1.35},
+            {"name": "xelex", "kills": 43, "deaths": 31, "swing": 2.93, "adr": 87.1, "kast": 79.6, "rating": 1.33},
+            {"name": "PR", "kills": 35, "deaths": 26, "swing": 3.13, "adr": 75.3, "kast": 85.2, "rating": 1.28},
+            {"name": "torzsi", "kills": 40, "deaths": 27, "swing": 3.02, "adr": 71.4, "kast": 77.8, "rating": 1.23}
+          ]
+        ]
+      },
+      "maps": [
+        {
+          "name": "Mirage",
+          "score": [5, 13],
+          "stats": {
+            "url": "https://www.hltv.org/stats/matches/mapstatsid/243883/the-mongolz-vs-mouz",
+            "teams": [
+              [
+                {"name": "cobrazera", "kills": 14, "deaths": 14, "swing": -0.23, "adr": 73.9, "kast": 77.8, "rating": 1.24},
+                {"name": "Techno", "kills": 11, "deaths": 14, "swing": -0.22, "adr": 61, "kast": 55.6, "rating": 0.92},
+                {"name": "910", "kills": 10, "deaths": 13, "swing": -0.87, "adr": 68.8, "kast": 61.1, "rating": 0.8},
+                {"name": "bLitz", "kills": 8, "deaths": 16, "swing": -5.48, "adr": 51.3, "kast": 61.1, "rating": 0.54},
+                {"name": "nin9", "kills": 4, "deaths": 16, "swing": -8.28, "adr": 51.8, "kast": 55.6, "rating": 0.47}
+              ],
+              [
+                {"name": "xertioN", "kills": 23, "deaths": 10, "swing": 5.15, "adr": 126.1, "kast": 83.3, "rating": 1.92},
+                {"name": "torzsi", "kills": 16, "deaths": 8, "swing": 5.14, "adr": 88.8, "kast": 88.9, "rating": 1.48},
+                {"name": "PR", "kills": 9, "deaths": 9, "swing": 3.33, "adr": 70.5, "kast": 88.9, "rating": 1.2},
+                {"name": "Spinx", "kills": 11, "deaths": 9, "swing": 1.39, "adr": 64.5, "kast": 77.8, "rating": 1.15},
+                {"name": "xelex", "kills": 13, "deaths": 11, "swing": 0.05, "adr": 78.4, "kast": 77.8, "rating": 1.09}
+              ]
+            ]
+          }
+        },
+        {
+          "name": "Dust2",
+          "score": [6, 13],
+          "stats": {
+            "url": "https://www.hltv.org/stats/matches/mapstatsid/243884/mouz-vs-the-mongolz",
+            "teams": [
+              [
+                {"name": "bLitz", "kills": 9, "deaths": 14, "swing": -1.64, "adr": 57.8, "kast": 57.9, "rating": 0.9},
+                {"name": "cobrazera", "kills": 7, "deaths": 16, "swing": -1.31, "adr": 50.2, "kast": 57.9, "rating": 0.82},
+                {"name": "Techno", "kills": 11, "deaths": 17, "swing": -3.03, "adr": 74.7, "kast": 57.9, "rating": 0.78},
+                {"name": "910", "kills": 9, "deaths": 15, "swing": -3.85, "adr": 55.8, "kast": 42.1, "rating": 0.73},
+                {"name": "nin9", "kills": 9, "deaths": 15, "swing": -2.36, "adr": 60.4, "kast": 63.2, "rating": 0.65}
+              ],
+              [
+                {"name": "Spinx", "kills": 22, "deaths": 8, "swing": 3.48, "adr": 102.2, "kast": 78.9, "rating": 1.69},
+                {"name": "torzsi", "kills": 16, "deaths": 9, "swing": 5.66, "adr": 83.2, "kast": 78.9, "rating": 1.49},
+                {"name": "xelex", "kills": 15, "deaths": 9, "swing": 4.36, "adr": 86.1, "kast": 84.2, "rating": 1.46},
+                {"name": "xertioN", "kills": 14, "deaths": 12, "swing": 0.76, "adr": 89.8, "kast": 89.5, "rating": 1.23},
+                {"name": "PR", "kills": 9, "deaths": 7, "swing": -2.08, "adr": 57.8, "kast": 78.9, "rating": 0.93}
+              ]
+            ]
+          }
+        },
+        {
+          "name": "Inferno",
+          "score": [4, 13],
+          "stats": {
+            "url": "https://www.hltv.org/stats/matches/mapstatsid/243889/the-mongolz-vs-mouz",
+            "teams": [
+              [
+                {"name": "Techno", "kills": 19, "deaths": 9, "swing": 5.85, "adr": 107.2, "kast": 94.1, "rating": 1.93},
+                {"name": "nin9", "kills": 11, "deaths": 14, "swing": -3.02, "adr": 77.4, "kast": 64.7, "rating": 0.92},
+                {"name": "910", "kills": 10, "deaths": 10, "swing": -4.88, "adr": 68.6, "kast": 76.5, "rating": 0.8},
+                {"name": "bLitz", "kills": 7, "deaths": 14, "swing": -6.42, "adr": 69.3, "kast": 64.7, "rating": 0.62},
+                {"name": "cobrazera", "kills": 4, "deaths": 16, "swing": -9.95, "adr": 40.8, "kast": 47.1, "rating": 0.3}
+              ],
+              [
+                {"name": "PR", "kills": 17, "deaths": 10, "swing": 8.73, "adr": 100, "kast": 88.2, "rating": 1.84},
+                {"name": "xelex", "kills": 15, "deaths": 11, "swing": 4.37, "adr": 97.3, "kast": 76.5, "rating": 1.46},
+                {"name": "Spinx", "kills": 13, "deaths": 10, "swing": 5.28, "adr": 74.6, "kast": 76.5, "rating": 1.37},
+                {"name": "xertioN", "kills": 10, "deaths": 10, "swing": 2.23, "adr": 77.5, "kast": 82.4, "rating": 1.22},
+                {"name": "torzsi", "kills": 8, "deaths": 10, "swing": -2.18, "adr": 39.6, "kast": 64.7, "rating": 0.79}
+              ]
+            ]
+          }
+        }
+      ]
+    }
+  ],
   "apiUsage": {
     "model": "gpt-6-luna",
     "input_tokens": 5482,

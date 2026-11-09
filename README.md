@@ -19,6 +19,8 @@ python3 -m http.server 8000 --directory dist
 
 工作流从公开新闻源分地区和频道收集候选，核对摘要、原文摘录和配图，用一次 OpenAI Responses API 请求编写导语和正文。校验通过后发布到 GitHub Pages。Actions 摘要和该期日报页脚都显示 API 返回的 token 数，以及按标准单价换算的费用估算。
 
+录入 CS2 赛果时，在当期 JSON 的 `cs2Results` 中按 11 月 9 日版示例填写赛事、两队总比分和地图比分。选手数据按来源的口径录入，`stats.teams` 的两组选手要与 `teams` 的顺序一致。关联报道可填 `storyId`。只有比分时省略 `stats`，页面会显示比分。当天重新生成正文时会保留已录入的赛果。
+
 ## 文件
 
 - `index.html`、`assets/`：网页结构、样式和页面逻辑
