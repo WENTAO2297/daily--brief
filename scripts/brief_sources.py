@@ -180,6 +180,9 @@ def verify_image(url: str) -> str:
     })
     try:
         with urllib.request.urlopen(request, timeout=5, context=SSL_CONTEXT) as response:
+            policy = response.headers.get("Cross-Origin-Resource-Policy", "").strip().lower()
+            if policy in {"same-origin", "same-site"}:
+                return ""
             data = response.read(32)
             supported = (data.startswith((b"\xff\xd8\xff", b"\x89PNG\r\n\x1a\n", b"GIF87a", b"GIF89a"))
                          or data[8:12] == b"WEBP" or data[4:12] == b"ftypavif")
