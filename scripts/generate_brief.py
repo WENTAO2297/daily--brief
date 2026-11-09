@@ -20,6 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 NOW = datetime.now(ZoneInfo("Asia/Shanghai"))
 TODAY = NOW.date().isoformat()
 MODEL = "gpt-6-luna"
+REASONING_EFFORT = "high"
 API_URL = "https://api.openai.com/v1/responses"
 CHANNELS = {
     "world": ("🌍 全球重大新闻", "国际局势 · 外交 · 能源"),
@@ -76,14 +77,17 @@ def record_usage(response: dict) -> None:
     input_tokens = usage["input_tokens"]
     cached_tokens = (usage.get("input_tokens_details") or {}).get("cached_tokens", 0)
     output_tokens = usage["output_tokens"]
+    reasoning_tokens = (usage.get("output_tokens_details") or {}).get("reasoning_tokens", 0)
     # Standard GPT-6 Luna USD rates per million tokens.
     cost = ((input_tokens - cached_tokens) * 0.10 + cached_tokens * 0.01 + output_tokens * 0.50) / 1_000_000
     print("OpenAI usage: " + json.dumps({
         "model": response.get("model", MODEL), "input_tokens": input_tokens,
         "cached_input_tokens": cached_tokens, "output_tokens": output_tokens,
+        "reasoning_effort": REASONING_EFFORT, "reasoning_tokens": reasoning_tokens,
         "estimated_usd": round(cost, 6), "paid_search_calls": 0,
     }), flush=True)
-    step_summary(f"### OpenAI 用量\n\n输入 {input_tokens:,} tokens（缓存 {cached_tokens:,}），输出 {output_tokens:,} tokens。"
+    step_summary(f"### OpenAI 用量\n\n输入 {input_tokens:,} tokens（缓存 {cached_tokens:,}），"
+                 f"输出 {output_tokens:,} tokens（其中推理 {reasoning_tokens:,}）。"
                  f"\n\n按官方标准单价估算 **{cost:.6f} USD**。付费搜索 0 次，最终账单以 OpenAI 为准。\n")
 
 
@@ -115,8 +119,9 @@ def call_openai(key: str, candidates: list[dict]) -> dict:
         "summary": item["summary"], "has_image": bool(item["image"]),
     } for item in candidates]
     payload = {
-        "model": MODEL, "service_tier": "default", "reasoning": {"effort": "none"},
-        "store": False, "max_output_tokens": 6500,
+        "model": MODEL, "service_tier": "default", "reasoning": {"effort": REASONING_EFFORT},
+        # The output budget includes both reasoning tokens and the visible brief.
+        "store": False, "max_output_tokens": 25_000,
         "instructions": EDITOR_INSTRUCTIONS,
         "input": f"北京时间 {NOW.isoformat(timespec='minutes')}。\n" + json.dumps(evidence, ensure_ascii=False, separators=(",", ":")),
         "text": {"format": {"type": "json_schema", "name": "daily_brief", "strict": True, "schema": SCHEMA}},
