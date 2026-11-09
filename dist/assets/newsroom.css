@@ -179,30 +179,21 @@ main.wrap { min-height: 52vh; padding-block: 23px 64px; }
 .cs2-meta, .cs2-schedule-empty { color: var(--muted); font-size: 13px; }
 .cs2-fixture .cs2-meta { margin-top: 3px; }
 .cs2-fixture-note { margin-top: 4px; color: #405468; font-size: 13px; }
-.cs2-fixture-links, .cs2-change-sources { display: flex; flex-wrap: wrap; gap: 5px 12px; }
-.cs2-fixture-links { grid-column: 2; }
+.cs2-fixture-links { display: flex; flex-wrap: wrap; gap: 5px 12px; grid-column: 2; }
 .cs2-fixture-links a { padding-block: 2px; }
-.cs2-fixture-links a, .cs2-progress-heading a, .cs2-change-sources a { color: var(--navy); font-size: 13px; font-weight: 650; }
+.cs2-fixture-links a, .cs2-vrs-source a { color: var(--navy); font-size: 13px; font-weight: 650; }
 .cs2-schedule-label { margin-top: 13px; font-size: 14px; }
 .cs2-schedule-empty { margin-top: 8px; }
-.cs2-progress-event + .cs2-progress-event { margin-top: 16px; padding-top: 11px; border-top: 1px solid var(--rule); }
-.cs2-progress-heading { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 4px 12px; }
-.cs2-progress-heading h3 { font-size: 17px; }
-.cs2-placements {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1px;
-  margin: 7px 0 9px;
-  background: var(--rule);
-}
-.cs2-placements div { padding: 7px 9px; background: var(--wash); }
-.cs2-placements dt { color: var(--copper); font-size: 12px; font-weight: 650; }
-.cs2-placements dd { margin: 0; color: var(--navy); font-weight: 700; overflow-wrap: anywhere; }
-.cs2-progress-event > p, .cs2-changes li > p:not(.cs2-meta) { color: #405468; font-size: 14px; }
-.cs2-report-link { display: inline-block; margin-top: 4px; padding-block: 4px; }
-.cs2-changes li { padding-block: 8px; }
-.cs2-changes h3 { font-size: 17px; }
-.cs2-change-sources { margin-top: 3px; }
+.cs2-vrs .block-title { flex-wrap: wrap; gap: 4px 12px; margin-bottom: 7px; }
+.cs2-vrs-table { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+.cs2-vrs-table :is(th, td) { padding: 6px 9px; border-bottom: 1px solid var(--rule); text-align: left; }
+.cs2-vrs-table thead { color: var(--muted); font-size: 12px; }
+.cs2-vrs-table tr > :first-child { width: 3.25rem; text-align: center; }
+.cs2-vrs-table tr > :last-child { width: 5rem; text-align: right; }
+.cs2-vrs-table tbody td:first-child { color: var(--muted); }
+.cs2-vrs-falcons { background: var(--wash); }
+.cs2-vrs-table .cs2-vrs-falcons td:first-child { color: var(--copper); font-weight: 750; }
+.cs2-vrs-source { margin-top: 7px; text-align: right; }
 .match-results { display: grid; align-content: start; gap: 18px; }
 .article > .match-results { margin-top: 28px; scroll-margin-top: 62px; }
 .match-panel {

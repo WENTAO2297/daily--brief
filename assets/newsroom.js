@@ -290,35 +290,21 @@ function cs2Schedule(edition) {
   </section>`;
 }
 
-function cs2Progress(results, stories, logos) {
-  const cards = results.filter(match => match.progress);
-  if (!cards.length) return '';
-  return `<section class="cs2-block cs2-progress">
-    ${blockTitle('晋级形势')}
-    ${cards.map(({event, progress, storyId}) => {
-      const story = stories.get(storyId);
-      return `<div class="cs2-progress-event">
-        <div class="cs2-progress-heading"><h3>${esc(event)}</h3>
-          ${progress.source ? readLabel(progress.source.url, progress.source.label) : ''}</div>
-        <dl class="cs2-placements">${progress.entries.map(entry =>
-          `<div><dt>${esc(entry.status)}</dt><dd>${teamLabel(entry.team, logos)}</dd></div>`).join('')}</dl>
-        ${progress.note ? `<p>${esc(progress.note)}</p>` : ''}
-        ${story ? `<a class="section-link cs2-report-link" href="${esc(story.href)}">阅读战报 <span aria-hidden="true">›</span></a>` : ''}
-      </div>`;
-    }).join('')}
-  </section>`;
-}
-
-function cs2Changes(changes = []) {
-  if (!changes.length) return '';
-  const labels = {ranking: 'HLTV 世界排名', vrs: 'Valve VRS', roster: '阵容变动'};
-  return `<section class="cs2-block cs2-changes">
-    ${blockTitle('排名与阵容')}
-    <ul class="story-list">${changes.map(change => `<li>
-      <p class="cs2-meta">${esc(labels[change.kind])} · <time datetime="${esc(change.date)}">${esc(matchDate.format(new Date(`${change.date}T12:00:00+08:00`)))}</time></p>
-      <h3>${esc(change.title)}</h3><p>${esc(change.summary)}</p>
-      <div class="cs2-change-sources">${change.sources.map(source => readLabel(source.url, source.label)).join('')}</div>
-    </li>`).join('')}</ul>
+function cs2Ranking(edition) {
+  const ranking = edition.cs2Vrs;
+  if (!ranking?.entries.length) return '';
+  const day = matchDate.format(new Date(`${ranking.date}T12:00:00+08:00`));
+  return `<section class="cs2-block cs2-vrs">
+    ${blockTitle('VRS 世界排名', `<p><time datetime="${esc(ranking.date)}">${esc(day)}</time> · HLTV 估算</p>`)}
+    <table class="cs2-vrs-table" aria-label="VRS 世界排名前十">
+      <thead><tr><th scope="col">排名</th><th scope="col">战队</th><th scope="col">VRS 积分</th></tr></thead>
+      <tbody>${ranking.entries.map(({rank, team, points}) => `<tr${team === 'Falcons' ? ' class="cs2-vrs-falcons"' : ''}>
+        <td>${esc(rank)}</td>
+        <th scope="row">${teamLabel(team, edition.cs2Logos)}</th>
+        <td>${esc(points)}</td>
+      </tr>`).join('')}</tbody>
+    </table>
+    <p class="cs2-vrs-source">${readLabel(ranking.url, 'HLTV 完整榜单')}</p>
   </section>`;
 }
 
@@ -377,7 +363,7 @@ function renderHome(model) {
 function renderChannel(model, section) {
   document.title = `${section.name} | 每日新闻情报日报`;
   const extras = section.id === 'cs2'
-    ? cs2Schedule(model.edition) + cs2Progress(section.results, model.stories, model.edition.cs2Logos) + cs2Changes(model.edition.cs2Changes)
+    ? cs2Schedule(model.edition) + cs2Ranking(model.edition)
     : '';
   const lead = extras ? section.stories[0] : null;
   const remaining = lead ? section.stories.slice(1) : section.stories;
@@ -391,7 +377,7 @@ function renderChannel(model, section) {
     <header class="channel-header"><h1>${esc(section.name)}</h1>
       <p>${esc(section.note || dateLabel(model.edition.date))}${section.stories.length ? `　${section.stories.length} 条报道` : ''}</p>
     </header>
-    ${extras ? `<div class="cs2-channel">${news}<aside class="cs2-rail" aria-label="赛程与赛事信息">${extras}</aside></div>` : news}`;
+    ${extras ? `<div class="cs2-channel">${news}<aside class="cs2-rail" aria-label="赛程与 VRS 世界排名">${extras}</aside></div>` : news}`;
   renderNav(section.id);
 }
 

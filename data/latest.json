@@ -727,6 +727,8 @@
     "Vitality": {"url": "https://assets.blast.tv/images/teams/9b29b611-6523-452d-9bc6-b93fbdb01796?width=80&format=webp", "dark": true},
     "Legacy": {"url": "https://assets.blast.tv/images/teams/7417378d-29a3-4376-85eb-05db707e784d?width=80&format=webp"},
     "FURIA": {"url": "https://assets.blast.tv/images/teams/f239109c-ffef-4e83-830e-5ca340ee432b?width=80&format=webp"},
+    "BETBOOM": {"url": "https://assets.blast.tv/images/teams/809aa7c3-52fc-4936-a4ac-3b0be99b46ac?width=80&format=webp"},
+    "Aurora": {"url": "https://assets.blast.tv/images/teams/28566aa3-3ede-48fd-87d7-2044e5de47a7?width=80&format=webp", "dark": true},
     "Spirit": {"url": "https://assets.blast.tv/images/teams/80b609cb-707b-48f2-83ee-0f68b8ba8cca?width=80&format=webp", "dark": true},
     "FUT": {"url": "https://assets.blast.tv/images/teams/e6478fa6-eb88-4e7b-bc8d-7f8613ce4e5d?width=80&format=webp"},
     "MOUZ": {"url": "https://assets.blast.tv/images/teams/05b375da-847d-48e8-8bc0-d3f957e35e25?width=80&format=webp"},
@@ -774,6 +776,22 @@
         "source": {"label": "官方比赛页", "url": "https://blast.tv/cs/tournaments/rivals-2026-season-2/match/9821f1ac/mouz-g2"},
         "broadcast": {"label": "官方直播", "url": "https://www.twitch.tv/blastpremier"}
       }
+    ]
+  },
+  "cs2Vrs": {
+    "date": "2026-11-09",
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/november/9",
+    "entries": [
+      {"rank": 1, "team": "MOUZ", "points": 1998},
+      {"rank": 2, "team": "Vitality", "points": 1923},
+      {"rank": 3, "team": "FURIA", "points": 1899},
+      {"rank": 4, "team": "BETBOOM", "points": 1852},
+      {"rank": 5, "team": "Spirit", "points": 1830},
+      {"rank": 6, "team": "Aurora", "points": 1827},
+      {"rank": 7, "team": "NAVI", "points": 1768},
+      {"rank": 8, "team": "Falcons", "points": 1760},
+      {"rank": 9, "team": "The MongolZ", "points": 1755},
+      {"rank": 10, "team": "FUT", "points": 1685}
     ]
   },
   "cs2Results": [

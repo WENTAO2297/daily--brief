@@ -21,7 +21,7 @@ python3 -m http.server 8000 --directory dist
 
 CS2 的比赛数据填在当期 JSON，11 月 9 日版有完整示例。`cs2Schedule.fixtures` 录入已确认的重点场次，例如 Falcons、HLTV 前十和顶级赛事的对阵，`startAt` 用带时区的 ISO 时间。页面按北京时间置顶 Falcons 下一场，其余场次按开赛时间排列。往期使用 `cs2Schedule.asOf` 的时间点。`cs2Logos` 以显示队名为键，`url` 填官方队标的 HTTPS 地址，浅色队标可设 `dark: true` 加深底色。
 
-`cs2Results` 的 `progress` 显示在频道，比分、选手数据、选禁图和回放只显示在 `storyId` 关联的详情页。`stats.teams` 的两组行要与 `teams` 的顺序一致。`cs2Changes` 只填有来源的实质变化，`kind` 取 `ranking`（HLTV 世界排名）、`vrs`（Valve VRS）或 `roster`（阵容）。当天重新生成正文时会保留手工核实的 CS2 数据。
+`cs2Vrs` 保存当期 HLTV 全球 VRS 估算榜的日期、原榜链接与前十名，显示在赛程下方。`cs2Results` 中的比分、选手数据、选禁图和回放显示在 `storyId` 关联的详情页，`stats.teams` 的两组行要与 `teams` 的顺序一致。当天重新生成正文时会保留手工核实的 CS2 数据。
 
 ## 文件
 
