@@ -88,7 +88,7 @@ main.wrap { min-height: 52vh; padding-block: 23px 64px; }
 .desk-title .section-link { justify-self: end; white-space: nowrap; }
 .desk-title .channel-tabs { grid-column: 1/-1; margin-bottom: 0; }
 .desk-layout { display: grid; gap: 10px; }
-.desk-layout .story-list > li + li { border-top: 0; }
+.desk-layout > .story-list { border-top: 1px solid var(--rule); }
 .feature-story { min-width: 0; }
 .feature-story h3 { font: 750 clamp(21px, 2vw, 28px)/1.28 var(--display); margin-block: 4px 6px; }
 .feature-image img { aspect-ratio: 16/9; object-fit: cover; }
