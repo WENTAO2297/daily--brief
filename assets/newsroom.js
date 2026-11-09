@@ -419,7 +419,7 @@ function renderChannel(model, section) {
   const remaining = lead ? section.stories.slice(1) : section.stories;
   const empty = `<div class="empty-state"><p>本期这个频道暂无收录。</p><a href="${esc(pageURL({view: 'archive'}))}">浏览往期日报</a></div>`;
   const coverage = (lead ? feature(lead) : '') + (remaining.length ? storyList(remaining, {limit: 112}) : '');
-  const news = `<div class="channel-news">
+  const news = `<div class="channel-news${extras ? '' : ' channel-index'}">
     ${extras ? blockTitle('频道报道') : ''}
     ${coverage || empty}
   </div>`;
@@ -469,6 +469,7 @@ function renderArchive(editions) {
     ${editions.length ? `<ul class="archive-list">${editions.map(edition => `<li>
       <a href="${esc(pageURL({date: edition.date}))}"><time datetime="${esc(edition.date)}">${esc(dateLabel(edition.date))}</time>
       <strong>${esc(edition.title)}</strong><span>${edition.count} 条报道</span></a></li>`).join('')}</ul>` : '<p class="empty-state">暂无往期日报。</p>'}`;
+  app.classList.add('archive-page');
   renderNav('', true);
 }
 
