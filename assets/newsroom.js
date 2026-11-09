@@ -210,7 +210,9 @@ function compact(story, limit = 0) {
 }
 
 function feature(story) {
-  return `<article class="feature-story">${photos(storyImages(story), 'feature-image')}${storyMeta(story)}${headline(story)}<p class="teaser">${esc(teaser(story, 105))}</p></article>`;
+  return `<article class="feature-story">${photos(storyImages(story), 'feature-image')}
+    <div class="feature-text">${storyMeta(story)}${headline(story)}<p class="teaser">${esc(teaser(story, 105))}</p></div>
+  </article>`;
 }
 
 function storyList(stories, className = 'story-list', limit = 0) {
@@ -341,22 +343,25 @@ function cs2Ranking(edition) {
   </section>`;
 }
 
-function readingRail(closing) {
+function readingGuide(closing) {
   const themes = closing?.themes || [];
   const links = (closing?.links || []).map(item => readLabel(item.url, item.label || '原文')).filter(Boolean);
   if (!themes.length && !links.length) return '';
-  return `<aside class="reading-rail" aria-label="本期阅读指南">
-    <h2>本期脉络</h2>
-    ${themes.length ? `<ol>${themes.map(theme => `<li>${esc(theme)}</li>`).join('')}</ol>` : ''}
-    ${links.length ? `<h3>延伸阅读</h3><ol>${links.map(link => `<li>${link}</li>`).join('')}</ol>` : ''}
+  return `<aside class="reading-guide" aria-label="本期阅读指南">
+    ${themes.length ? `<section><h2>本期脉络</h2><ol>${themes.map(theme => `<li>${esc(theme)}</li>`).join('')}</ol></section>` : ''}
+    ${links.length ? `<section><h2>延伸阅读</h2><ol>${links.map(link => `<li>${link}</li>`).join('')}</ol></section>` : ''}
   </aside>`;
 }
 
 function homeSection(sections, section) {
   const href = datedPage({channel: section.id});
   const [first, ...rest] = section.home;
-  return `<section class="desk">${blockTitle(section.name, `<a class="section-link" href="${esc(href)}">查看全部 ${section.stories.length} 条 <span aria-hidden="true">›</span></a>`)}
-    ${channelTabs(sections, section, true)}
+  return `<section class="desk">
+    <header class="block-title desk-title">
+      <h2>${esc(section.name)}</h2>
+      <a class="section-link" href="${esc(href)}">查看全部 ${section.stories.length} 条 <span aria-hidden="true">›</span></a>
+      ${channelTabs(sections, section, true)}
+    </header>
     ${rest.length ? `<div class="desk-layout">${feature(first)}${storyList(rest)}</div>` : feature(first)}
   </section>`;
 }
@@ -380,18 +385,19 @@ function renderHome(model) {
         ${blockTitle('头条')}
         ${lead ? `<article class="lead">${photos(storyImages(lead), 'lead-image', true)}
           <div class="lead-text">${storyMeta(lead, sections.get(lead.desk)?.short)}${headline(lead)}
-          <p class="teaser">${esc(teaser(lead, 120))}</p><a class="read-story" href="${esc(lead.href)}">查看报道 <span aria-hidden="true">›</span></a></div></article>` : '<p class="empty-state">本期暂无头条。</p>'}
+            <p class="teaser">${esc(teaser(lead, 120))}</p>
+          </div>
+          <a class="read-story" href="${esc(lead.href)}">查看报道 <span aria-hidden="true">›</span></a>
+        </article>` : '<p class="empty-state">本期暂无头条。</p>'}
       </section>
       <section class="top-panel">${blockTitle('重点新闻')}
         ${top.length ? storyList(top, 'top-list', 63) : '<p class="empty-state">本期暂无重点新闻。</p>'}
       </section>
     </div>
     <div class="body-grid">
-      <div>
-        ${available.map(section => homeSection(sections, section)).join('')}
-        ${empty.length ? `<p class="channel-empty-list">本期暂无收录：${empty.map(section => `<a href="${esc(datedPage({channel: section.id}))}">${esc(section.short)}</a>`).join('、')}</p>` : ''}
-      </div>
-      ${readingRail(edition.closing)}
+      ${available.length ? `<div class="desk-grid">${available.map(section => homeSection(sections, section)).join('')}</div>` : ''}
+      ${empty.length ? `<p class="channel-empty-list">本期暂无收录：${empty.map(section => `<a href="${esc(datedPage({channel: section.id}))}">${esc(section.short)}</a>`).join('、')}</p>` : ''}
+      ${readingGuide(edition.closing)}
     </div>`;
   renderNav('');
 }
