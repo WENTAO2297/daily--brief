@@ -64,7 +64,7 @@ ARXIV_RECENT = "https://export.arxiv.org/api/query?" + urllib.parse.urlencode({
     "search_query": "cat:cs.AI OR cat:cs.LG OR cat:cs.CL",
     "sortBy": "submittedDate", "sortOrder": "descending", "max_results": 20,
 })
-LIMITS = {"world": 18, "china": 6, "ai": 7, "coding": 5, "papers": 6, "open": 5, "cs2": 5, "japan": 5}
+LIMITS = {"world": 18, "china": 6, "ai": 7, "coding": 5, "papers": 6, "open": 5, "cs2": 8, "japan": 5}
 USER_AGENT = "DailyBrief/1.0 (+https://github.com/WENTAO2297/daily--brief)"
 GENERIC_IMAGE = re.compile(r"(?:^|[/_.-])(logo|favicon|placeholder|default|avatar|defaultshare)(?:[/_.-]|$)", re.I)
 
@@ -272,6 +272,8 @@ def collect_candidates(now: datetime) -> list[dict]:
         channel = item["channel"]
         desk = item["desk"] if channel == "world" else item["publisher"]
         limit = 3 if channel in {"world", "papers", "japan"} else 2
+        if channel == "cs2" and item["publisher"] == "HLTV":
+            limit = 6
         if per_channel[channel] >= LIMITS[channel] or per_desk[channel, desk] >= limit:
             continue
         per_channel[channel] += 1

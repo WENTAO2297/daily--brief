@@ -1,6 +1,6 @@
 {
   "date": "2026-11-09",
-  "updatedAt": "2026-11-09T14:12:12+08:00",
+  "updatedAt": "2026-11-09T15:52:14+08:00",
   "edition": "全球版 · 测试模式",
   "overview": "埃及列车相撞和伊拉克气田遇袭仍在调查。科技版回看周末前后的 AI、开发工具和论文进展，CS2 聚焦 IEM 北京站决赛及 Falcons 下一场赛程。",
   "hero": {
@@ -609,7 +609,7 @@
     },
     {
       "title": "🎯 CS2专区",
-      "note": "Falcons · 世界前十 · 顶级赛事 · Valve",
+      "note": "赛事 · 阵容 · 访谈 · 游戏更新",
       "stories": [
         {
           "kind": "standard",
@@ -643,6 +643,60 @@
               "credit": "ESL FACEIT Group"
             }
           ]
+        },
+        {
+          "kind": "standard",
+          "channel": "🎯 CS2专区",
+          "region": "欧洲",
+          "title": "ESL 发布科隆 Major 纪录片，回顾 Falcons 夺冠",
+          "summary": "《Field of View》第 7 集跟随 Falcons 从小组赛末战走到决赛，收录比赛语音、采访和幕后画面。",
+          "paragraphs": [
+            "11 月 8 日，ESL 在官方 YouTube 频道发布《Field of View》第 7 集《ENDGAME》，回顾 Falcons 在 2026 年 IEM 科隆 Major 的夺冠历程。",
+            "影片从 Falcons 的小组赛末战讲起，延伸至八强赛、半决赛和决赛。Falcons 在 6 月的决赛以 3 比 0 击败 FURIA，拿下队史首座 Major 冠军。"
+          ],
+          "sources": [
+            {
+              "label": "ESL 官方纪录片",
+              "url": "https://www.youtube.com/watch?v=Se6OL_DsGo8"
+            },
+            {
+              "label": "HLTV 快讯",
+              "url": "https://www.hltv.org/news/45887/short-news-week-43"
+            },
+            {
+              "label": "ESL 科隆 Major 战报",
+              "url": "https://eslfaceitgroup.com/press/intel-extreme-masters-cologne-2026-major-breaks-records-as-the-most-watched-counter-strike-tournament-of-all-time/"
+            }
+          ],
+          "images": [
+            {
+              "url": "https://i.ytimg.com/vi/Se6OL_DsGo8/hqdefault.jpg",
+              "alt": "ESL 科隆 Major 纪录片《ENDGAME》封面",
+              "credit": "ESL Counter-Strike"
+            }
+          ]
+        },
+        {
+          "kind": "standard",
+          "channel": "🎯 CS2专区",
+          "region": "欧洲",
+          "title": "EYEBALLERS 将 dex 移出首发，dottie 临时代打",
+          "summary": "瑞典战队在寻找长期人选期间将使用临时替补，dottie 是首位确定的代打选手。",
+          "paragraphs": [
+            "11 月 8 日，HLTV 报道称，EYEBALLERS 宣布将 Sebastian ‘dex’ Samuelsson 移出首发，并确认 Anton ‘dottie’ Alevärn 将临时代打。",
+            "dex 于 2024 年 10 月加入 EYEBALLERS，据 HLTV 统计，他代表战队出战了 546 张地图。此次调整发生在战队未能拿到新加坡 Major 参赛资格之后。"
+          ],
+          "sources": [
+            {
+              "label": "HLTV 阵容报道",
+              "url": "https://www.hltv.org/news/45944/eyeballers-bench-dex"
+            },
+            {
+              "label": "EYEBALLERS 公告",
+              "url": "https://x.com/eyeballers/status/2119380393245786286"
+            }
+          ],
+          "images": []
         }
       ]
     },
