@@ -31,6 +31,11 @@ FEEDS = [
     ("world", "africa", "Le Monde", "https://www.lemonde.fr/en/le-monde-africa/rss_full.xml"),
     ("world", "global", "The Guardian", "https://www.theguardian.com/world/rss"),
     ("world", "middle_east", "Al Jazeera", "https://www.aljazeera.com/xml/rss/all.xml"),
+    ("world", "americas", "Federal Reserve", "https://www.federalreserve.gov/feeds/press_all.xml"),
+    ("world", "europe", "ECB", "https://www.ecb.europa.eu/rss/press.html"),
+    ("china", "china", "国家统计局", "https://www.stats.gov.cn/sj/zxfb/rss.xml"),
+    ("china", "china", "香港电台", "https://rthk.hk/rthk/news/rss/c_expressnews_greaterchina.xml"),
+    ("china", "china", "The Guardian", "https://www.theguardian.com/world/china/rss"),
     ("ai", "global", "OpenAI", "https://openai.com/news/rss.xml"),
     ("ai", "global", "Google", "https://blog.google/technology/ai/rss/"),
     ("ai", "global", "Hugging Face", "https://huggingface.co/blog/feed.xml"),
@@ -54,20 +59,12 @@ FEEDS = [
     ("japan", "japan", "NHK", "https://www3.nhk.or.jp/rss/news/cat0.xml"),
     ("japan", "japan", "The Japan Times", "https://www.japantimes.co.jp/feed/"),
     ("japan", "japan", "The Guardian", "https://www.theguardian.com/world/japan/rss"),
-    ("economy", "global", "BBC", BBC + "business/rss.xml"),
-    ("economy", "global", "The Guardian", "https://www.theguardian.com/business/economics/rss"),
-    ("economy", "americas", "Federal Reserve", "https://www.federalreserve.gov/feeds/press_all.xml"),
-    ("economy", "europe", "ECB", "https://www.ecb.europa.eu/rss/press.html"),
-    ("science", "global", "NASA", "https://www.nasa.gov/news-release/feed/"),
-    ("science", "global", "ESA", "https://www.esa.int/rssfeed/TopNews"),
-    ("science", "global", "Nature", "https://www.nature.com/nature.rss"),
-    ("science", "global", "The Guardian", "https://www.theguardian.com/science/rss"),
 ]
 ARXIV_RECENT = "https://export.arxiv.org/api/query?" + urllib.parse.urlencode({
     "search_query": "cat:cs.AI OR cat:cs.LG OR cat:cs.CL",
     "sortBy": "submittedDate", "sortOrder": "descending", "max_results": 20,
 })
-LIMITS = {"world": 18, "ai": 7, "coding": 5, "papers": 6, "open": 5, "cs2": 5, "japan": 5, "economy": 7, "science": 5}
+LIMITS = {"world": 18, "china": 6, "ai": 7, "coding": 5, "papers": 6, "open": 5, "cs2": 5, "japan": 5}
 USER_AGENT = "DailyBrief/1.0 (+https://github.com/WENTAO2297/daily--brief)"
 GENERIC_IMAGE = re.compile(r"(?:^|[/_.-])(logo|favicon|placeholder|default|avatar|defaultshare)(?:[/_.-]|$)", re.I)
 
@@ -104,7 +101,7 @@ def child(entry: ET.Element, *names: str) -> str:
     return ""
 
 
-def parse_date(value: str) -> datetime | None:
+def parse_date(value: str, source_timezone: timezone = timezone.utc) -> datetime | None:
     try:
         timestamp = datetime.fromisoformat(value)
     except ValueError:
@@ -112,27 +109,32 @@ def parse_date(value: str) -> datetime | None:
             timestamp = parsedate_to_datetime(value)
         except (ValueError, TypeError, OverflowError):
             return None
-    return timestamp.replace(tzinfo=timestamp.tzinfo or timezone.utc)
+    return timestamp.replace(tzinfo=timestamp.tzinfo or source_timezone)
 
 
 def feed_candidates(feed: tuple, now: datetime) -> list[dict]:
     channel, desk, publisher, url = feed
     try:
-        raw, _ = fetch(url, 2_000_000)
-        root = ET.fromstring(raw)
+        byte_limit = 2_000_000
+        raw, _ = fetch(url, byte_limit)
+        parser = ET.XMLPullParser(events=("end",))
+        parser.feed(raw)
+        # Large feeds can hit the byte limit. Keep entries that closed within it.
+        if len(raw) < byte_limit:
+            parser.close()
+        entries = [entry for _, entry in parser.read_events() if tag(entry) in {"item", "entry"}]
     except (OSError, ValueError, ET.ParseError) as exc:
         print(f"Source skipped: {publisher} ({type(exc).__name__})", file=sys.stderr)
         return []
 
     items = []
+    source_timezone = timezone(timedelta(hours=8)) if publisher == "国家统计局" else timezone.utc
     cutoff = now - timedelta(hours=72)
     if now.weekday() == 0 and channel in {"ai", "coding", "papers", "open"}:
         friday = now.replace(hour=0, minute=0, second=0, microsecond=0) - timedelta(days=3)
         cutoff = min(cutoff, friday)
-    for entry in root.iter():
-        if tag(entry) not in {"item", "entry"}:
-            continue
-        published = parse_date(child(entry, "pubDate", "published", "date", "updated"))
+    for entry in entries:
+        published = parse_date(child(entry, "pubDate", "published", "date", "updated"), source_timezone)
         if not published or not cutoff <= published <= now + timedelta(minutes=15):
             continue
         title = plain(child(entry, "title"))
@@ -233,7 +235,7 @@ def verify_image(url: str) -> str:
 def enrich(item: dict) -> dict:
     images = list(reversed(item.pop("image_candidates")))
     image = next((valid for url in images if (valid := verify_image(url))), "")
-    if not image or item["channel"] in {"world", "ai", "economy", "japan", "science", "cs2"}:
+    if not image or item["channel"] in {"world", "china", "ai", "japan", "cs2"}:
         try:
             raw, url = fetch(item["url"], 450_000, timeout=5)
             parser = PageMetadata()

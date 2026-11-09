@@ -1,17 +1,28 @@
 'use strict';
 
 const desks = [
-  ['world', '全球', '全球重大新闻'],
+  ['world', '全球要闻', '全球重大新闻'],
+  ['china', '中国', '中国新闻'],
   ['ai', 'AI', 'AI核心动态'],
   ['coding', 'Coding', 'AI Coding / Agent'],
   ['papers', '论文', '前沿论文 / 技术'],
   ['open', '开源', 'GitHub / 开源项目'],
   ['cs2', 'CS2', 'CS2专区'],
   ['japan', '日本', '日本动态'],
-  ['economy', '经济产业', '经济 / 科技产业'],
-  ['science', '科技科学', '其他值得知道的科技与科学'],
 ];
-const deskByTitle = new Map(desks.map(desk => [desk[2], desk]));
+const channelGroups = [
+  {id: 'global', label: '全球', children: ['world', 'japan']},
+  {id: 'china', label: '中国', children: []},
+  {id: 'ai-dev', label: 'AI 与开发', children: ['ai', 'coding', 'papers', 'open']},
+  {id: 'cs2', label: 'CS2', children: []},
+];
+const deskByTitle = new Map([
+  ...desks.map(([id, , name]) => [name, id]),
+  ['经济 / 科技产业', 'world'],
+  ['其他值得知道的科技与科学', 'world'],
+]);
+const retiredChannels = new Set(['economy', 'science']);
+const groupForDesk = id => channelGroups.find(group => group.id === id || group.children.includes(id));
 const app = document.getElementById('app');
 const nav = document.getElementById('channels');
 const archiveLink = document.getElementById('archive-link');
@@ -92,7 +103,8 @@ function organize(edition) {
     if (!story?.title) return null;
     const id = storyKey(story);
     if (stories.has(id)) return null;
-    const desk = deskByTitle.get(cleanTitle(story.channel || story.section))?.[0] || fallbackDesk;
+    const originalDesk = deskByTitle.get(cleanTitle(story.channel || story.section)) || fallbackDesk;
+    const desk = originalDesk === 'world' && story.region === '中国' ? 'china' : originalDesk;
     const record = {...story, id, desk, href: pageURL({date: edition.date, story: id})};
     stories.set(id, record);
     sections.get(desk)?.stories.push(record);
@@ -101,21 +113,34 @@ function organize(edition) {
   const lead = add(edition.hero);
   const top = (edition.topStories || []).map(story => add(story)).filter(Boolean);
   for (const channel of edition.channels || []) {
-    const desk = deskByTitle.get(cleanTitle(channel.title))?.[0];
+    const title = cleanTitle(channel.title);
+    const desk = deskByTitle.get(title);
     const section = sections.get(desk);
-    if (section) section.note = channel.note;
+    if (section?.name === title) section.note = channel.note;
     for (const story of channel.stories || []) {
       const record = add(story, desk);
       if (record) sections.get(record.desk)?.home.push(record);
     }
   }
+  for (const {id, label, children} of channelGroups) {
+    if (!children.length) continue;
+    const homeLists = children.map(child => sections.get(child).home);
+    const firstStories = homeLists.map(list => list[0]).filter(Boolean);
+    sections.set(id, {
+      id, short: label, name: label,
+      stories: [...stories.values()].filter(story => children.includes(story.desk)),
+      home: [...firstStories, ...homeLists.flatMap(list => list.slice(1))].slice(0, 4),
+    });
+  }
   return {edition, lead, top, stories, sections};
 }
 
 function renderNav(active, archive = false) {
-  nav.innerHTML = [['', '首页'], ...desks].map(([id, label]) => {
+  const activeGroup = groupForDesk(active)?.id ?? active;
+  const tabs = [{id: '', label: '首页'}, ...channelGroups];
+  nav.innerHTML = tabs.map(({id, label}) => {
     const href = archive ? pageURL({channel: id}) : datedPage({channel: id});
-    const current = !archive && active === id ? ' aria-current="page"' : '';
+    const current = !archive && activeGroup === id ? ` aria-current="${active === id ? 'page' : 'true'}"` : '';
     return `<a href="${esc(href)}"${current}>${esc(label)}</a>`;
   }).join('');
   if (archive) archiveLink.setAttribute('aria-current', 'page');
@@ -123,6 +148,15 @@ function renderNav(active, archive = false) {
   if (current && current.getBoundingClientRect().right > nav.getBoundingClientRect().right) {
     nav.scrollLeft += current.getBoundingClientRect().left - nav.getBoundingClientRect().left - 10;
   }
+}
+
+function channelTabs(sections, section, preview = false) {
+  const group = groupForDesk(section.id);
+  if (!group?.children.length) return '';
+  const ids = preview ? group.children : [group.id, ...group.children];
+  return `<nav class="channel-tabs" aria-label="${esc(group.label)}子栏目">
+    ${ids.map(id => `<a href="${esc(datedPage({channel: id}))}"${id === section.id ? ' aria-current="page"' : ''}>${esc(id === group.id ? '全部' : sections.get(id).short)}</a>`).join('')}
+  </nav>`;
 }
 
 function setEditionDate(date) {
@@ -318,18 +352,20 @@ function readingRail(closing) {
   </aside>`;
 }
 
-function homeSection(section) {
+function homeSection(sections, section) {
   const href = datedPage({channel: section.id});
-  const [first, ...rest] = section.id === 'world' ? section.home.slice(0, 4) : section.home;
+  const [first, ...rest] = section.home;
   return `<section class="desk">${blockTitle(section.name, `<a class="section-link" href="${esc(href)}">查看全部 ${section.stories.length} 条 <span aria-hidden="true">›</span></a>`)}
+    ${channelTabs(sections, section, true)}
     ${rest.length ? `<div class="desk-layout">${feature(first)}${storyList(rest)}</div>` : feature(first)}
   </section>`;
 }
 
 function renderHome(model) {
   const {edition, lead, top, sections, stories} = model;
-  const available = [...sections.values()].filter(section => section.home.length);
-  const empty = [...sections.values()].filter(section => !section.stories.length);
+  const mainSections = channelGroups.map(({id}) => sections.get(id));
+  const available = mainSections.filter(section => section.home.length);
+  const empty = mainSections.filter(section => !section.stories.length);
   const updated = new Date(edition.updatedAt);
   const imageSearchLimited = edition.imageSearchLimited ?? edition.overview?.includes('本次图片检索受限');
   app.innerHTML = `<h1 class="sr-only">每日新闻情报日报首页</h1>
@@ -352,7 +388,7 @@ function renderHome(model) {
     </div>
     <div class="body-grid">
       <div>
-        ${available.map(homeSection).join('')}
+        ${available.map(section => homeSection(sections, section)).join('')}
         ${empty.length ? `<p class="channel-empty-list">本期暂无收录：${empty.map(section => `<a href="${esc(datedPage({channel: section.id}))}">${esc(section.short)}</a>`).join('、')}</p>` : ''}
       </div>
       ${readingRail(edition.closing)}
@@ -377,6 +413,7 @@ function renderChannel(model, section) {
     <header class="channel-header"><h1>${esc(section.name)}</h1>
       <p>${esc(section.note || dateLabel(model.edition.date))}${section.stories.length ? `　${section.stories.length} 条报道` : ''}</p>
     </header>
+    ${channelTabs(model.sections, section)}
     ${extras ? `<div class="cs2-channel">${news}<aside class="cs2-rail" aria-label="赛程与 VRS 世界排名">${extras}</aside></div>` : news}`;
   renderNav(section.id);
 }
@@ -384,14 +421,13 @@ function renderChannel(model, section) {
 function renderArticle(model, story) {
   document.title = `${story.title} | 每日新闻情报日报`;
   const section = model.sections.get(story.desk);
-  const related = (section?.stories || []).filter(item => item.id !== story.id).slice(0, 3);
   const links = (story.sources || []).map(item => readLabel(item.url, item.label || '原文')).filter(Boolean);
   const images = storyImages(story, 2);
   const credits = [...new Set(images.map(image => image.credit).filter(Boolean))];
-  const sources = links.length || credits.length ? `<section><h2>报道来源</h2>
+  const sources = links.length || credits.length ? `<footer class="article-sources" aria-label="报道来源"><h2>报道来源</h2>
     ${links.length ? `<ul class="source-list">${links.map(link => `<li>${link}</li>`).join('')}</ul>` : ''}
     ${credits.length ? `<p class="article-image-credit">图片署名 · ${esc(credits.join('、'))}</p>` : ''}
-  </section>` : '';
+  </footer>` : '';
   const back = section ? datedPage({channel: section.id}) : datedPage();
   const body = story.paragraphs?.length ? story.paragraphs : [story.what || story.summary, story.why].filter(Boolean);
   const deck = story.paragraphs?.length && story.summary !== body[0] ? story.summary : '';
@@ -401,17 +437,12 @@ function renderArticle(model, story) {
     <h1>${esc(story.title)}</h1>
     ${deck ? `<p class="article-deck">${esc(deck)}</p>` : ''}
     <p class="article-byline"><time datetime="${esc(model.edition.date)}">${esc(dateLabel(model.edition.date))}收录</time>
-      ${story.region ? `<span>${esc(story.region)}</span>` : ''}${story.sources?.[0]?.label ? `<span>${esc(story.sources[0].label)}</span>` : ''}
+      ${story.region ? `<span>${esc(story.region)}</span>` : ''}
       ${results.length ? '<a class="section-link" href="#match-results">比分与 Rating</a>' : ''}</p>
     ${photos(images, 'article-photo', true)}
-    <div class="article-grid">
-      <div class="article-copy">${body.map(paragraph => `<p>${esc(paragraph)}</p>`).join('')}</div>
-      ${sources || related.length ? `<aside class="article-notes" aria-label="来源与延伸阅读">
-        ${sources}
-        ${related.length ? `<section class="related"><h2>同频道报道</h2><ul class="related-list">${related.map(item => `<li><a href="${esc(item.href)}">${esc(item.title)}</a></li>`).join('')}</ul></section>` : ''}
-      </aside>` : ''}
-    </div>
+    <div class="article-copy">${body.map(paragraph => `<p>${esc(paragraph)}</p>`).join('')}</div>
     ${results.length ? `<div id="match-results" class="match-results">${results.map(match => matchPanel(match, model.edition.cs2Logos)).join('')}</div>` : ''}
+    ${sources}
   </article>`;
   renderNav(story.desk);
 }
@@ -459,7 +490,7 @@ async function start() {
     if (story) renderArticle(model, story);
     else renderError('找不到这条报道', '这条链接可能来自同一期的旧版本。', datedPage(), '返回本期首页');
   } else if (sectionId) {
-    const section = model.sections.get(sectionId);
+    const section = model.sections.get(retiredChannels.has(sectionId) ? 'world' : sectionId);
     if (section) renderChannel(model, section);
     else renderError('找不到这个频道', '请从频道栏选择一个栏目。', datedPage(), '返回本期首页');
   } else {
