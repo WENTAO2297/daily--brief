@@ -1,6 +1,6 @@
 # 每日新闻情报日报
 
-这是一个适配手机和桌面的中文新闻网站。首页汇集头条、重点新闻和频道报道；文章详情、频道和往期日报可通过链接直接打开。网页从静态 JSON 读取内容。
+这是一个适配手机和桌面的中文新闻网站。首页汇集头条、重点新闻和频道报道；文章详情、频道和往期日报可通过链接直接打开。网页从静态 JSON 读取内容。图片署名集中显示在文章详情的报道来源区。
 
 ## 本地预览
 
@@ -19,9 +19,11 @@ python3 -m http.server 8000 --directory dist
 
 工作流从公开新闻源分地区和频道收集候选，核对摘要、原文摘录和配图，用一次 OpenAI Responses API 请求编写导语和正文。校验通过后发布到 GitHub Pages。Actions 摘要和该期日报页脚都显示 API 返回的 token 数，以及按标准单价换算的费用估算。
 
-CS2 的比赛数据填在当期 JSON，11 月 9 日版有完整示例。`cs2Schedule.fixtures` 录入已确认的重点场次，例如 Falcons、HLTV 前十和顶级赛事的对阵，`startAt` 用带时区的 ISO 时间。页面按北京时间置顶 Falcons 下一场，其余场次按开赛时间排列。往期使用 `cs2Schedule.asOf` 的时间点。`cs2Logos` 以显示队名为键，`url` 填官方队标的 HTTPS 地址，浅色队标可设 `dark: true` 加深底色。
+CS2 的比赛数据填在当期 JSON，11 月 9 日版有完整示例。`cs2Schedule.fixtures` 录入已确认的重点场次，例如 Falcons、HLTV 前十和顶级赛事的对阵，`startAt` 用带时区的 ISO 时间。页面按北京时间置顶 Falcons 下一场，其余场次按开赛时间排列。往期使用 `cs2Schedule.asOf` 的时间点。`cs2Logos` 以显示队名为键，`url` 填适合浅色页面的队标 HTTPS 地址。
 
 `cs2Vrs` 保存当期 HLTV 全球 VRS 估算榜的日期、原榜链接与前十名，显示在赛程下方。`cs2Results` 中的比分、选手数据、选禁图和回放显示在 `storyId` 关联的详情页，`stats.teams` 的两组行要与 `teams` 的顺序一致。当天重新生成正文时会保留手工核实的 CS2 数据。
+
+Spirit 使用 Team Spirit 发布的原版队标。[原图及作者](https://commons.wikimedia.org/wiki/File:Team_Spirit_new_em.svg) · [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
 
 ## 文件
 

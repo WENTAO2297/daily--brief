@@ -64,13 +64,15 @@ function readLabel(url, label) {
     : '';
 }
 
-function photo(story, style, count = 1, eager = false) {
-  return (story.images || []).filter(image => httpsURL(image.url)).slice(0, count).map(image => {
-    const caption = style !== 'thumbnail' && image.credit
-      ? `<figcaption class="photo-credit">图片来源：${esc(image.credit)}</figcaption>` : '';
-    const loading = eager ? 'fetchpriority="high"' : 'loading="lazy"';
-    return `<figure class="${style}"><img src="${esc(httpsURL(image.url))}" alt="${esc(style === 'thumbnail' ? '' : image.alt || '')}" ${loading} decoding="async">${caption}</figure>`;
-  }).join('');
+function storyImages(story, count = 1) {
+  return (story.images || []).filter(image => httpsURL(image.url)).slice(0, count);
+}
+
+function photos(images, style, eager = false) {
+  const loading = eager ? 'fetchpriority="high"' : 'loading="lazy"';
+  return images.map(image =>
+    `<figure class="${style}"><img src="${esc(httpsURL(image.url))}" alt="${esc(style === 'thumbnail' ? '' : image.alt || '')}" ${loading} decoding="async"></figure>`
+  ).join('');
 }
 
 function storyKey(story) {
@@ -170,11 +172,11 @@ const headline = story => `<h3><a href="${esc(story.href)}">${esc(story.title)}<
 
 function compact(story, limit = 0) {
   const summary = limit ? teaser(story, limit) : '';
-  return `<article class="compact-story"><div>${storyMeta(story)}${headline(story)}${summary ? `<p class="teaser">${esc(summary)}</p>` : ''}</div>${photo(story, 'thumbnail')}</article>`;
+  return `<article class="compact-story"><div>${storyMeta(story)}${headline(story)}${summary ? `<p class="teaser">${esc(summary)}</p>` : ''}</div>${photos(storyImages(story), 'thumbnail')}</article>`;
 }
 
 function feature(story) {
-  return `<article class="feature-story">${photo(story, 'feature-image')}${storyMeta(story)}${headline(story)}<p class="teaser">${esc(teaser(story, 105))}</p></article>`;
+  return `<article class="feature-story">${photos(storyImages(story), 'feature-image')}${storyMeta(story)}${headline(story)}<p class="teaser">${esc(teaser(story, 105))}</p></article>`;
 }
 
 function storyList(stories, className = 'story-list', limit = 0) {
@@ -190,10 +192,9 @@ const matchMetrics = [
 ];
 
 function teamLabel(team, logos) {
-  const logo = logos?.[team];
-  const url = httpsURL(logo?.url);
+  const url = httpsURL(logos?.[team]?.url);
   return `<span class="cs2-team">
-    ${url ? `<img class="cs2-team-logo${logo.dark ? ' cs2-team-logo-dark' : ''}" src="${esc(url)}" width="20" height="20" alt="" decoding="async">` : ''}
+    ${url ? `<img class="cs2-team-logo" src="${esc(url)}" width="20" height="20" alt="" decoding="async">` : ''}
     <span>${esc(team)}</span>
   </span>`;
 }
@@ -263,8 +264,6 @@ function fixtureCard(fixture, logos, pinned = false) {
       <p class="cs2-meta">${esc(fixture.event)} · ${esc(fixture.round)} · BO${esc(fixture.bestOf)}</p>
       ${fixture.note ? `<p class="cs2-fixture-note">${esc(fixture.note)}</p>` : ''}
     </div>
-    <div class="cs2-fixture-links">${readLabel(fixture.source.url, fixture.source.label)}
-      ${fixture.broadcast ? readLabel(fixture.broadcast.url, fixture.broadcast.label) : ''}</div>
   </article>`;
 }
 
@@ -332,17 +331,18 @@ function renderHome(model) {
   const available = [...sections.values()].filter(section => section.home.length);
   const empty = [...sections.values()].filter(section => !section.stories.length);
   const updated = new Date(edition.updatedAt);
+  const imageSearchLimited = edition.imageSearchLimited ?? edition.overview?.includes('本次图片检索受限');
   app.innerHTML = `<h1 class="sr-only">每日新闻情报日报首页</h1>
     <div class="edition-line"><strong><time datetime="${esc(edition.date)}">${esc(dateLabel(edition.date))}</time></strong>
       <span>${stories.size} 条报道</span>
       ${Number.isNaN(updated.getTime()) ? '' : `<span>北京时间 ${esc(chinaTime.format(updated))} 更新</span>`}
+      ${imageSearchLimited ? '<span>本次图片检索受限</span>' : ''}
       ${requestedDate ? '<a href="./">查看最新一期</a>' : ''}
     </div>
-    ${edition.overview ? `<p class="overview">${esc(edition.overview)}</p>` : ''}
     <div class="front-grid">
       <section class="lead-panel">
         ${blockTitle('头条')}
-        ${lead ? `<article class="lead">${photo(lead, 'lead-image', 1, true)}
+        ${lead ? `<article class="lead">${photos(storyImages(lead), 'lead-image', true)}
           <div class="lead-text">${storyMeta(lead, sections.get(lead.desk)?.short)}${headline(lead)}
           <p class="teaser">${esc(teaser(lead, 120))}</p><a class="read-story" href="${esc(lead.href)}">查看报道 <span aria-hidden="true">›</span></a></div></article>` : '<p class="empty-state">本期暂无头条。</p>'}
       </section>
@@ -386,6 +386,12 @@ function renderArticle(model, story) {
   const section = model.sections.get(story.desk);
   const related = (section?.stories || []).filter(item => item.id !== story.id).slice(0, 3);
   const links = (story.sources || []).map(item => readLabel(item.url, item.label || '原文')).filter(Boolean);
+  const images = storyImages(story, 2);
+  const credits = [...new Set(images.map(image => image.credit).filter(Boolean))];
+  const sources = links.length || credits.length ? `<section><h2>报道来源</h2>
+    ${links.length ? `<ul class="source-list">${links.map(link => `<li>${link}</li>`).join('')}</ul>` : ''}
+    ${credits.length ? `<p class="article-image-credit">图片署名 · ${esc(credits.join('、'))}</p>` : ''}
+  </section>` : '';
   const back = section ? datedPage({channel: section.id}) : datedPage();
   const body = story.paragraphs?.length ? story.paragraphs : [story.what || story.summary, story.why].filter(Boolean);
   const deck = story.paragraphs?.length && story.summary !== body[0] ? story.summary : '';
@@ -397,11 +403,11 @@ function renderArticle(model, story) {
     <p class="article-byline"><time datetime="${esc(model.edition.date)}">${esc(dateLabel(model.edition.date))}收录</time>
       ${story.region ? `<span>${esc(story.region)}</span>` : ''}${story.sources?.[0]?.label ? `<span>${esc(story.sources[0].label)}</span>` : ''}
       ${results.length ? '<a class="section-link" href="#match-results">比分与 Rating</a>' : ''}</p>
-    ${photo(story, 'article-photo', 2, true)}
+    ${photos(images, 'article-photo', true)}
     <div class="article-grid">
       <div class="article-copy">${body.map(paragraph => `<p>${esc(paragraph)}</p>`).join('')}</div>
-      ${links.length || related.length ? `<aside class="article-notes" aria-label="来源与延伸阅读">
-        ${links.length ? `<section><h2>报道来源</h2><ul class="source-list">${links.map(link => `<li>${link}</li>`).join('')}</ul></section>` : ''}
+      ${sources || related.length ? `<aside class="article-notes" aria-label="来源与延伸阅读">
+        ${sources}
         ${related.length ? `<section class="related"><h2>同频道报道</h2><ul class="related-list">${related.map(item => `<li><a href="${esc(item.href)}">${esc(item.title)}</a></li>`).join('')}</ul></section>` : ''}
       </aside>` : ''}
     </div>

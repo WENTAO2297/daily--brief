@@ -48,7 +48,6 @@ def object_schema(properties: dict) -> dict:
 STRING = {"type": "string"}
 ID_LIST = {"type": "array", "items": STRING}
 SCHEMA = object_schema({
-    "overview": STRING,
     "stories": {"type": "array", "items": object_schema({
         "id": STRING, "extra_source_ids": ID_LIST,
         "region": {"type": "string", "enum": list(REGIONS)},
@@ -64,7 +63,7 @@ EDITOR_INSTRUCTIONS = """你编辑一家全球视角的中文新闻日报。候�
 用新闻体。summary 是首页副标题，用1–2句概括核心进展。paragraphs 是可独立阅读的正文，用短自然段，首段交代最新事实、人物或机构与时间，后续写数字、背景、各方说法或下一步。把影响写进事实段落。重点新闻证据充分时写3–5段，一般稿件写2–3段，快讯1段。摘要与正文不逐字复述。
 明确区分来源归属与编辑过程。通报、指控、估算或不同版本的数字，按需写“据某媒体报道”“某机构称”或“公告显示”，重大或争议事实要明确是谁说的。不确定性影响理解时，交代有关方面的回应、调查进展或尚待确认的具体事实，并写清来源。时间落在具体事件、通报、榜单或赛程上。检索、核查与截稿是编辑内部工作，不写“核查时”“截至本期更新”“最新可见”“尚未见到”等编辑自述，也不使用固定问答标签。
 论文注明预印本状态，写清作者研究的问题、方法、结果和限制。Coding 写明功能变化及开发者可用条件。开源写清版本、兼容性或使用取舍。CS2 优先 Falcons、HLTV 前十与顶级赛事，直接交代比分、轮次和北京时间，说明赛果决定了谁晋级、谁出局或下一轮对阵。榜单仅在出现实质变化或关系参赛资格时写明发布方和日期，区分 HLTV 世界排名和 Valve VRS。阵容只报已确认且影响出赛的换人、替补等变化。经济区分中国宏观和全球产业。region 按事件地区填写，避免地区集中；政治与选举保持事实化，不预测结果。
-overview 1–2句，themes 恰好3条，must_read 恰好3个不同的已入选新闻主 ID。"""
+themes 恰好3条，must_read 恰好3个不同的已入选新闻主 ID。"""
 
 
 def step_summary(message: str) -> None:
@@ -210,10 +209,8 @@ def build_brief(edited: dict, candidates: list[dict]) -> dict:
                 cards[i]["images"] = [{"url": item["image"], "alt": cards[i]["title"], "credit": item["publisher"]}]
                 break
 
-    overview = edited["overview"]
     lead_images = sum(bool(card["images"]) for card in cards[:5])
-    if len(used_images) < 6 or not cards[0]["images"] or lead_images < 4:
-        overview += " 本次图片检索受限，部分新闻仅提供文字和原文。"
+    image_search_limited = len(used_images) < 6 or not cards[0]["images"] or lead_images < 4
     regions = Counter(card["region"] for card in cards)
     print("Edition checks: " + json.dumps({
         "stories": len(cards), "image_groups": len(used_images), "lead_images": lead_images,
@@ -223,7 +220,7 @@ def build_brief(edited: dict, candidates: list[dict]) -> dict:
                  f"\n\n地区分布：{'、'.join(f'{region} {count} 条' for region, count in regions.items())}。\n")
     return {
         "date": TODAY, "updatedAt": NOW.isoformat(timespec="seconds"),
-        "edition": "全球版 · 测试模式", "overview": overview,
+        "edition": "全球版 · 测试模式", "imageSearchLimited": image_search_limited,
         "hero": cards[0], "topStories": cards[1:5], "channels": list(channels.values()),
         "closing": {"themes": edited["themes"], "links": [
             {"label": cards[ids.index(id_)]["title"], "url": sources[id_]["url"]} for id_ in edited["must_read"]
