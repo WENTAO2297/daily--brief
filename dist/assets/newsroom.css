@@ -298,13 +298,13 @@ main.wrap { min-height: 52vh; padding-block: 23px 64px; }
 .loading { color: var(--muted); padding-block: 28px; }
 
 @media (min-width: 721px) {
-  .wrap { width: min(100% - 56px, 1200px); }
+  .wrap { width: min(94%, 100% - 56px, 1760px); }
   .edition-line > strong { display: none; }
   .lead-panel .block-title, .top-panel .block-title { margin-bottom: 10px; }
   .lead { display: flex; flex-direction: column; align-items: flex-start; }
   .lead-text { order: -1; padding: 0; margin-bottom: 11px; }
   .lead-image { width: 100%; }
-  .lead-image img { aspect-ratio: 2.35; max-height: 292px; }
+  .lead-image img { aspect-ratio: 2.35; max-height: clamp(292px, 21vw, 352px); }
   .lead h3 { text-wrap: balance; }
   .top-list .compact-story { padding-block: 9px; }
   .top-list .teaser { line-height: 1.52; }
