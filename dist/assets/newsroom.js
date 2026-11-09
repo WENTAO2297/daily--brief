@@ -213,6 +213,7 @@ function matchPanel(match) {
   const hasStats = firstStats !== -1;
   const day = matchDate.format(new Date(`${match.date}T12:00:00+08:00`));
   const source = readLabel(match.source?.url, match.source?.label || '比赛来源');
+  const replayLinks = (match.replays || []).map(replay => `<li>${readLabel(replay.url, replay.label)}</li>`).join('');
   const [left, right] = match.teams;
   const [winsLeft, winsRight] = match.score;
   return `<section class="match-panel" aria-label="${esc(`${match.event} ${left} 对阵 ${right}`)}">
@@ -235,18 +236,82 @@ function matchPanel(match) {
       ${view.stats?.url ? `<p class="match-data-link">${readLabel(view.stats.url, '查看原始数据')}</p>` : ''}
     </div>`).join('')}` : maps.length ? `<ul class="match-map-scores">${maps.map(map =>
       `<li><span>${esc(map.name)}</span><b>${map.score.join('–')}</b></li>`).join('')}</ul>` : ''}
-    ${source || hasStats ? `<footer class="match-footer">${source}
+    ${source || hasStats || match.veto?.length || replayLinks ? `<footer class="match-footer">${source}
+      ${match.veto?.length ? `<details><summary>选图与禁图</summary><ol>${match.veto.map(step => `<li>${esc(step)}</li>`).join('')}</ol></details>` : ''}
+      ${replayLinks ? `<details><summary>比赛回放</summary><ul>${replayLinks}</ul></details>` : ''}
       ${hasStats ? `<details><summary>指标说明</summary><dl>${matchMetrics.map(([label, definition]) =>
         `<div><dt>${esc(label)}</dt><dd>${esc(definition)}</dd></div>`).join('')}</dl></details>` : ''}</footer>` : ''}
   </section>`;
 }
 
-function matchTeaser(match, href) {
-  return `<a class="match-teaser" href="${esc(href)}">
-    <span>${esc(match.event)} ${esc(match.round)}</span>
-    <span class="match-teaser-score">${esc(match.teams[0])} <strong>${match.score.join('–')}</strong> ${esc(match.teams[1])}</span>
-    <span>比赛数据 <span aria-hidden="true">›</span></span>
-  </a>`;
+function fixtureCard(fixture, pinned = false) {
+  const start = new Date(fixture.startAt);
+  return `<article class="cs2-fixture${pinned ? ' cs2-fixture-pinned' : ''}">
+    <time datetime="${esc(fixture.startAt)}"><span>${esc(matchDate.format(start))}</span><b>${esc(chinaTime.format(start))}</b></time>
+    <div class="cs2-fixture-info">
+      ${pinned ? '<p class="cs2-fixture-kicker">Falcons 下一场</p>' : ''}
+      <h3>${esc(fixture.teams[0])} <span>vs</span> ${esc(fixture.teams[1])}</h3>
+      <p class="cs2-meta">${esc(fixture.event)} · ${esc(fixture.round)} · BO${esc(fixture.bestOf)}</p>
+      ${fixture.note ? `<p class="cs2-fixture-note">${esc(fixture.note)}</p>` : ''}
+    </div>
+    <div class="cs2-fixture-links">${readLabel(fixture.source.url, fixture.source.label)}
+      ${fixture.broadcast ? readLabel(fixture.broadcast.url, fixture.broadcast.label) : ''}</div>
+  </article>`;
+}
+
+function cs2Schedule(edition) {
+  const schedule = edition.cs2Schedule;
+  if (!schedule) return '';
+  const now = new Date();
+  const isCurrent = dateLabel(edition.date) === chinaDate.format(now);
+  const snapshot = Date.parse(schedule.asOf);
+  const from = isCurrent ? Math.max(now.getTime(), snapshot) : snapshot;
+  const until = from + 24 * 60 * 60 * 1000;
+  const upcoming = schedule.fixtures
+    .filter(fixture => Date.parse(fixture.startAt) > from)
+    .sort((a, b) => Date.parse(a.startAt) - Date.parse(b.startAt));
+  const falcons = upcoming.find(fixture => fixture.teams.some(team => /^(Team )?Falcons$/i.test(team)));
+  const other = upcoming.filter(fixture => fixture !== falcons && Date.parse(fixture.startAt) <= until);
+  const date = isCurrent ? '' : `<time datetime="${esc(schedule.asOf)}">${esc(matchDate.format(snapshot))} ${esc(chinaTime.format(snapshot))}</time> · `;
+  return `<section class="cs2-block cs2-schedule">
+    ${blockTitle(isCurrent ? '赛程' : '当期赛程', `<p>${date}北京时间</p>`)}
+    ${falcons ? fixtureCard(falcons, true) : ''}
+    ${other.length ? `<h3 class="cs2-schedule-label">未来 24 小时重点场次</h3>
+      ${other.map(fixture => fixtureCard(fixture)).join('')}`
+      : `<p class="cs2-schedule-empty">未来 24 小时暂无${falcons ? '其他' : ''}重点场次。</p>`}
+  </section>`;
+}
+
+function cs2Progress(results, stories) {
+  const cards = results.filter(match => match.progress);
+  if (!cards.length) return '';
+  return `<section class="cs2-block cs2-progress">
+    ${blockTitle('晋级形势')}
+    ${cards.map(({event, progress, storyId}) => {
+      const story = stories.get(storyId);
+      return `<div class="cs2-progress-event">
+        <div class="cs2-progress-heading"><h3>${esc(event)}</h3>
+          ${progress.source ? readLabel(progress.source.url, progress.source.label) : ''}</div>
+        <dl class="cs2-placements">${progress.entries.map(entry =>
+          `<div><dt>${esc(entry.status)}</dt><dd>${esc(entry.team)}</dd></div>`).join('')}</dl>
+        ${progress.note ? `<p>${esc(progress.note)}</p>` : ''}
+        ${story ? `<a class="section-link cs2-report-link" href="${esc(story.href)}">阅读战报 <span aria-hidden="true">›</span></a>` : ''}
+      </div>`;
+    }).join('')}
+  </section>`;
+}
+
+function cs2Changes(changes = []) {
+  if (!changes.length) return '';
+  const labels = {ranking: 'HLTV 世界排名', vrs: 'Valve VRS', roster: '阵容变动'};
+  return `<section class="cs2-block cs2-changes">
+    ${blockTitle('排名与阵容')}
+    <ul class="story-list">${changes.map(change => `<li>
+      <p class="cs2-meta">${esc(labels[change.kind])} · <time datetime="${esc(change.date)}">${esc(matchDate.format(new Date(`${change.date}T12:00:00+08:00`)))}</time></p>
+      <h3>${esc(change.title)}</h3><p>${esc(change.summary)}</p>
+      <div class="cs2-change-sources">${change.sources.map(source => readLabel(source.url, source.label)).join('')}</div>
+    </li>`).join('')}</ul>
+  </section>`;
 }
 
 function readingRail(closing) {
@@ -263,18 +328,15 @@ function readingRail(closing) {
 function homeSection(section) {
   const href = datedPage({channel: section.id});
   const [first, ...rest] = section.id === 'world' ? section.home.slice(0, 4) : section.home;
-  const linkText = section.stories.length ? `查看全部 ${section.stories.length} 条` : '进入频道';
-  const result = section.results?.[0];
-  return `<section class="desk">${blockTitle(section.name, `<a class="section-link" href="${esc(href)}">${linkText} <span aria-hidden="true">›</span></a>`)}
-    ${result ? matchTeaser(result, href) : ''}
-    ${rest.length ? `<div class="desk-layout">${feature(first)}${storyList(rest)}</div>` : first ? feature(first) : ''}
+  return `<section class="desk">${blockTitle(section.name, `<a class="section-link" href="${esc(href)}">查看全部 ${section.stories.length} 条 <span aria-hidden="true">›</span></a>`)}
+    ${rest.length ? `<div class="desk-layout">${feature(first)}${storyList(rest)}</div>` : feature(first)}
   </section>`;
 }
 
 function renderHome(model) {
   const {edition, lead, top, sections, stories} = model;
-  const available = [...sections.values()].filter(section => section.home.length || section.results?.length);
-  const empty = [...sections.values()].filter(section => !section.stories.length && !section.results?.length);
+  const available = [...sections.values()].filter(section => section.home.length);
+  const empty = [...sections.values()].filter(section => !section.stories.length);
   const updated = new Date(edition.updatedAt);
   app.innerHTML = `<h1 class="sr-only">每日新闻情报日报首页</h1>
     <div class="edition-line"><strong><time datetime="${esc(edition.date)}">${esc(dateLabel(edition.date))}</time></strong>
@@ -306,16 +368,18 @@ function renderHome(model) {
 
 function renderChannel(model, section) {
   document.title = `${section.name} | 每日新闻情报日报`;
-  const results = section.results || [];
+  const extras = section.id === 'cs2'
+    ? cs2Schedule(model.edition) + cs2Progress(section.results, model.stories) + cs2Changes(model.edition.cs2Changes)
+    : '';
   const news = section.stories.length ? `<div class="channel-news">
-    ${results.length ? blockTitle('频道报道') : ''}
+    ${extras ? blockTitle('频道报道') : ''}
     ${storyList(section.stories, 'story-list', 112)}
   </div>` : '';
   app.innerHTML = `<a class="back-link" href="${esc(datedPage())}"><span aria-hidden="true">‹ </span>本期首页</a>
     <header class="channel-header"><h1>${esc(section.name)}</h1>
       <p>${esc(section.note || dateLabel(model.edition.date))}${section.stories.length ? `　${section.stories.length} 条报道` : ''}</p>
     </header>
-    ${results.length ? `<div class="cs2-channel"><div class="match-results">${results.map(matchPanel).join('')}</div>${news}</div>`
+    ${extras ? `<div class="cs2-channel">${extras}${news}</div>`
       : news || `<div class="channel-news"><div class="empty-state"><p>本期这个频道暂无收录。</p><a href="${esc(pageURL({view: 'archive'}))}">浏览往期日报</a></div></div>`}`;
   renderNav(section.id);
 }

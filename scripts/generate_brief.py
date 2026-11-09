@@ -63,7 +63,7 @@ EDITOR_INSTRUCTIONS = """你编辑一家全球视角的中文新闻日报。候�
 先逐频道筛选，再排优先级。AI、Coding、论文、开源和 CS2 有实质进展时优先纳入，不为凑数写旧闻或普通版本更新。全球频道通常不超过8条（含头条和重点），同一事件只写一次。通常18–25条，材料不足可少一些。第一条是头条，之后4条是重点，优先安排有相关图的报道。
 用新闻体。summary 是首页副标题，用1–2句概括核心进展。paragraphs 是可独立阅读的正文，用短自然段，首段交代最新事实、人物或机构与时间，后续写数字、背景、各方说法或下一步。把影响写进事实段落。重点新闻证据充分时写3–5段，一般稿件写2–3段，快讯1段。摘要与正文不逐字复述。
 明确区分来源归属与编辑过程。通报、指控、估算或不同版本的数字，按需写“据某媒体报道”“某机构称”或“公告显示”，重大或争议事实要明确是谁说的。不确定性影响理解时，交代有关方面的回应、调查进展或尚待确认的具体事实，并写清来源。时间落在具体事件、通报、榜单或赛程上。检索、核查与截稿是编辑内部工作，不写“核查时”“截至本期更新”“最新可见”“尚未见到”等编辑自述，也不使用固定问答标签。
-论文注明预印本状态，写清作者研究的问题、方法、结果和限制。Coding 写明功能变化及开发者可用条件。开源写清版本、兼容性或使用取舍。CS2 优先 Falcons、HLTV 前十与顶级赛事，直接交代比分、轮次和北京时间。仅在排名有值得报道的变化或关系参赛资格时，写明发布方和榜单日期。经济区分中国宏观和全球产业。region 按事件地区填写，避免地区集中；政治与选举保持事实化，不预测结果。
+论文注明预印本状态，写清作者研究的问题、方法、结果和限制。Coding 写明功能变化及开发者可用条件。开源写清版本、兼容性或使用取舍。CS2 优先 Falcons、HLTV 前十与顶级赛事，直接交代比分、轮次和北京时间，说明赛果决定了谁晋级、谁出局或下一轮对阵。榜单仅在出现实质变化或关系参赛资格时写明发布方和日期，区分 HLTV 世界排名和 Valve VRS。阵容只报已确认且影响出赛的换人、替补等变化。经济区分中国宏观和全球产业。region 按事件地区填写，避免地区集中；政治与选举保持事实化，不预测结果。
 overview 1–2句，themes 恰好3条，must_read 恰好3个不同的已入选新闻主 ID。"""
 
 
@@ -237,8 +237,9 @@ def write_brief(brief: dict) -> None:
     edition_path = directory / f"{TODAY}.json"
     if edition_path.is_file():
         previous = json.loads(edition_path.read_text(encoding="utf-8"))
-        if "cs2Results" in previous:
-            brief.setdefault("cs2Results", previous["cs2Results"])
+        for field in ("cs2Schedule", "cs2Results", "cs2Changes"):
+            if field in previous:
+                brief.setdefault(field, previous[field])
     payload = json.dumps(brief, ensure_ascii=False, indent=2) + "\n"
     for path in (edition_path, directory / "latest.json"):
         path.write_text(payload, encoding="utf-8")

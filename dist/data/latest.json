@@ -1,6 +1,6 @@
 {
   "date": "2026-11-09",
-  "updatedAt": "2026-11-09T11:30:55+08:00",
+  "updatedAt": "2026-11-09T11:54:34+08:00",
   "edition": "全球版 · 测试模式",
   "overview": "埃及列车相撞和伊拉克气田遇袭仍在调查。科技版回看周末前后的 AI、开发工具和论文进展，CS2 聚焦 IEM 北京站决赛及 Falcons 下一场赛程。",
   "hero": {
@@ -722,6 +722,48 @@
       }
     ]
   },
+  "cs2Schedule": {
+    "asOf": "2026-11-09T11:54:34+08:00",
+    "fixtures": [
+      {
+        "startAt": "2026-11-11T10:00:00+08:00",
+        "event": "BLAST Rivals 香港站",
+        "round": "A 组首轮",
+        "bestOf": 3,
+        "teams": ["Legacy", "FURIA"],
+        "source": {"label": "官方比赛页", "url": "https://blast.tv/cs/tournaments/rivals-2026-season-2/match/024974a8/legacy-furia"},
+        "broadcast": {"label": "官方直播", "url": "https://www.twitch.tv/blastpremier"}
+      },
+      {
+        "startAt": "2026-11-11T12:30:00+08:00",
+        "event": "BLAST Rivals 香港站",
+        "round": "A 组首轮",
+        "bestOf": 3,
+        "teams": ["Falcons", "Vitality"],
+        "note": "胜者进入 A 组胜者战，负者进入 A 组淘汰战。",
+        "source": {"label": "官方比赛页", "url": "https://blast.tv/cs/tournaments/rivals-2026-season-2/match/cfce2be1/vitality-falcons"},
+        "broadcast": {"label": "官方直播", "url": "https://www.twitch.tv/blastpremier"}
+      },
+      {
+        "startAt": "2026-11-11T14:00:00+08:00",
+        "event": "BLAST Rivals 香港站",
+        "round": "B 组首轮",
+        "bestOf": 3,
+        "teams": ["Spirit", "FUT"],
+        "source": {"label": "官方比赛页", "url": "https://blast.tv/cs/tournaments/rivals-2026-season-2/match/8faeab86/spirit-fut"},
+        "broadcast": {"label": "官方直播", "url": "https://www.twitch.tv/blastpremier"}
+      },
+      {
+        "startAt": "2026-11-11T16:30:00+08:00",
+        "event": "BLAST Rivals 香港站",
+        "round": "B 组首轮",
+        "bestOf": 3,
+        "teams": ["MOUZ", "G2"],
+        "source": {"label": "官方比赛页", "url": "https://blast.tv/cs/tournaments/rivals-2026-season-2/match/9821f1ac/mouz-g2"},
+        "broadcast": {"label": "官方直播", "url": "https://www.twitch.tv/blastpremier"}
+      }
+    ]
+  },
   "cs2Results": [
     {
       "event": "IEM 北京站",
@@ -732,6 +774,30 @@
       "score": [0, 3],
       "ratingVersion": "3.0",
       "storyId": "1q5fdpg",
+      "progress": {
+        "entries": [
+          {"status": "冠军", "team": "MOUZ"},
+          {"status": "亚军", "team": "The MongolZ"},
+          {"status": "季军", "team": "NAVI"},
+          {"status": "小组出局", "team": "Falcons"}
+        ],
+        "note": "NAVI 在 A 组败者组决赛淘汰 Falcons，晋级四分之一决赛。NAVI 半决赛负于 The MongolZ，随后击败 BETBOOM 拿到季军。",
+        "source": {"label": "赛事对阵", "url": "https://www.hltv.org/events/8245/iem-beijing-2026"}
+      },
+      "veto": [
+        "MOUZ 禁用 Anubis",
+        "The MongolZ 禁用 Nuke",
+        "MOUZ 选 Mirage",
+        "The MongolZ 选 Dust2",
+        "MOUZ 选 Inferno",
+        "The MongolZ 选 Ancient（未打）",
+        "Cache 留作决胜图（未打）"
+      ],
+      "replays": [
+        {"label": "Mirage · 虎牙 ESLCS", "url": "https://www.huya.com/video/play/1132109218.html"},
+        {"label": "Dust2 · 虎牙 ESLCS", "url": "https://www.huya.com/video/play/1132114702.html"},
+        {"label": "Inferno · 虎牙 ESLCS", "url": "https://www.huya.com/video/play/1132121182.html"}
+      ],
       "source": {
         "label": "HLTV 比赛页",
         "url": "https://www.hltv.org/matches/2400011/the-mongolz-vs-mouz-iem-beijing-2026"
@@ -825,6 +891,18 @@
             ]
           }
         }
+      ]
+    }
+  ],
+  "cs2Changes": [
+    {
+      "kind": "roster",
+      "date": "2026-11-11",
+      "title": "apEX 列入 Vitality 香港站首战名单",
+      "summary": "BLAST 公布的五人阵容包括 apEX，他将随 Vitality 对阵 Falcons。此前的 PGL 布加勒斯特大师赛由 jL 替他出场。",
+      "sources": [
+        {"label": "BLAST 对阵名单", "url": "https://blast.tv/cs/tournaments/rivals-2026-season-2/match/cfce2be1/vitality-falcons/matchups"},
+        {"label": "Vitality 代打公告", "url": "https://vitality.gg/en/blogs/presse/team-vitality-signs-justinas-jl-lekavicius-as-counter-strike-2-sub"}
       ]
     }
   ],
