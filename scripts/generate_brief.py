@@ -237,7 +237,7 @@ def write_brief(brief: dict) -> None:
     edition_path = directory / f"{TODAY}.json"
     if edition_path.is_file():
         previous = json.loads(edition_path.read_text(encoding="utf-8"))
-        for field in ("cs2Schedule", "cs2Results", "cs2Changes"):
+        for field in ("cs2Schedule", "cs2Results", "cs2Changes", "cs2Logos"):
             if field in previous:
                 brief.setdefault(field, previous[field])
     payload = json.dumps(brief, ensure_ascii=False, indent=2) + "\n"

@@ -138,30 +138,50 @@ main.wrap { min-height: 52vh; padding-block: 23px 64px; }
 .empty-state { padding: 18px; background: var(--wash); color: var(--muted); font-size: 15px; }
 .empty-state a { display: inline-block; margin-top: 8px; color: var(--copper); font-weight: 700; }
 
-.cs2-channel { max-width: 960px; }
-.cs2-channel .channel-news { max-width: none; }
+.cs2-channel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(330px, 1fr);
+  align-items: start;
+  gap: 26px;
+}
+.cs2-channel .channel-news { max-width: none; min-width: 0; }
+.cs2-channel .channel-news > .block-title { border-top: 0; padding-top: 0; }
+.cs2-channel .feature-story h3 { font-size: clamp(24px, 3vw, 37px); }
+.cs2-channel .feature-story + .story-list { margin-top: 14px; border-top: 1px solid var(--rule); }
+.cs2-rail { min-width: 0; padding-inline-start: 19px; border-left: 1px solid var(--rule); }
 .cs2-block { margin-bottom: 24px; }
+.cs2-block:last-child { margin-bottom: 0; }
 .cs2-schedule .block-title { padding-top: 0; border-top: 0; }
 .cs2-fixture {
   display: grid;
-  grid-template-columns: 82px minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 8px 16px;
-  padding: 12px 14px;
+  grid-template-columns: 65px minmax(0, 1fr);
+  align-items: start;
+  gap: 3px 11px;
+  padding: 10px 9px;
+  border-left: 3px solid transparent;
   border-bottom: 1px solid var(--rule);
 }
-.cs2-fixture-pinned { border-left: 3px solid var(--copper); background: var(--wash); }
-.cs2-fixture time { display: flex; flex-direction: column; line-height: 1.25; color: var(--navy); }
+.cs2-fixture-pinned { border-left-color: var(--copper); background: var(--wash); }
+.cs2-fixture time { display: flex; flex-direction: column; margin-top: 2px; line-height: 1.25; color: var(--navy); }
 .cs2-fixture time span { color: var(--muted); font-size: 12px; }
-.cs2-fixture time b { margin-top: 2px; font-size: clamp(21px, 3vw, 27px); }
+.cs2-fixture time b { margin-top: 2px; font-size: 21px; }
+.cs2-fixture-pinned time b { font-size: 23px; }
 .cs2-fixture-info { min-width: 0; }
 .cs2-fixture-kicker { color: var(--copper); font-size: 12px; font-weight: 700; }
-.cs2-fixture h3 { font-size: clamp(17px, 2.25vw, 23px); line-height: 1.25; overflow-wrap: anywhere; }
-.cs2-fixture h3 span { color: var(--muted); font-size: .67em; font-weight: 500; }
+.cs2-fixture h3 { display: flex; align-items: center; flex-wrap: wrap; gap: 3px 7px; font-size: 16px; line-height: 1.25; }
+.cs2-fixture-pinned h3 { font-size: 18px; }
+.cs2-versus { color: var(--muted); font-size: .72em; font-weight: 500; }
+.cs2-team { display: inline-flex; align-items: center; gap: 5px; max-width: 100%; min-width: 0; vertical-align: middle; }
+.cs2-team > span { min-width: 0; overflow-wrap: anywhere; }
+.cs2-team-logo { flex: none; width: 20px; height: 20px; object-fit: contain; }
+.cs2-team-logo-dark { padding: 2px; background: var(--navy); border-radius: 4px; }
+.cs2-fixture-pinned .cs2-team-logo { width: 23px; height: 23px; }
 .cs2-meta, .cs2-schedule-empty { color: var(--muted); font-size: 13px; }
 .cs2-fixture .cs2-meta { margin-top: 3px; }
 .cs2-fixture-note { margin-top: 4px; color: #405468; font-size: 13px; }
 .cs2-fixture-links, .cs2-change-sources { display: flex; flex-wrap: wrap; gap: 5px 12px; }
+.cs2-fixture-links { grid-column: 2; }
+.cs2-fixture-links a { padding-block: 2px; }
 .cs2-fixture-links a, .cs2-progress-heading a, .cs2-change-sources a { color: var(--navy); font-size: 13px; font-weight: 650; }
 .cs2-schedule-label { margin-top: 13px; font-size: 14px; }
 .cs2-schedule-empty { margin-top: 8px; }
@@ -170,7 +190,7 @@ main.wrap { min-height: 52vh; padding-block: 23px 64px; }
 .cs2-progress-heading h3 { font-size: 17px; }
 .cs2-placements {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1px;
   margin: 7px 0 9px;
   background: var(--rule);
@@ -213,6 +233,8 @@ main.wrap { min-height: 52vh; padding-block: 23px 64px; }
   line-height: 1.2;
 }
 .match-score > span { overflow-wrap: anywhere; }
+.match-score .cs2-team { justify-content: center; gap: 8px; }
+.match-score .cs2-team-logo { width: clamp(20px, 2.6vw, 30px); height: clamp(20px, 2.6vw, 30px); }
 .match-score strong { display: flex; gap: clamp(4px, 1vw, 10px); align-items: center; font-size: clamp(27px, 5vw, 46px); line-height: 1; }
 .match-score strong span { color: var(--muted); font-size: .6em; }
 .match-winner { color: var(--copper); }
@@ -295,6 +317,8 @@ main.wrap { min-height: 52vh; padding-block: 23px 64px; }
 @media (max-width: 930px) {
   .body-grid { grid-template-columns: minmax(0, 1fr); }
   .reading-rail { max-width: none; }
+  .cs2-channel { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .cs2-rail { padding: 9px 0 0; border-left: 0; border-top: 3px solid var(--navy); }
 }
 @media (max-width: 720px) {
   .wrap { width: min(100% - 30px, 1240px); }
@@ -326,7 +350,7 @@ main.wrap { min-height: 52vh; padding-block: 23px 64px; }
 }
 @media (max-width: 540px) {
   .cs2-fixture { grid-template-columns: 60px minmax(0, 1fr); gap: 4px 10px; padding-inline: 9px; }
-  .cs2-fixture-links { grid-column: 2; }
+  .match-score .cs2-team { flex-direction: column; gap: 3px; }
   .match-table small { display: block; }
   .match-table th, .match-table td { padding-inline: 2px; }
   .match-table th:first-child { padding-inline-start: 4px; }

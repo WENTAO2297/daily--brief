@@ -722,6 +722,18 @@
       }
     ]
   },
+  "cs2Logos": {
+    "Falcons": {"url": "https://assets.blast.tv/images/teams/30c9dd5b-95bb-4db2-a83f-26f672265cab?width=80&format=webp"},
+    "Vitality": {"url": "https://assets.blast.tv/images/teams/9b29b611-6523-452d-9bc6-b93fbdb01796?width=80&format=webp", "dark": true},
+    "Legacy": {"url": "https://assets.blast.tv/images/teams/7417378d-29a3-4376-85eb-05db707e784d?width=80&format=webp"},
+    "FURIA": {"url": "https://assets.blast.tv/images/teams/f239109c-ffef-4e83-830e-5ca340ee432b?width=80&format=webp"},
+    "Spirit": {"url": "https://assets.blast.tv/images/teams/80b609cb-707b-48f2-83ee-0f68b8ba8cca?width=80&format=webp", "dark": true},
+    "FUT": {"url": "https://assets.blast.tv/images/teams/e6478fa6-eb88-4e7b-bc8d-7f8613ce4e5d?width=80&format=webp"},
+    "MOUZ": {"url": "https://assets.blast.tv/images/teams/05b375da-847d-48e8-8bc0-d3f957e35e25?width=80&format=webp"},
+    "G2": {"url": "https://assets.blast.tv/images/teams/3f141cb2-6daa-432b-9413-62e1934d12ce?width=80&format=webp", "dark": true},
+    "The MongolZ": {"url": "https://assets.blast.tv/images/teams/c2f3ca41-2926-4d56-970a-a081b6ea1009?width=80&format=webp"},
+    "NAVI": {"url": "https://assets.blast.tv/images/teams/a82bfac0-e32e-44ed-9f6c-9e18a652bae2?width=80&format=webp", "dark": true}
+  },
   "cs2Schedule": {
     "asOf": "2026-11-09T11:54:34+08:00",
     "fixtures": [
