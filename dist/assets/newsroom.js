@@ -354,16 +354,16 @@ function readingGuide(closing) {
   </aside>`;
 }
 
-function homeSection(sections, section) {
+function homeSection(sections, section, rows) {
   const href = datedPage({channel: section.id});
   const [first, ...rest] = section.home;
-  return `<section class="desk">
+  return `<section class="desk${rows > 2 ? ' desk-aligned' : ''}" style="--desk-rows: ${rows}">
     <header class="block-title desk-title">
       <h2>${esc(section.name)}</h2>
       <a class="section-link" href="${esc(href)}">查看全部 ${section.stories.length} 条 <span aria-hidden="true">›</span></a>
       ${channelTabs(sections, section, true)}
     </header>
-    ${rest.length ? `<div class="desk-layout">${feature(first)}${storyList(rest, {imageLimit: 0})}</div>` : feature(first)}
+    ${rest.length ? `<div class="desk-layout"><div class="desk-feature">${feature(first)}</div>${storyList(rest, {imageLimit: 0})}</div>` : feature(first)}
   </section>`;
 }
 
@@ -372,6 +372,13 @@ function renderHome(model) {
   const mainSections = channelGroups.map(({id}) => sections.get(id));
   const available = mainSections.filter(section => section.home.length);
   const empty = mainSections.filter(section => !section.stories.length);
+  const desks = available.map((section, index) => {
+    const neighbor = available[index % 2 === 0 ? index + 1 : index - 1];
+    const rows = section.home.length > 1 && neighbor?.home.length > 1
+      ? 1 + Math.max(section.home.length, neighbor.home.length)
+      : 2;
+    return homeSection(sections, section, rows);
+  });
   const updated = new Date(edition.updatedAt);
   const imageSearchLimited = edition.imageSearchLimited ?? edition.overview?.includes('本次图片检索受限');
   app.innerHTML = `<h1 class="sr-only">每日新闻情报日报首页</h1>
@@ -396,7 +403,7 @@ function renderHome(model) {
       </section>
     </div>
     <div class="body-grid">
-      ${available.length ? `<div class="desk-grid">${available.map(section => homeSection(sections, section)).join('')}</div>` : ''}
+      ${desks.length ? `<div class="desk-grid">${desks.join('')}</div>` : ''}
       ${empty.length ? `<p class="channel-empty-list">本期暂无收录：${empty.map(section => `<a href="${esc(datedPage({channel: section.id}))}">${esc(section.short)}</a>`).join('、')}</p>` : ''}
       ${readingGuide(edition.closing)}
     </div>`;
