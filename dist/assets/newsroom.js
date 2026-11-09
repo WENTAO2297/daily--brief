@@ -347,9 +347,9 @@ function readingGuide(closing) {
   const themes = closing?.themes || [];
   const links = (closing?.links || []).map(item => readLabel(item.url, item.label || '原文')).filter(Boolean);
   if (!themes.length && !links.length) return '';
-  return `<aside class="reading-guide home-grid" aria-label="本期阅读指南">
-    ${themes.length ? `<section class="home-card"><h2>本期脉络</h2><ol>${themes.map(theme => `<li>${esc(theme)}</li>`).join('')}</ol></section>` : ''}
-    ${links.length ? `<section class="home-card"><h2>延伸阅读</h2><ol>${links.map(link => `<li>${link}</li>`).join('')}</ol></section>` : ''}
+  return `<aside class="reading-guide" aria-label="本期阅读指南">
+    ${themes.length ? `<section><h2>本期脉络</h2><ol>${themes.map(theme => `<li>${esc(theme)}</li>`).join('')}</ol></section>` : ''}
+    ${links.length ? `<section><h2>延伸阅读</h2><ol>${links.map(link => `<li>${link}</li>`).join('')}</ol></section>` : ''}
   </aside>`;
 }
 
@@ -359,10 +359,10 @@ function homeSection(sections, section) {
   return `<section class="desk">
     <header class="block-title desk-title">
       <h2>${esc(section.name)}</h2>
-      ${channelTabs(sections, section, true)}
       <a class="section-link" href="${esc(href)}">查看全部 ${section.stories.length} 条 <span aria-hidden="true">›</span></a>
+      ${channelTabs(sections, section, true)}
     </header>
-    <div class="desk-layout home-card">${feature(first)}${rest.length ? storyList(rest) : ''}</div>
+    ${rest.length ? `<div class="desk-layout">${feature(first)}${storyList(rest)}</div>` : feature(first)}
   </section>`;
 }
 
@@ -373,7 +373,6 @@ function renderHome(model) {
   const empty = mainSections.filter(section => !section.stories.length);
   const updated = new Date(edition.updatedAt);
   const imageSearchLimited = edition.imageSearchLimited ?? edition.overview?.includes('本次图片检索受限');
-  app.classList.add('home');
   app.innerHTML = `<h1 class="sr-only">每日新闻情报日报首页</h1>
     <div class="edition-line"><strong><time datetime="${esc(edition.date)}">${esc(dateLabel(edition.date))}</time></strong>
       <span>${stories.size} 条报道</span>
@@ -381,23 +380,22 @@ function renderHome(model) {
       ${imageSearchLimited ? '<span>本次图片检索受限</span>' : ''}
       ${requestedDate ? '<a href="./">查看最新一期</a>' : ''}
     </div>
-    <div class="front-grid home-grid">
+    <div class="front-grid">
       <section class="lead-panel">
         ${blockTitle('头条')}
-        ${lead ? `<article class="lead home-card">
+        ${lead ? `<article class="lead">${photos(storyImages(lead), 'lead-image', true)}
           <div class="lead-text">${storyMeta(lead, sections.get(lead.desk)?.short)}${headline(lead)}
             <p class="teaser">${esc(teaser(lead, 120))}</p>
-            <a class="read-story" href="${esc(lead.href)}">查看报道 <span aria-hidden="true">›</span></a>
           </div>
-          ${photos(storyImages(lead), 'lead-image', true)}
+          <a class="read-story" href="${esc(lead.href)}">查看报道 <span aria-hidden="true">›</span></a>
         </article>` : '<p class="empty-state">本期暂无头条。</p>'}
       </section>
       <section class="top-panel">${blockTitle('重点新闻')}
-        ${top.length ? storyList(top, 'top-list home-card', 63) : '<p class="empty-state">本期暂无重点新闻。</p>'}
+        ${top.length ? storyList(top, 'top-list', 63) : '<p class="empty-state">本期暂无重点新闻。</p>'}
       </section>
     </div>
     <div class="body-grid">
-      ${available.length ? `<div class="desk-grid home-grid">${available.map(section => homeSection(sections, section)).join('')}</div>` : ''}
+      ${available.length ? `<div class="desk-grid">${available.map(section => homeSection(sections, section)).join('')}</div>` : ''}
       ${empty.length ? `<p class="channel-empty-list">本期暂无收录：${empty.map(section => `<a href="${esc(datedPage({channel: section.id}))}">${esc(section.short)}</a>`).join('、')}</p>` : ''}
       ${readingGuide(edition.closing)}
     </div>`;
